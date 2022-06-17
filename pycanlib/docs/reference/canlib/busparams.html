@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bus Parameters &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Channel" href="channel.html" />
+    <link rel="prev" title="Exceptions" href="exceptions.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">canlib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Bus Parameters</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#calc-bitrate">calc_bitrate()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calc-busparamstq">calc_busparamstq()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calc-sjw">calc_sjw()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#to-busparamstq">to_BusParamsTq()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#to-bitratesetting">to_BitrateSetting()</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clockinfo">ClockInfo</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#busparamstq">BusParamsTq</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#busparamtqlimits">BusParamTqLimits</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#bitratesetting">BitrateSetting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="channel.html">Channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="channeldata.html">ChannelData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="envvar.html">Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enums.html">Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iocontrol.html">IOControl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iopin.html">I/O pin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="txe.html">Script Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kvadblib/index.html">kvadblib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">canlib</a> &raquo;</li>
+      <li>Bus Parameters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/canlib/busparams.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="bus-parameters">
+<h1>Bus Parameters<a class="headerlink" href="#bus-parameters" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="calc-bitrate">
+<h2>calc_bitrate()<a class="headerlink" href="#calc-bitrate" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.calc_bitrate">
+<span class="sig-prename descclassname"><span class="pre">canlib.canlib.busparams.</span></span><span class="sig-name descname"><span class="pre">calc_bitrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_bitrate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clk_freq</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#calc_bitrate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.calc_bitrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate nearest available bitrate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_bitrate</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Wanted bitrate (bit/s)</p></li>
+<li><p><strong>clk_freq</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Device clock frequency (Hz)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><p>The returned tuple is a <code class="docutils literal notranslate"><span class="pre">(bitrate,</span> <span class="pre">tq)</span></code> named tuple of –</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">bitrate</span></code> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): Available bitrate, could be a rounded value (bit/s)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tq</span></code> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): Number of time quanta in one bit</p></li>
+</ol>
+</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.16.</span></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="calc-busparamstq">
+<h2>calc_busparamstq()<a class="headerlink" href="#calc-busparamstq" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.calc_busparamstq">
+<span class="sig-prename descclassname"><span class="pre">canlib.canlib.busparams.</span></span><span class="sig-name descname"><span class="pre">calc_busparamstq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">target_bitrate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sample_point</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sync_jump_width</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">clk_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_prop_tq</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prescaler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#calc_busparamstq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.calc_busparamstq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate closest matching busparameters.</p>
+<p>The device clock frequency, <code class="xref py py-obj docutils literal notranslate"><span class="pre">clk_freq</span></code>, can be obtained via
+<a class="reference internal" href="#canlib.canlib.busparams.ClockInfo.frequency" title="canlib.canlib.busparams.ClockInfo.frequency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClockInfo.frequency()</span></code></a>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chd</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">ChannelData</span><span class="p">(</span><span class="n">channel_number</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clock_info</span> <span class="o">=</span> <span class="n">chd</span><span class="o">.</span><span class="n">clock_info</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clock_info</span><span class="o">.</span><span class="n">frequency</span><span class="p">()</span>
+<span class="go">80000000.0</span>
+</pre></div>
+</div>
+<p>Now call <a class="reference internal" href="#canlib.canlib.busparams.calc_busparamstq" title="canlib.canlib.busparams.calc_busparamstq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_busparamstq</span></code></a> with target values, and a <a class="reference internal" href="#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a>
+object will be returned:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">calc_busparamstq</span><span class="p">(</span>
+<span class="gp">... </span><span class="n">target_bitrate</span><span class="o">=</span><span class="mi">470_000</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">target_sample_point</span><span class="o">=</span><span class="mi">82</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">target_sync_jump_width</span><span class="o">=</span><span class="mf">15.3</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">clk_freq</span><span class="o">=</span><span class="n">clock_info</span><span class="o">.</span><span class="n">frequency</span><span class="p">())</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span>
+<span class="go">BusParamsTq(tq=170, prop=107, phase1=31, phase2=31, sjw=26, prescaler=1)</span>
+</pre></div>
+</div>
+<p>A target number of time quanta in the propagation segment can also be specified
+by the user.</p>
+<p>The returned BusParamsTq may not be valid on all devices. If
+<a class="reference internal" href="enums.html#canlib.canlib.Error.NOT_IMPLEMENTED" title="canlib.canlib.Error.NOT_IMPLEMENTED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Error.NOT_IMPLEMENTED</span></code></a> is encountered
+when trying to set the bitrate with the returned BusParamsTq, provide a
+prescaler argument higher than one and retry. This will lower the total number
+of time quanta in the bit and thus make the BusParamsTq valid.</p>
+<p class="rubric">Example</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">calc_busparamstq</span><span class="p">(</span>
+<span class="gp">... </span><span class="n">target_bitrate</span><span class="o">=</span><span class="mi">470_000</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">target_sample_point</span><span class="o">=</span><span class="mi">82</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">target_sync_jump_width</span><span class="o">=</span><span class="mf">15.3</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">clk_freq</span><span class="o">=</span><span class="n">clock_info</span><span class="o">.</span><span class="n">frequency</span><span class="p">(),</span>
+<span class="gp">... </span><span class="n">target_prop_tq</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">prescaler</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span>
+<span class="go">BusParamsTq(tq=85, prop=25, phase1=44, phase2=15, sjw=13, prescaler=2)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Minimum sjw returned is 1, maximum sjw is min(phase1, phase2).</p></li>
+</ul>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>target_bitrate</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Wanted bitrate (bit/s)</p></li>
+<li><p><strong>target_sample_point</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Wanted sample point in percentage (0-100)</p></li>
+<li><p><strong>target_sync_jump_width</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Wanted sync jump width in percentage (0-100)</p></li>
+<li><p><strong>clk_freq</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Device clock frequency (Hz)</p></li>
+<li><p><strong>target_prop_tq</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, Optional) – Wanted propagation segment (time quanta)</p></li>
+<li><p><strong>prescaler</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, Optional) – Wanted prescaler (at most 2 for CAN FD)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a> – Calculated bus parameters</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.16.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.17.</span></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="calc-sjw">
+<h2>calc_sjw()<a class="headerlink" href="#calc-sjw" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.calc_sjw">
+<span class="sig-prename descclassname"><span class="pre">canlib.canlib.busparams.</span></span><span class="sig-name descname"><span class="pre">calc_sjw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_sync_jump_width</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#calc_sjw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.calc_sjw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate sync jump width</p>
+<p>tq: Number of time quanta in one bit
+target_sync_jump_width: Wanted sync jump width, 0-100 (%)</p>
+<p>Note: Minimum sjw_tq returned is 1.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>The returned named tuple is a <code class="docutils literal notranslate"><span class="pre">(sjw_tq,</span> <span class="pre">sync_jump_width)</span></code> consisting of –</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sjw_tq</span></code> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>): Size of sync jump width in number of time quanta,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sync_jump_width</span></code> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">number</span></code>): Size of sync jump width in percentage (%))</p></li>
+</ol>
+</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.16.</span></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="to-busparamstq">
+<h2>to_BusParamsTq()<a class="headerlink" href="#to-busparamstq" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.to_BusParamsTq">
+<span class="sig-prename descclassname"><span class="pre">canlib.canlib.busparams.</span></span><span class="sig-name descname"><span class="pre">to_BusParamsTq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clk_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bus_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prescaler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#to_BusParamsTq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.to_BusParamsTq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert <a class="reference internal" href="#canlib.canlib.busparams.BitrateSetting" title="canlib.canlib.busparams.BitrateSetting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BitrateSetting</span></code></a> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code> to <a class="reference internal" href="#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a>.</p>
+<p>The device clock frequency, <code class="xref py py-obj docutils literal notranslate"><span class="pre">clk_freq</span></code>, can be obtained via
+<a class="reference internal" href="#canlib.canlib.busparams.ClockInfo.frequency" title="canlib.canlib.busparams.ClockInfo.frequency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClockInfo.frequency()</span></code></a>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chd</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">ChannelData</span><span class="p">(</span><span class="n">channel_number</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clock_info</span> <span class="o">=</span> <span class="n">chd</span><span class="o">.</span><span class="n">clock_info</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clock_info</span><span class="o">.</span><span class="n">frequency</span><span class="p">()</span>
+<span class="go">80000000.0</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_freq</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Clock frequency of device.</p></li>
+<li><p><strong>bus_param</strong> (<a class="reference internal" href="#canlib.canlib.busparams.BitrateSetting" title="canlib.canlib.busparams.BitrateSetting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BitrateSetting</span></code></a> or <code class="xref py py-obj docutils literal notranslate"><span class="pre">tuple</span></code>) – <a class="reference internal" href="#canlib.canlib.busparams.BitrateSetting" title="canlib.canlib.busparams.BitrateSetting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BitrateSetting</span></code></a> object or</p></li>
+<li><p><strong>(freq, tseg1, tseg2, sjw) `tuple` to convert.</strong></p></li>
+<li><p><strong>prescaler</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – The prescaler to use in the created <a class="reference internal" href="#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a></p></li>
+<li><p><strong>object.</strong></p></li>
+<li><p><strong>data</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – Set to True if the resulting <a class="reference internal" href="#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a> should be</p></li>
+<li><p><strong>used for CAN FD data bitrate parameters.</strong></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a> object with equivalent settings as the input argument.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.17.</span></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="to-bitratesetting">
+<h2>to_BitrateSetting()<a class="headerlink" href="#to-bitratesetting" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.to_BitrateSetting">
+<span class="sig-prename descclassname"><span class="pre">canlib.canlib.busparams.</span></span><span class="sig-name descname"><span class="pre">to_BitrateSetting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clk_freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bus_param</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#to_BitrateSetting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.to_BitrateSetting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert <a class="reference internal" href="#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a> to <a class="reference internal" href="#canlib.canlib.busparams.BitrateSetting" title="canlib.canlib.busparams.BitrateSetting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BitrateSetting</span></code></a>.</p>
+<p>The device clock frequency, <code class="xref py py-obj docutils literal notranslate"><span class="pre">clk_freq</span></code>, can be obtained via
+<a class="reference internal" href="#canlib.canlib.busparams.ClockInfo.frequency" title="canlib.canlib.busparams.ClockInfo.frequency"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClockInfo.frequency()</span></code></a>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chd</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">ChannelData</span><span class="p">(</span><span class="n">channel_number</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clock_info</span> <span class="o">=</span> <span class="n">chd</span><span class="o">.</span><span class="n">clock_info</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clock_info</span><span class="o">.</span><span class="n">frequency</span><span class="p">()</span>
+<span class="go">80000000.0</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>clk_freq</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>) – Clock frequency of device.</p></li>
+<li><p><strong>bus_param</strong> (<a class="reference internal" href="#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a>) – <a class="reference internal" href="#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a> object to convert.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#canlib.canlib.busparams.BitrateSetting" title="canlib.canlib.busparams.BitrateSetting"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BitrateSetting</span></code></a> object with equivalent settings as the input argument.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.17.</span></p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="clockinfo">
+<h2>ClockInfo<a class="headerlink" href="#clockinfo" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.ClockInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.busparams.</span></span><span class="sig-name descname"><span class="pre">ClockInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">numerator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">power_of_ten</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">accuracy</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#ClockInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.ClockInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Information about clock a oscillator</p>
+<p>The clock frequency is set in the form:</p>
+<blockquote>
+<div><p>frequency = numerator / denominator * 10 ** power_of_ten +/- accuracy</p>
+</div></blockquote>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.16.</span></p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.ClockInfo.frequency">
+<span class="sig-name descname"><span class="pre">frequency</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#ClockInfo.frequency"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.ClockInfo.frequency" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an approximation of the clock frequency as a float.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="busparamstq">
+<h2>BusParamsTq<a class="headerlink" href="#busparamstq" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.BusParamsTq">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.busparams.</span></span><span class="sig-name descname"><span class="pre">BusParamsTq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phase2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sjw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prescaler</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">prop</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#BusParamsTq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.BusParamsTq" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds parameters for busparameters in number of time quanta.</p>
+<p>If you don’t want to specify the busparameters in time quanta directly,
+you may use <a class="reference internal" href="#canlib.canlib.busparams.calc_busparamstq" title="canlib.canlib.busparams.calc_busparamstq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_busparamstq</span></code></a> which returns an object of this class.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">calc_busparamstq</span><span class="p">(</span>
+<span class="gp">... </span><span class="n">target_bitrate</span><span class="o">=</span><span class="mi">470_000</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">target_sample_point</span><span class="o">=</span><span class="mi">82</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">target_sync_jump_width</span><span class="o">=</span><span class="mf">33.5</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">clk_freq</span><span class="o">=</span><span class="n">clk_freq</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span>
+<span class="go">BusParamsTq(tq=170, prop=107, phase1=31, phase2=31, sjw=57, prescaler=1)</span>
+</pre></div>
+</div>
+<p>You may now query for the actual Sample Point and Sync Jump Width expressed
+as percentages of total bit time quanta:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">params</span><span class="o">.</span><span class="n">sample_point</span><span class="p">()</span>
+<span class="go">81.76470588235294</span>
+</pre></div>
+</div>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">params</span><span class="o">.</span><span class="n">sync_jump_width</span><span class="p">()</span>
+<span class="go">33.52941176470588</span>
+</pre></div>
+</div>
+<p>If you supply the clock frequency, you may also calculate the corresponding bitrate:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">params</span><span class="o">.</span><span class="n">bitrate</span><span class="p">(</span><span class="n">clk_freq</span><span class="o">=</span><span class="mi">80_000_000</span><span class="p">)</span>
+<span class="go">470588.23529411765</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>tq</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Number of time quanta in one bit.</p></li>
+<li><p><strong>phase1</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Number of time quanta in Phase Segment 1.</p></li>
+<li><p><strong>phase2</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Number of time quanta in Phase Segment 2.</p></li>
+<li><p><strong>sjw</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Number of time quanta in Sync Jump Width.</p></li>
+<li><p><strong>prescaler</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Prescaler value (1-2 to enable auto in CAN FD)</p></li>
+<li><p><strong>prop</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, optional) – Number of time quanta in Propagation Segment.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.16.</span></p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.BusParamsTq.bitrate">
+<span class="sig-name descname"><span class="pre">bitrate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clk_freq</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#BusParamsTq.bitrate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.BusParamsTq.bitrate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return bitrate assuming the given clock frequency</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>clk_freq</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – Clock frequency (in Hz)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.BusParamsTq.sample_point">
+<span class="sig-name descname"><span class="pre">sample_point</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#BusParamsTq.sample_point"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.BusParamsTq.sample_point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sample point in percentage.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.BusParamsTq.sample_point_ns">
+<span class="sig-name descname"><span class="pre">sample_point_ns</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clk_freq</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#BusParamsTq.sample_point_ns"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.BusParamsTq.sample_point_ns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sample point in ns.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.17.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.BusParamsTq.sync_jump_width">
+<span class="sig-name descname"><span class="pre">sync_jump_width</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#BusParamsTq.sync_jump_width"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.BusParamsTq.sync_jump_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return sync jump width (SJW) in percentage.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="busparamtqlimits">
+<h2>BusParamTqLimits<a class="headerlink" href="#busparamtqlimits" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.BusParamTqLimits">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.busparams.</span></span><span class="sig-name descname"><span class="pre">BusParamTqLimits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">arbitration_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arbitration_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_max</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#BusParamTqLimits"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.BusParamTqLimits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hold min and max values for both arbitration and data phase.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">tq</span></code> field is ignored during validation since
+<a class="reference internal" href="channeldata.html#canlib.canlib.ChannelData.bus_param_limits" title="canlib.canlib.ChannelData.bus_param_limits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelData.bus_param_limits</span></code></a> always returns zero for this field.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">prop</span></code> is zero for both <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> values, the <code class="docutils literal notranslate"><span class="pre">phase1</span></code>
+limit applies to (<code class="docutils literal notranslate"><span class="pre">phase1</span></code> + <code class="docutils literal notranslate"><span class="pre">prop</span></code>). This is used when a device
+does not distinguish between phase segment one and the propagation
+segment.</p>
+<p>Example usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limits</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">ChannelData</span><span class="p">(</span><span class="n">channel_number</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">bus_param_limits</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limits</span><span class="o">.</span><span class="n">arbitration_max</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+<span class="go">{&#39;tq&#39;: 0, &#39;phase1&#39;: 32, &#39;phase2&#39;: 32, &#39;sjw&#39;: 32, &#39;prescaler&#39;: 1024, &#39;prop&#39;: 64}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">bp_tq</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">busparams</span><span class="o">.</span><span class="n">BusParamsTq</span><span class="p">(</span><span class="n">tq</span><span class="o">=</span><span class="mi">121</span><span class="p">,</span> <span class="n">phase1</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">phase2</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sjw</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">prescaler</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limits</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">bp_tq</span><span class="p">)</span>
+<span class="go">ValueError: The following does not match:</span>
+<span class="go">  Arbitration phase1: 1 &lt;= 100 &lt;= 32</span>
+</pre></div>
+</div>
+<p>NOTE: This class is preliminary and may change!</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.20.</span></p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.BusParamTqLimits.validate">
+<span class="sig-name descname"><span class="pre">validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bus_param</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_param</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#BusParamTqLimits.validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.BusParamTqLimits.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates busparameters for arbitration and data</p>
+<p>Raises a <code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueError</span></code> if busparameters for arbritation and data is not
+within current limits. The failed validation is provided as an explanation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ne">ValueError</span><span class="p">:</span> <span class="n">The</span> <span class="n">following</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">match</span><span class="p">:</span>
+  <span class="n">Arbitration</span> <span class="n">phase1</span><span class="p">:</span> <span class="mi">11</span> <span class="o">&lt;=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="mi">21</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="bitratesetting">
+<h1>BitrateSetting<a class="headerlink" href="#bitratesetting" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.BitrateSetting">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.busparams.</span></span><span class="sig-name descname"><span class="pre">BitrateSetting</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">freq</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tseg1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tseg2</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sjw</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">nosamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">syncMode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#BitrateSetting"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.BitrateSetting" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that holds bitrate setting.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>freq</strong> – Bitrate in bit/s.</p></li>
+<li><p><strong>tseg1</strong> – Number of quanta from (but not including) the Sync Segment to             the sampling point.</p></li>
+<li><p><strong>tseg2</strong> – Number of quanta from the sampling point to the end of the bit.</p></li>
+<li><p><strong>sjw</strong> – The Synchronization Jump Width.</p></li>
+<li><p><strong>nosamp</strong> – The number of sampling points, only 1 is supported.</p></li>
+<li><p><strong>syncMode</strong> – Unsupported and ignored.</p></li>
+</ul>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.17.</span></p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.canlib.busparams.BitrateSetting.from_predefined">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_predefined</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bitrate</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/busparams.html#BitrateSetting.from_predefined"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.busparams.BitrateSetting.from_predefined" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a BitrateSetting object using one of the <a class="reference internal" href="enums.html#canlib.canlib.Bitrate" title="canlib.canlib.Bitrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Bitrate</span></code></a> or
+<a class="reference internal" href="enums.html#canlib.canlib.BitrateFD" title="canlib.canlib.BitrateFD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BitrateFD</span></code></a> enumerations.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="exceptions.html" class="btn btn-neutral float-left" title="Exceptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="channel.html" class="btn btn-neutral float-right" title="Channel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

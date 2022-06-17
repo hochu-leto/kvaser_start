@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>j1939 &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Release Notes" href="../../Relnotes.html" />
+    <link rel="prev" title="Miscellaneous" href="../linlib/wrapper.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canlib/index.html">canlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvadblib/index.html">kvadblib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">j1939</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extended-data-page-bit">(Extended) Data Page Bit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#protocol-data-units">Protocol Data Units</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#converting-can-id">Converting CAN Id</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+      <li>j1939</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/j1939/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="j1939">
+<h1>j1939<a class="headerlink" href="#j1939" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-canlib.j1939"></span><p>This module holds definitions of J1939 Protocol Data Unit (PDU) frames.</p>
+<p>Example of usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">Frame</span><span class="p">,</span> <span class="n">j1939</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib.canlib</span> <span class="kn">import</span> <span class="n">MessageFlag</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">frame_from_pdu</span><span class="p">(</span><span class="n">pdu</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">can_id</span> <span class="o">=</span> <span class="n">j1939</span><span class="o">.</span><span class="n">can_id_from_pdu</span><span class="p">(</span><span class="n">pdu</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">frame</span> <span class="o">=</span> <span class="n">Frame</span><span class="p">(</span>
+<span class="gp">... </span>        <span class="n">id_</span><span class="o">=</span><span class="n">can_id</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">data</span><span class="o">=</span><span class="n">pdu</span><span class="o">.</span><span class="n">data</span><span class="p">,</span>
+<span class="gp">... </span>        <span class="n">flags</span><span class="o">=</span><span class="n">MessageFlag</span><span class="o">.</span><span class="n">EXT</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="p">)</span>
+<span class="gp">... </span>    <span class="k">return</span> <span class="n">frame</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">pdu</span> <span class="o">=</span> <span class="n">j1939</span><span class="o">.</span><span class="n">Pdu1</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">p</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">edp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">pf</span><span class="o">=</span><span class="mh">0x99</span><span class="p">,</span> <span class="n">ps</span><span class="o">=</span><span class="mh">0xfe</span><span class="p">,</span> <span class="n">sa</span><span class="o">=</span><span class="mh">0xfe</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">data</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">frame_from_pdu</span><span class="p">(</span><span class="n">pdu</span><span class="p">)</span>
+<span class="go">Frame(id=211418878, data=bytearray(b&#39;\x01&#39;), dlc=1, flags=&lt;MessageFlag.EXT: 4&gt;, timestamp=None)</span>
+</pre></div>
+</div>
+<p>The particular characteristics of J1939 are:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Extended CAN identifier (29 bit)</p></li>
+<li><p>Bit rate 250 kbit/s</p></li>
+<li><p>Peer-to-peer and broadcast communication</p></li>
+<li><p>Transport protocols for up to 1785 data bytes</p></li>
+<li><p>Network management</p></li>
+<li><p>Definition of parameter groups for commercial vehicles and others</p></li>
+<li><p>Manufacturer specific parameter groups are supported</p></li>
+<li><p>Diagnostics features</p></li>
+</ul>
+</div></blockquote>
+<div class="section" id="extended-data-page-bit">
+<h2>(Extended) Data Page Bit<a class="headerlink" href="#extended-data-page-bit" title="Permalink to this heading">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Extended
+Data page</p></th>
+<th class="head"><p>Data page</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>SAE J1939 Page 0 Parameter Groups</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>SAE J1939 Page 1 Parameter Groups (NMEA2000)</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>SAE J1939 reserved</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>ISO 15765-3 defined</p></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<div><div class="versionadded">
+<p><span class="versionmodified added">New in version 1.18.</span></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="protocol-data-units">
+<h2>Protocol Data Units<a class="headerlink" href="#protocol-data-units" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.j1939.</span></span><span class="sig-name descname"><span class="pre">Pdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/j1939.html#Pdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.j1939.Pdu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Protocol Data Unit in j1939.</p>
+<p>Base class with attributes common to <a class="reference internal" href="#canlib.j1939.Pdu1" title="canlib.j1939.Pdu1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pdu1</span></code></a> and <a class="reference internal" href="#canlib.j1939.Pdu2" title="canlib.j1939.Pdu2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pdu2</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu.data">
+<span class="sig-name descname"><span class="pre">data</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#canlib.j1939.Pdu.data" title="Permalink to this definition">¶</a></dt>
+<dd><p>data field</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu.dp">
+<span class="sig-name descname"><span class="pre">dp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#canlib.j1939.Pdu.dp" title="Permalink to this definition">¶</a></dt>
+<dd><p>data page</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu.edp">
+<span class="sig-name descname"><span class="pre">edp</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#canlib.j1939.Pdu.edp" title="Permalink to this definition">¶</a></dt>
+<dd><p>extended data page</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu.p">
+<span class="sig-name descname"><span class="pre">p</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#canlib.j1939.Pdu.p" title="Permalink to this definition">¶</a></dt>
+<dd><p>priority</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu.pf">
+<span class="sig-name descname"><span class="pre">pf</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#canlib.j1939.Pdu.pf" title="Permalink to this definition">¶</a></dt>
+<dd><p>PDU format</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu.ps">
+<span class="sig-name descname"><span class="pre">ps</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#canlib.j1939.Pdu.ps" title="Permalink to this definition">¶</a></dt>
+<dd><p>PDU specific</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu.sa">
+<span class="sig-name descname"><span class="pre">sa</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">int</span></em><a class="headerlink" href="#canlib.j1939.Pdu.sa" title="Permalink to this definition">¶</a></dt>
+<dd><p>source address</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu1">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.j1939.</span></span><span class="sig-name descname"><span class="pre">Pdu1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">da</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/j1939.html#Pdu1"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.j1939.Pdu1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Protocol Data Unit, Format 1</p>
+<p>When <a class="reference internal" href="#canlib.j1939.Pdu.pf" title="canlib.j1939.Pdu.pf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pdu.pf</span></code></a> &lt; 240, the PDU Specific field is a Destination Address and</p>
+<p><a class="reference internal" href="#canlib.j1939.Pdu1.pgn" title="canlib.j1939.Pdu1.pgn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pgn</span></code></a> = Extended Data Page + Data Page + PDU Format + “00”</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu1.da">
+<span class="sig-name descname"><span class="pre">da</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#canlib.j1939.Pdu1.da" title="Permalink to this definition">¶</a></dt>
+<dd><p>destination address, <a class="reference internal" href="#canlib.j1939.Pdu.ps" title="canlib.j1939.Pdu.ps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pdu.ps</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu1.pgn">
+<span class="sig-name descname"><span class="pre">pgn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#canlib.j1939.Pdu1.pgn" title="Permalink to this definition">¶</a></dt>
+<dd><p>parameter group number</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu2">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.j1939.</span></span><span class="sig-name descname"><span class="pre">Pdu2</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">edp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dp</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pf</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ps</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sa</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ge</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pgn</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/j1939.html#Pdu2"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.j1939.Pdu2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Protocol Data Unit, Format 2</p>
+<p>When <a class="reference internal" href="#canlib.j1939.Pdu.pf" title="canlib.j1939.Pdu.pf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pdu.pf</span></code></a> &gt;= 240, the PDU Specific field is the Group Extension</p>
+<blockquote>
+<div><p><a class="reference internal" href="#canlib.j1939.Pdu2.pgn" title="canlib.j1939.Pdu2.pgn"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pgn</span></code></a> = Extended Data Page + Data Page + PDU Format + Group Extension</p>
+</div></blockquote>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu2.ge">
+<span class="sig-name descname"><span class="pre">ge</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#canlib.j1939.Pdu2.ge" title="Permalink to this definition">¶</a></dt>
+<dd><p>group extension, equal to <a class="reference internal" href="#canlib.j1939.Pdu.ps" title="canlib.j1939.Pdu.ps"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pdu.ps</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.j1939.Pdu2.pgn">
+<span class="sig-name descname"><span class="pre">pgn</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span></em><a class="headerlink" href="#canlib.j1939.Pdu2.pgn" title="Permalink to this definition">¶</a></dt>
+<dd><p>parameter group number</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="converting-can-id">
+<h2>Converting CAN Id<a class="headerlink" href="#converting-can-id" title="Permalink to this heading">¶</a></h2>
+<p>For a j1939 message, the CAN identifier is divided into the following fields:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 19%" />
+<col style="width: 19%" />
+<col style="width: 14%" />
+<col style="width: 17%" />
+<col style="width: 15%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Priority</p></th>
+<th class="head"><p>Extended
+Data Page</p></th>
+<th class="head"><p>Data Page</p></th>
+<th class="head"><p>PDU
+Format</p></th>
+<th class="head"><p>PDU
+Specific</p></th>
+<th class="head"><p>Source
+Address</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3 bit</p></td>
+<td><p>1 bit</p></td>
+<td><p>1 bit</p></td>
+<td><p>8 bit</p></td>
+<td><p>8 bit</p></td>
+<td><p>8 bit</p></td>
+</tr>
+</tbody>
+</table>
+<p>Use <a class="reference internal" href="#canlib.j1939.pdu_from_can_id" title="canlib.j1939.pdu_from_can_id"><code class="xref py py-obj docutils literal notranslate"><span class="pre">pdu_from_can_id</span></code></a> and <a class="reference internal" href="#canlib.j1939.can_id_from_pdu" title="canlib.j1939.can_id_from_pdu"><code class="xref py py-obj docutils literal notranslate"><span class="pre">can_id_from_pdu</span></code></a> to convert.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="canlib.j1939.pdu_from_can_id">
+<span class="sig-prename descclassname"><span class="pre">canlib.j1939.</span></span><span class="sig-name descname"><span class="pre">pdu_from_can_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">can_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/j1939.html#pdu_from_can_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.j1939.pdu_from_can_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create j1939 Protocol Data Unit object based on CAN Id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>can_id</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – CAN Identifier</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="#canlib.j1939.Pdu1" title="canlib.j1939.Pdu1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pdu1</span></code></a> or <a class="reference internal" href="#canlib.j1939.Pdu2" title="canlib.j1939.Pdu2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pdu2</span></code></a> depending on value of <code class="xref py py-obj docutils literal notranslate"><span class="pre">can_id</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="canlib.j1939.can_id_from_pdu">
+<span class="sig-prename descclassname"><span class="pre">canlib.j1939.</span></span><span class="sig-name descname"><span class="pre">can_id_from_pdu</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pdu</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/j1939.html#can_id_from_pdu"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.j1939.can_id_from_pdu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Extract CAN Id based on j1939 Protocol Data Unit object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>pdu</strong> (<a class="reference internal" href="#canlib.j1939.Pdu1" title="canlib.j1939.Pdu1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pdu1</span></code></a> or <a class="reference internal" href="#canlib.j1939.Pdu2" title="canlib.j1939.Pdu2"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Pdu2</span></code></a>) – Protocol Data Unit</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>can_id (<code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>) – CAN Identifier</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../linlib/wrapper.html" class="btn btn-neutral float-left" title="Miscellaneous" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../Relnotes.html" class="btn btn-neutral float-right" title="Release Notes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

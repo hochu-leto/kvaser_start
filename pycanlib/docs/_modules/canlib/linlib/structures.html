@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>canlib.linlib.structures &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>canlib.linlib.structures</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for canlib.linlib.structures</h1><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">ctypes</span> <span class="k">as</span> <span class="nn">ct</span>
+
+
+<div class="viewcode-block" id="MessageInfo"><a class="viewcode-back" href="../../../reference/linlib/structures.html#canlib.linlib.MessageInfo">[docs]</a><span class="k">class</span> <span class="nc">MessageInfo</span><span class="p">(</span><span class="n">ct</span><span class="o">.</span><span class="n">Structure</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Provides more information about the LIN message.</span>
+
+<span class="sd">    The precision of the timing data given in us (microseconds) can be less</span>
+<span class="sd">    than one microsecond; for low bitrates the lowest bits might always be</span>
+<span class="sd">    zero.</span>
+
+<span class="sd">    The min and max values listed inside [] of the message timing values can be</span>
+<span class="sd">    calculated from the LIN specification by using the shortest (0 bytes) or</span>
+<span class="sd">    longest (8 bytes) messages at the lowest or highest allowed bitrate.</span>
+
+<span class="sd">    .. note:: The LIN interface will accept messages that are a bit</span>
+<span class="sd">        out-of-bounds as well.</span>
+
+<span class="sd">    .. py:attribute:: timestamp</span>
+
+<span class="sd">        Kvaser DRV Lin timestamp - Timestamp in milliseconds of the falling</span>
+<span class="sd">        edge of the synch break of the message. Uses the canlib CAN timer.</span>
+
+<span class="sd">        Kvaser LIN Leaf timestamp - Timestamp in milliseconds of the falling</span>
+<span class="sd">        edge of the synch break of the message. Uses the canlib CAN timer.</span>
+
+<span class="sd">        .. note:: All Kvaser Leaf with Kvaser MagiSync&amp;tm; are synchronized</span>
+<span class="sd">            (also with CAN channels).</span>
+
+<span class="sd">    .. py:attribute:: bitrate</span>
+
+<span class="sd">        The bitrate of the message in bits per seconds. Range [1000 .. 20000]</span>
+<span class="sd">        (plus some margin)</span>
+
+<span class="sd">    .. py:attribute:: byteTime</span>
+
+<span class="sd">        Start time in microseconds of each data byte. In case of 8-byte</span>
+<span class="sd">        messages, the crc time isn&#39;t included (but can be deduced from</span>
+<span class="sd">        frameLength).</span>
+
+<span class="sd">        .. note:: Not supported by all devices.</span>
+
+<span class="sd">    .. py:attribute:: checkSum</span>
+
+<span class="sd">        The checksum as read from the LIN bus. Might not match the data in case</span>
+<span class="sd">        of `MessageFlag.CSUM_ERROR`.</span>
+
+<span class="sd">    .. py:attribute:: frameLength</span>
+
+<span class="sd">        The total frame length in microseconds; from the synch break to the end</span>
+<span class="sd">        of the crc. [2200 .. 173600]</span>
+
+<span class="sd">    .. py:attribute:: idPar</span>
+
+<span class="sd">        The id with parity of the message as read from the LIN bus. Might be</span>
+<span class="sd">        invalid in case of `MessageFlag.PARITY_ERROR`.</span>
+
+<span class="sd">    .. py:attribute:: synchBreakLength</span>
+
+<span class="sd">        Length of the synch break in microseconds. [650 .. 13000], [400</span>
+<span class="sd">        .. 8000] for a wakeup signal.</span>
+
+<span class="sd">    .. py:attribute:: synchEdgeTime</span>
+
+<span class="sd">        Time in microseconds of the falling edges in the synch byte relative</span>
+<span class="sd">        the falling edge of the start bit.</span>
+
+<span class="sd">        .. note:: Not supported by all devices.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_fields_</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">(</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="n">ct</span><span class="o">.</span><span class="n">c_ulong</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;synchBreakLength&quot;</span><span class="p">,</span> <span class="n">ct</span><span class="o">.</span><span class="n">c_ulong</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;frameLength&quot;</span><span class="p">,</span> <span class="n">ct</span><span class="o">.</span><span class="n">c_ulong</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;bitrate&quot;</span><span class="p">,</span> <span class="n">ct</span><span class="o">.</span><span class="n">c_ulong</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;checkSum&quot;</span><span class="p">,</span> <span class="n">ct</span><span class="o">.</span><span class="n">c_ubyte</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;idPar&quot;</span><span class="p">,</span> <span class="n">ct</span><span class="o">.</span><span class="n">c_ubyte</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">ct</span><span class="o">.</span><span class="n">c_ushort</span><span class="p">),</span>  <span class="c1">#: Dummy for alignment</span>
+        <span class="p">(</span><span class="s2">&quot;synchEdgeTime&quot;</span><span class="p">,</span> <span class="n">ct</span><span class="o">.</span><span class="n">c_ulong</span> <span class="o">*</span> <span class="mi">4</span><span class="p">),</span>
+        <span class="p">(</span><span class="s2">&quot;byteTime&quot;</span><span class="p">,</span> <span class="n">ct</span><span class="o">.</span><span class="n">c_ulong</span> <span class="o">*</span> <span class="mi">8</span><span class="p">),</span>
+    <span class="p">]</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

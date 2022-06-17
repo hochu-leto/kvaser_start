@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Initialization &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Devices and Channels" href="devicesandchannels.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using canlib (CANlib)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Initialization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#library-initialization">Library Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#library-deinitialization-and-cleanup">Library Deinitialization and Cleanup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#manually-enumerating-can-channels">Manually Enumerating CAN channels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="devicesandchannels.html">Devices and Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openchannel.html">Open Channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canframes.html">CAN Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sendandreceive.html">Send and Receive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="buserrors.html">Bus Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timemeasurement.html">Time Measurement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingthreads.html">Using Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tprogramming.html">t Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iopinhandling.html">I/O Pin Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Using canlib (CANlib)</a> &raquo;</li>
+      <li>Initialization</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/canlib/initialization.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="initialization">
+<h1>Initialization<a class="headerlink" href="#initialization" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="library-initialization">
+<h2>Library Initialization<a class="headerlink" href="#library-initialization" title="Permalink to this heading">¶</a></h2>
+<p>The underlaying CANlib library is initialized when the module <code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.canlib</span></code>
+is imported.  This will initialize the CANlib library and enumerate all
+currently available CAN channels.</p>
+</div>
+<div class="section" id="library-deinitialization-and-cleanup">
+<h2>Library Deinitialization and Cleanup<a class="headerlink" href="#library-deinitialization-and-cleanup" title="Permalink to this heading">¶</a></h2>
+<p>Strictly speaking it is not necessary to clean up anything before terminating
+the application. If the application quits unexpectedly, the device driver will
+ensure the CAN controller is deactivated and the driver will also ensure the
+firmware (if any) is left in a consistent state.</p>
+<p>To reinitialize the library in an orderly fashion you may want to call
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.writeSync" title="canlib.canlib.Channel.writeSync"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.Channel.writeSync</span></code></a> with a short timeout for each open handle
+before closing them with <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.close" title="canlib.canlib.Channel.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.Channel.close</span></code></a>, to ensure the transmit
+queues are empty. You can then start afresh by calling
+<a class="reference internal" href="../reference/canlib/wrapper.html#canlib.canlib.reinitializeLibrary" title="canlib.canlib.reinitializeLibrary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.reinitializeLibrary</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When calling <a class="reference internal" href="../reference/canlib/wrapper.html#canlib.canlib.reinitializeLibrary" title="canlib.canlib.reinitializeLibrary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.reinitializeLibrary</span></code></a>, all previously opened CAN
+handles (<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel" title="canlib.canlib.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.Channel</span></code></a>) will be closed and invalidated.</p>
+</div>
+</div>
+<div class="section" id="manually-enumerating-can-channels">
+<h2>Manually Enumerating CAN channels<a class="headerlink" href="#manually-enumerating-can-channels" title="Permalink to this heading">¶</a></h2>
+<p>The function <a class="reference internal" href="../reference/canlib/wrapper.html#canlib.canlib.enumerate_hardware" title="canlib.canlib.enumerate_hardware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.enumerate_hardware</span></code></a> scans all currently connected devices
+and creates a completely new set of CANlib channel numbers, while still keeping
+all currently opened channel handles valid and usable. This can be viewed upon
+as a replacement for calling <a class="reference internal" href="../reference/canlib/wrapper.html#canlib.canlib.reinitializeLibrary" title="canlib.canlib.reinitializeLibrary"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.reinitializeLibrary</span></code></a> which do invalidate
+all open channel handles.</p>
+<p>One thing to keep in mind when using this functionality is to never track
+devices based on their CANlib channel number, since this number may change
+anytime <a class="reference internal" href="../reference/canlib/wrapper.html#canlib.canlib.enumerate_hardware" title="canlib.canlib.enumerate_hardware"><code class="xref py py-obj docutils literal notranslate"><span class="pre">enumerate_hardware</span></code></a> is called. To retrieve information about a
+specific channel use <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.channel_data" title="canlib.canlib.Channel.channel_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.channel_data</span></code></a> to get a safe
+<a class="reference internal" href="../reference/canlib/channeldata.html#canlib.canlib.ChannelData" title="canlib.canlib.ChannelData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelData</span></code></a>, instead of relying on an old
+<a class="reference internal" href="../reference/canlib/channeldata.html#canlib.canlib.ChannelData" title="canlib.canlib.ChannelData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelData</span></code></a> object created from a channel number.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On Linux, no re-enumeration is needed since enumeration takes place
+when a device is plugged in or unplugged.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="devicesandchannels.html" class="btn btn-neutral float-right" title="Devices and Channels" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

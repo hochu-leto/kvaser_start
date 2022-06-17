@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>canlib.canlib.enums &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>canlib.canlib.enums</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for canlib.canlib.enums</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..cenum</span> <span class="kn">import</span> <span class="n">CEnum</span><span class="p">,</span> <span class="n">CFlag</span>
+
+
+<div class="viewcode-block" id="Error"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.Error">[docs]</a><span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canERR_xxx&quot;&quot;&quot;</span>
+    <span class="n">PARAM</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1">#: Error in one or more parameters.</span>
+    <span class="n">NOMSG</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>  <span class="c1">#: There were no messages to read.</span>
+    <span class="n">NOTFOUND</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>  <span class="c1">#: Specified device or channel not found.</span>
+    <span class="n">NOMEM</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>  <span class="c1">#: Out of memory.</span>
+    <span class="n">NOCHANNELS</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>  <span class="c1">#: No channels available.</span>
+    <span class="n">INTERRUPTED</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>  <span class="c1">#: Interrupted by signals.</span>
+    <span class="n">TIMEOUT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span>  <span class="c1">#: Timeout occurred.</span>
+    <span class="n">NOTINITIALIZED</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8</span>  <span class="c1">#: The library is not initialized.</span>
+    <span class="n">NOHANDLES</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span>  <span class="c1">#: Out of handles</span>
+    <span class="n">INVHANDLE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>  <span class="c1">#: Handle is invalid</span>
+    <span class="n">INIFILE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">11</span>  <span class="c1">#: Error in the ini-file (16-bit only)</span>
+    <span class="n">DRIVER</span> <span class="o">=</span> <span class="o">-</span><span class="mi">12</span>  <span class="c1">#: Driver type not supported</span>
+    <span class="n">TXBUFOFL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">13</span>  <span class="c1">#: Transmit buffer overflow</span>
+    <span class="n">HARDWARE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">15</span>  <span class="c1">#: A hardware error has occurred</span>
+    <span class="n">DYNALOAD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">16</span>  <span class="c1">#: A driver DLL can&#39;t be found or loaded</span>
+    <span class="n">DYNALIB</span> <span class="o">=</span> <span class="o">-</span><span class="mi">17</span>  <span class="c1">#: A DLL seems to have wrong version</span>
+    <span class="n">DYNAINIT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">18</span>  <span class="c1">#: Error when initializing a DLL</span>
+    <span class="n">NOT_SUPPORTED</span> <span class="o">=</span> <span class="o">-</span><span class="mi">19</span>  <span class="c1">#: Operation not supported by hardware or firmware</span>
+    <span class="n">RESERVED_5</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span>  <span class="c1">#: Reserved</span>
+    <span class="n">RESERVED_6</span> <span class="o">=</span> <span class="o">-</span><span class="mi">21</span>  <span class="c1">#: Reserved</span>
+    <span class="n">RESERVED_2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">22</span>  <span class="c1">#: Reserved</span>
+    <span class="n">DRIVERLOAD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">23</span>  <span class="c1">#: Can&#39;t find or load kernel driver</span>
+    <span class="n">DRIVERFAILED</span> <span class="o">=</span> <span class="o">-</span><span class="mi">24</span>  <span class="c1">#: DeviceIOControl failed, use Win32 GetLastError() to learn more</span>
+    <span class="n">NOCONFIGMGR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">25</span>  <span class="c1">#: Can&#39;t find req&#39;d config s/w (e.g. CS/SS)</span>
+    <span class="n">NOCARD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">26</span>  <span class="c1">#: The card was removed or not inserted</span>
+    <span class="n">RESERVED_7</span> <span class="o">=</span> <span class="o">-</span><span class="mi">27</span>  <span class="c1">#: Reserved</span>
+    <span class="n">REGISTRY</span> <span class="o">=</span> <span class="o">-</span><span class="mi">28</span>  <span class="c1">#: Error (missing data) in the Registry</span>
+    <span class="n">LICENSE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">29</span>  <span class="c1">#: The license is not valid.</span>
+    <span class="n">INTERNAL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">30</span>  <span class="c1">#: Internal error in the driver.</span>
+    <span class="n">NO_ACCESS</span> <span class="o">=</span> <span class="o">-</span><span class="mi">31</span>  <span class="c1">#: Access denied.</span>
+    <span class="n">NOT_IMPLEMENTED</span> <span class="o">=</span> <span class="o">-</span><span class="mi">32</span>  <span class="c1">#: Not implemented.</span>
+    <span class="n">DEVICE_FILE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">33</span>  <span class="c1">#: Device File error.</span>
+    <span class="n">HOST_FILE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">34</span>  <span class="c1">#: Host File error.</span>
+    <span class="n">DISK</span> <span class="o">=</span> <span class="o">-</span><span class="mi">35</span>  <span class="c1">#: Disk error.</span>
+    <span class="n">CRC</span> <span class="o">=</span> <span class="o">-</span><span class="mi">36</span>  <span class="c1">#: CRC error.</span>
+    <span class="n">CONFIG</span> <span class="o">=</span> <span class="o">-</span><span class="mi">37</span>  <span class="c1">#: Configuration Error.</span>
+    <span class="n">MEMO_FAIL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">38</span>  <span class="c1">#: Memo Error.</span>
+    <span class="n">SCRIPT_FAIL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">39</span>  <span class="c1">#: Script Fail.</span>
+    <span class="n">SCRIPT_WRONG_VERSION</span> <span class="o">=</span> <span class="o">-</span><span class="mi">40</span>  <span class="c1">#: Unsupported t program version.</span>
+    <span class="n">TXE_CONTAINER_VERSION</span> <span class="o">=</span> <span class="o">-</span><span class="mi">41</span>  <span class="c1">#: Unsuppoted txe version.</span>
+    <span class="n">TXE_CONTAINER_FORMAT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">42</span>  <span class="c1">#: Parsing t program failed.</span>
+    <span class="n">BUFFER_TOO_SMALL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">43</span>  <span class="c1">#: Buffer provided was not large enough.</span>
+    <span class="n">IO_WRONG_PIN_TYPE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">44</span>  <span class="c1">#: I/O pin doesn&#39;t exist or the I/O pin type doesn&#39;t match.</span>
+    <span class="n">IO_NOT_CONFIRMED</span> <span class="o">=</span> <span class="o">-</span><span class="mi">45</span>  <span class="c1">#: The I/O pin configuration is not confirmed.</span>
+    <span class="n">IO_CONFIG_CHANGED</span> <span class="o">=</span> <span class="o">-</span><span class="mi">46</span>  <span class="c1">#: The I/O pin configuration has changed after last confirmation.</span>
+    <span class="n">IO_PENDING</span> <span class="o">=</span> <span class="o">-</span><span class="mi">47</span>  <span class="c1">#: The previous I/O pin value has not yet changed the output.</span>
+    <span class="n">IO_NO_VALID_CONFIG</span> <span class="o">=</span> <span class="o">-</span><span class="mi">48</span>  <span class="c1">#: There is no valid I/O pin configuration.</span>
+
+    <span class="c1"># Used in REST API</span>
+    <span class="n">INVALID_PASSWORD</span> <span class="o">=</span> <span class="o">-</span><span class="mi">128</span>
+    <span class="n">NO_SUCH_FUNCTION</span> <span class="o">=</span> <span class="o">-</span><span class="mi">129</span>
+    <span class="n">NOT_AUTHORIZED</span> <span class="o">=</span> <span class="o">-</span><span class="mi">130</span>
+    <span class="n">INVALID_SESSION</span> <span class="o">=</span> <span class="o">-</span><span class="mi">131</span></div>
+
+
+<div class="viewcode-block" id="Open"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.Open">[docs]</a><span class="k">class</span> <span class="nc">Open</span><span class="p">(</span><span class="n">CFlag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Flags used in the flags argument to `.canlib.openChannel()`.&quot;&quot;&quot;</span>
+
+    <span class="c1"># canOpen_xxx</span>
+    <span class="n">NOFLAG</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">EXCLUSIVE</span> <span class="o">=</span> <span class="mh">0x0008</span>  <span class="c1">#: Don&#39;t allow sharing of this CANlib channel.</span>
+    <span class="sd">&quot;&quot;&quot;Don&#39;t allow sharing between multiple `.Channel` objects.</span>
+
+<span class="sd">    Two or more threads or applications can share the same CAN channel by</span>
+<span class="sd">    opening the same CANlib channel multiple times. If this is not desired you</span>
+<span class="sd">    can open a CANlib channel exclusively once by passing the `.EXCLUSIVE`</span>
+<span class="sd">    flag. If the CANlib channel is aleady open, the call to</span>
+<span class="sd">    `.canlib.openChannel()` will fail.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">REQUIRE_EXTENDED</span> <span class="o">=</span> <span class="mh">0x0010</span>
+    <span class="sd">&quot;&quot;&quot;This flag causes two things to happen:</span>
+
+<span class="sd">        #. The call will fail if the specified circuit doesn&#39;t allow extended CAN (CAN 2.0B).</span>
+
+<span class="sd">        #. If no frame-type flag is specified in a call to `.Channel.write()`, it is assumed that extended CAN should be used.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ACCEPT_VIRTUAL</span> <span class="o">=</span> <span class="mh">0x0020</span>
+    <span class="sd">&quot;&quot;&quot;Allow opening of virtual channels as well as physical channels.&quot;&quot;&quot;</span>
+    <span class="n">OVERRIDE_EXCLUSIVE</span> <span class="o">=</span> <span class="mh">0x0040</span>
+    <span class="sd">&quot;&quot;&quot;Open the channel even if it is opened for exclusive access already.&quot;&quot;&quot;</span>
+    <span class="n">REQUIRE_INIT_ACCESS</span> <span class="o">=</span> <span class="mh">0x0080</span>
+    <span class="sd">&quot;&quot;&quot;Fail the call if the channel cannot be opened with init access.</span>
+
+<span class="sd">    Init access means that the CAN handle can set bit rate and CAN driver</span>
+<span class="sd">    mode. At most one CAN handle may have init access to any given channel. If</span>
+<span class="sd">    you try to set the bit rate or CAN driver mode for a handle to which you</span>
+<span class="sd">    don&#39;t have init access, the call will silently fail (i.e. `canOK` is</span>
+<span class="sd">    returned although the call had no effect), unless you enable &quot;access error</span>
+<span class="sd">    reporting&quot; by using `.Channel.IOControlItem.SET_REPORT_ACCESS_ERRORS`. Access error</span>
+<span class="sd">    reporting is by default off. Init access is the default.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">NO_INIT_ACCESS</span> <span class="o">=</span> <span class="mh">0x0100</span>
+    <span class="sd">&quot;&quot;&quot;Don&#39;t open the handle with init access.</span>
+
+<span class="sd">    Note: A handle opened without init access will still set default bitrate</span>
+<span class="sd">    when going on bus, if no other handle has opened the channel with init</span>
+<span class="sd">    access at the time of the buson.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ACCEPT_LARGE_DLC</span> <span class="o">=</span> <span class="mh">0x0200</span>
+    <span class="sd">&quot;&quot;&quot;DLC can be greater than 8.</span>
+
+<span class="sd">    The channel will accept CAN messages with DLC (Data Length Code) greater</span>
+<span class="sd">    than 8. If this flag is not used, a message with DLC &gt; 8 will always be</span>
+<span class="sd">    reported or transmitted as a message with DLC = 8. When the</span>
+<span class="sd">    `ACCEPT_LARGE_DLC` flag is used, the message will be sent and/or received</span>
+<span class="sd">    with the true DLC, which can be at most 15. The length of the message is</span>
+<span class="sd">    always at most 8.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CAN_FD</span> <span class="o">=</span> <span class="mh">0x0400</span>
+    <span class="sd">&quot;&quot;&quot;The channel will use the CAN FD protocol, ISO compliant.</span>
+
+<span class="sd">    This also means that messages with `.MessageFlag.FDF`, `.MessageFlag.BRS`</span>
+<span class="sd">    and `.MessageFlag.ESI` can now be used.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CAN_FD_NONISO</span> <span class="o">=</span> <span class="mh">0x0800</span>
+    <span class="sd">&quot;&quot;&quot;The channel will use the CAN FD NON-ISO protocol.</span>
+
+<span class="sd">    Use this if you want to configure the can controller to be able to communicate with</span>
+<span class="sd">    a can controller designed prior to the release of the CAN FD ISO specification.</span>
+
+<span class="sd">    Non ISO mode implies:</span>
+
+<span class="sd">        #. The stuff bit counter will not be included in the frame format.</span>
+<span class="sd">        #. Initial value for CRC17 and CRC21 will be zero.</span>
+
+<span class="sd">    This also means that messages with `.MessageFlag.FDF`, `.MessageFlag.BRS`</span>
+<span class="sd">    and `.MessageFlag.ESI` can now be used.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="IOControlItem"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.IOControlItem">[docs]</a><span class="k">class</span> <span class="nc">IOControlItem</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;An enumeration used in `.Channel.iocontrol`.&quot;&quot;&quot;</span>
+    <span class="n">PREFER_EXT</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: Tells CANlib to &quot;prefer&quot; extended identifiers.</span>
+    <span class="n">PREFER_STD</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: Tells CANlib to &quot;prefer&quot; standard identifiers.</span>
+    <span class="n">CLEAR_ERROR_COUNTERS</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1">#: Clear the CAN error counters.</span>
+    <span class="n">SET_TIMER_SCALE</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1">#: Set time-stamp clock resolution in microseconds, default 1000.</span>
+    <span class="n">SET_TXACK</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1">#: Enable/disable Transmit Acknowledge.</span>
+    <span class="n">GET_RX_BUFFER_LEVEL</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1">#: Current receive queue, RX, level.</span>
+    <span class="n">GET_TX_BUFFER_LEVEL</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1">#: Current transmitt queue, TX, level.</span>
+    <span class="n">FLUSH_RX_BUFFER</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1">#: Discard contents of the RX queue.</span>
+    <span class="n">FLUSH_TX_BUFFER</span> <span class="o">=</span> <span class="mi">11</span>  <span class="c1">#: Discard contents of the TX queue.</span>
+    <span class="n">GET_TIMER_SCALE</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1">#: Current time-stamp clock resolution in microseconds.</span>
+    <span class="n">SET_TXRQ</span> <span class="o">=</span> <span class="mi">13</span>  <span class="c1">#: Turn transmit requests on or off.</span>
+    <span class="n">GET_EVENTHANDLE</span> <span class="o">=</span> <span class="mi">14</span>  <span class="c1">#: Windows only.</span>
+    <span class="n">SET_BYPASS_MODE</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1">#: Not implemented.</span>
+    <span class="n">SET_WAKEUP</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1">#: For internal use only.</span>
+    <span class="n">GET_DRIVERHANDLE</span> <span class="o">=</span> <span class="mi">17</span>  <span class="c1">#: Windows only.</span>
+    <span class="n">MAP_RXQUEUE</span> <span class="o">=</span> <span class="mi">18</span>  <span class="c1">#: For internal use only.</span>
+    <span class="n">GET_WAKEUP</span> <span class="o">=</span> <span class="mi">19</span>  <span class="c1">#: For internal use only.</span>
+    <span class="n">SET_REPORT_ACCESS_ERRORS</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1">#: Turn access error reporting on/off.</span>
+    <span class="n">GET_REPORT_ACCESS_ERRORS</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c1">#: Current setting of access error reporting</span>
+    <span class="n">CONNECT_TO_VIRTUAL_BUS</span> <span class="o">=</span> <span class="mi">22</span>  <span class="c1">#: Windows only</span>
+    <span class="n">DISCONNECT_FROM_VIRTUAL_BUS</span> <span class="o">=</span> <span class="mi">23</span>  <span class="c1">#: Windows only</span>
+    <span class="n">SET_USER_IOPORT</span> <span class="o">=</span> <span class="mi">24</span>  <span class="c1">#: Set IO port to value.</span>
+    <span class="n">GET_USER_IOPORT</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1">#: Read IO port value.</span>
+    <span class="n">SET_BUFFER_WRAPAROUND_MODE</span> <span class="o">=</span> <span class="mi">26</span>  <span class="c1">#: For internal use only.</span>
+    <span class="n">SET_RX_QUEUE_SIZE</span> <span class="o">=</span> <span class="mi">27</span>  <span class="c1">#: Windows only.</span>
+    <span class="n">SET_USB_THROTTLE</span> <span class="o">=</span> <span class="mi">28</span>  <span class="c1">#: For internal use only.</span>
+    <span class="n">GET_USB_THROTTLE</span> <span class="o">=</span> <span class="mi">29</span>  <span class="c1">#: For internal use only.</span>
+    <span class="n">SET_BUSON_TIME_AUTO_RESET</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1">#: Enable/disable time reset at bus on.</span>
+    <span class="n">GET_TXACK</span> <span class="o">=</span> <span class="mi">31</span>  <span class="c1">#: Status of Transmit Acknowledge.</span>
+    <span class="n">SET_LOCAL_TXECHO</span> <span class="o">=</span> <span class="mi">32</span>  <span class="c1">#: Turn on/off local transmit echo.</span>
+    <span class="n">SET_ERROR_FRAMES_REPORTING</span> <span class="o">=</span> <span class="mi">33</span>  <span class="c1">#: Windows only</span>
+    <span class="n">GET_CHANNEL_QUALITY</span> <span class="o">=</span> <span class="mi">34</span>  <span class="c1">#: Read remote channel quality.</span>
+    <span class="n">GET_ROUNDTRIP_TIME</span> <span class="o">=</span> <span class="mi">35</span>  <span class="c1">#: Round trip time in ms, for remote channel.</span>
+    <span class="n">GET_BUS_TYPE</span> <span class="o">=</span> <span class="mi">36</span>  <span class="c1">#: Windows only.</span>
+    <span class="n">GET_DEVNAME_ASCII</span> <span class="o">=</span> <span class="mi">37</span>  <span class="c1">#: Retreive device name.</span>
+    <span class="n">GET_TIME_SINCE_LAST_SEEN</span> <span class="o">=</span> <span class="mi">38</span>  <span class="c1">#: For WLAN devices, this is the time since the last keep-alive message.</span>
+    <span class="n">GET_TREF_LIST</span> <span class="o">=</span> <span class="mi">39</span>  <span class="c1">#: Unsupported</span>
+    <span class="n">TX_INTERVAL</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1">#: Minimum CAN message transmit interval</span>
+    <span class="n">SET_THROTTLE_SCALED</span> <span class="o">=</span> <span class="mi">41</span>  <span class="c1">#: Windows only</span>
+    <span class="n">GET_THROTTLE_SCALED</span> <span class="o">=</span> <span class="mi">42</span>  <span class="c1">#: Windows only</span>
+    <span class="n">SET_BRLIMIT</span> <span class="o">=</span> <span class="mi">43</span>  <span class="c1">#: Max bitrate limit can be overridden with this IOCTL.</span>
+    <span class="n">RESET_OVERRUN_COUNT</span> <span class="o">=</span> <span class="mi">44</span>  <span class="c1">#: Reset overrun count and flags.</span>
+    <span class="n">LIN_MODE</span> <span class="o">=</span> <span class="mi">45</span>  <span class="c1">#: For internal use only.</span>
+    <span class="n">SET_LOCAL_TXACK</span> <span class="o">=</span> <span class="mi">46</span>  <span class="c1">#: Enable reception of canMSG_LOCAL_TXACK.</span></div>
+
+
+<span class="c1"># qqqmac In the returned type, document the function call to use</span>
+<div class="viewcode-block" id="ChannelDataItem"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.ChannelDataItem">[docs]</a><span class="k">class</span> <span class="nc">ChannelDataItem</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Low level helper object representing ``canCHANNELDATA_xxx``.</span>
+
+<span class="sd">    See the properties of `ChannelData` for how to get retrieve this data.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CHANNEL_CAP</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: capabilities of the CAN controller, see `ChannelData.channel_cap`</span>
+    <span class="n">TRANS_CAP</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: capabilities of the CAN transceiver, see `ChannelData.trans_cap`</span>
+    <span class="n">CHANNEL_FLAGS</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1">#: status of the channel as flags, see `ChannelData.channel_flags`</span>
+    <span class="n">CARD_TYPE</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1">#: hardware type of the card, see `ChannelData.card_type`</span>
+    <span class="n">CARD_NUMBER</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1">#: the card&#39;s number in the computer, see `ChannelData.card_number`</span>
+    <span class="n">CHAN_NO_ON_CARD</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1">#: local channel number on the card, see `ChannelData.chan_no_on_card`</span>
+    <span class="n">CARD_SERIAL_NO</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1">#: serial number of the card, or 0, see `ChannelData.card_serial_no`</span>
+    <span class="n">TRANS_SERIAL_NO</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1">#: serial number of the transceiver, or 0, see `ChannelData.trans_serial_no`</span>
+    <span class="n">CARD_FIRMWARE_REV</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1">#: firmware revision number on the card, see `ChannelData.card_firmware_rev`</span>
+    <span class="n">CARD_HARDWARE_REV</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1">#: version of the card&#39;s hardware, see `ChannelData.card_hardware_rev`</span>
+    <span class="n">CARD_UPC_NO</span> <span class="o">=</span> <span class="mi">11</span>  <span class="c1">#: EAN of the card, see `ChannelData.card_upc_no`</span>
+    <span class="n">TRANS_UPC_NO</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1">#: EAN of the transceiver, see `ChannelData.trans_upc_no`</span>
+    <span class="n">CHANNEL_NAME</span> <span class="o">=</span> <span class="mi">13</span>  <span class="c1">#: Deprecated</span>
+    <span class="n">DLL_FILE_VERSION</span> <span class="o">=</span> <span class="mi">14</span>  <span class="c1">#: version of the dll file, see `ChannelData.dll_file_version`</span>
+    <span class="n">DLL_PRODUCT_VERSION</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1">#: version of the CANlib, see `ChannelData.dll_product_version`</span>
+    <span class="n">DLL_FILETYPE</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1">#: see `ChannelData.dll_filetype`</span>
+    <span class="n">TRANS_TYPE</span> <span class="o">=</span> <span class="mi">17</span>  <span class="c1">#: transceiver type, see `ChannelData.trans_type`</span>
+    <span class="n">DEVICE_PHYSICAL_POSITION</span> <span class="o">=</span> <span class="mi">18</span>  <span class="c1">#: see `ChannelData.device_physical_position`</span>
+    <span class="n">UI_NUMBER</span> <span class="o">=</span> <span class="mi">19</span>  <span class="c1">#: see `ChannelData.ui_number`</span>
+    <span class="n">TIMESYNC_ENABLED</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1">#: see `ChannelData.timesync_enabled`</span>
+    <span class="n">DRIVER_FILE_VERSION</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c1">#: version of the driver, see `ChannelData.driver_file_version`</span>
+    <span class="n">DRIVER_PRODUCT_VERSION</span> <span class="o">=</span> <span class="mi">22</span>  <span class="c1">#: version of the CANlib, see `ChannelData.driver_product_version`</span>
+    <span class="n">MFGNAME_UNICODE</span> <span class="o">=</span> <span class="mi">23</span>  <span class="c1">#: manufacturer&#39;s name, see `ChannelData.mfgname_unicode`</span>
+    <span class="n">MFGNAME_ASCII</span> <span class="o">=</span> <span class="mi">24</span>  <span class="c1">#: manufacturer&#39;s name, see `ChannelData.mfgname_ascii`</span>
+    <span class="n">DEVDESCR_UNICODE</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1">#: product name of the device, see `ChannelData.devdescr_unicode`</span>
+    <span class="n">DEVDESCR_ASCII</span> <span class="o">=</span> <span class="mi">26</span>  <span class="c1">#: product name of the device, see `ChannelData.devdescr_ascii`</span>
+    <span class="n">DRIVER_NAME</span> <span class="o">=</span> <span class="mi">27</span>  <span class="c1">#: device driver name, see `ChannelData.driver_name`</span>
+    <span class="n">CHANNEL_QUALITY</span> <span class="o">=</span> <span class="mi">28</span>  <span class="c1">#: see `ChannelData.channel_quality`</span>
+    <span class="n">ROUNDTRIP_TIME</span> <span class="o">=</span> <span class="mi">29</span>  <span class="c1">#: see `ChannelData.roundtrip_time`</span>
+    <span class="n">BUS_TYPE</span> <span class="o">=</span> <span class="mi">30</span>  <span class="c1">#: see `ChannelData.bus_type`</span>
+    <span class="n">DEVNAME_ASCII</span> <span class="o">=</span> <span class="mi">31</span>  <span class="c1">#: see `ChannelData.devname_ascii`</span>
+    <span class="n">TIME_SINCE_LAST_SEEN</span> <span class="o">=</span> <span class="mi">32</span>  <span class="c1">#: see `ChannelData.time_since_last_seen`</span>
+    <span class="n">REMOTE_OPERATIONAL_MODE</span> <span class="o">=</span> <span class="mi">33</span>  <span class="c1">#: see `ChannelData.remote_operational_mode`</span>
+    <span class="n">REMOTE_PROFILE_NAME</span> <span class="o">=</span> <span class="mi">34</span>  <span class="c1">#: see `ChannelData.remote_profile_name`</span>
+    <span class="n">REMOTE_HOST_NAME</span> <span class="o">=</span> <span class="mi">35</span>  <span class="c1">#: see `ChannelData.remote_host_name`</span>
+    <span class="n">REMOTE_MAC</span> <span class="o">=</span> <span class="mi">36</span>  <span class="c1">#: see `ChannelData.remote_mac`</span>
+    <span class="n">MAX_BITRATE</span> <span class="o">=</span> <span class="mi">37</span>  <span class="c1">#: see `ChannelData.max_bitrate`</span>
+    <span class="n">CHANNEL_CAP_MASK</span> <span class="o">=</span> <span class="mi">38</span>  <span class="c1">#: see `ChannelData.channel_cap_mask`</span>
+    <span class="n">CUST_CHANNEL_NAME</span> <span class="o">=</span> <span class="mi">39</span>  <span class="c1">#: see `ChannelData.cust_channel_name`</span>
+    <span class="n">IS_REMOTE</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1">#: see `ChannelData.is_remote`</span>
+    <span class="n">REMOTE_TYPE</span> <span class="o">=</span> <span class="mi">41</span>  <span class="c1">#: see `ChannelData.remote_type`</span>
+    <span class="n">LOGGER_TYPE</span> <span class="o">=</span> <span class="mi">42</span>  <span class="c1">#: see `ChannelData.logger_type`</span>
+    <span class="n">HW_STATUS</span> <span class="o">=</span> <span class="mi">43</span>  <span class="c1">#: see `ChannelData.hw_status`</span>
+    <span class="n">FEATURE_EAN</span> <span class="o">=</span> <span class="mi">44</span>  <span class="c1">#: see `ChannelData.feature_ean`</span>
+    <span class="n">BUS_PARAM_LIMITS</span> <span class="o">=</span> <span class="mi">45</span>  <span class="c1"># Not yet wrapped, BLA-2949</span>
+    <span class="n">CLOCK_INFO</span> <span class="o">=</span> <span class="mi">46</span>  <span class="c1">#: see `ChannelData.clock_info`</span>
+    <span class="n">CHANNEL_CAP_EX</span> <span class="o">=</span> <span class="mi">47</span>  <span class="c1">#: see `ChannelData.channel_cap_ex`</span></div>
+
+
+<div class="viewcode-block" id="Stat"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.Stat">[docs]</a><span class="k">class</span> <span class="nc">Stat</span><span class="p">(</span><span class="n">CFlag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canSTAT_xxx</span>
+
+<span class="sd">    The following circuit status flags are returned by `Channel.readStatus`.</span>
+<span class="sd">    Note that more than one flag might be set at any one time.</span>
+
+<span class="sd">    Note:</span>
+
+<span class="sd">        Usually both canSTAT_HW_OVERRUN and canSTAT_SW_OVERRUN are set when</span>
+<span class="sd">        overrun has occurred. This is because the kernel driver can&#39;t see the</span>
+<span class="sd">        difference between a software overrun and a hardware overrun, but the</span>
+<span class="sd">        code should always test for both types of overruns.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ERROR_PASSIVE</span> <span class="o">=</span> <span class="mh">0x00000001</span>  <span class="c1">#: The circuit is error passive</span>
+    <span class="n">BUS_OFF</span> <span class="o">=</span> <span class="mh">0x00000002</span>  <span class="c1">#: The circuit is Off Bus</span>
+    <span class="n">ERROR_WARNING</span> <span class="o">=</span> <span class="mh">0x00000004</span>  <span class="c1">#: At least one error counter &gt; 96</span>
+    <span class="n">ERROR_ACTIVE</span> <span class="o">=</span> <span class="mh">0x00000008</span>  <span class="c1">#: The circuit is error active.</span>
+    <span class="n">TX_PENDING</span> <span class="o">=</span> <span class="mh">0x00000010</span>  <span class="c1">#: There are messages pending transmission</span>
+    <span class="n">RX_PENDING</span> <span class="o">=</span> <span class="mh">0x00000020</span>  <span class="c1">#: There are messages in the receive buffer</span>
+    <span class="n">RESERVED_1</span> <span class="o">=</span> <span class="mh">0x00000040</span>
+    <span class="n">TXERR</span> <span class="o">=</span> <span class="mh">0x00000080</span>  <span class="c1">#: There has been at least one TX error</span>
+    <span class="n">RXERR</span> <span class="o">=</span> <span class="mh">0x00000100</span>  <span class="c1">#: There has been at least one RX error of some sort</span>
+    <span class="n">HW_OVERRUN</span> <span class="o">=</span> <span class="mh">0x00000200</span>  <span class="c1">#: There has been at least one HW buffer overflow</span>
+    <span class="n">SW_OVERRUN</span> <span class="o">=</span> <span class="mh">0x00000400</span>  <span class="c1">#: There has been at least one SW buffer overflow</span>
+    <span class="n">OVERRUN</span> <span class="o">=</span> <span class="n">HW_OVERRUN</span> <span class="o">|</span> <span class="n">SW_OVERRUN</span>  <span class="c1">#: Both `HW_OVERRUN` and `SW_OVERRUN` is active</span></div>
+
+
+<div class="viewcode-block" id="MessageFlag"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.MessageFlag">[docs]</a><span class="k">class</span> <span class="nc">MessageFlag</span><span class="p">(</span><span class="n">CFlag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Message information flags</span>
+
+<span class="sd">    The following flags can be returned from `Channel.read` et al, or passed to</span>
+<span class="sd">    `Channel.write`.</span>
+
+<span class="sd">    This enum is a combination of flags for messages, CAN FD messages, and</span>
+<span class="sd">    message errors. Normal messages flags are the flags covered by `MSG_MASK`,</span>
+<span class="sd">    CAN FD message flags are those covered by `FDMSG_MASK`, and message errors</span>
+<span class="sd">    are those covered by `MSGERR_MASK`.</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        `FDF`, `BRS`, and `ESI` require CAN FD.</span>
+
+<span class="sd">        `RTR` cannot be set for CAN FD messages.</span>
+
+<span class="sd">        Not all hardware platforms can detect the difference between hardware</span>
+<span class="sd">        overruns and software overruns, so your application should test for</span>
+<span class="sd">        both conditions.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># canMSG_xxx</span>
+    <span class="n">MSG_MASK</span> <span class="o">=</span> <span class="mh">0x00FF</span>  <span class="c1">#: Used to mask the non-info bits.</span>
+    <span class="n">RTR</span> <span class="o">=</span> <span class="mh">0x0001</span>  <span class="c1">#: Message is a remote request.</span>
+    <span class="n">STD</span> <span class="o">=</span> <span class="mh">0x0002</span>  <span class="c1">#: Message has a standard (11-bit) identifier.</span>
+    <span class="n">EXT</span> <span class="o">=</span> <span class="mh">0x0004</span>  <span class="c1">#: Message has an extended (29-bit) identifier.</span>
+    <span class="n">WAKEUP</span> <span class="o">=</span> <span class="mh">0x0008</span>  <span class="c1">#: Message is a WAKEUP message, Single Wire CAN.</span>
+    <span class="n">NERR</span> <span class="o">=</span> <span class="mh">0x0010</span>  <span class="c1">#: NERR was active during the message (TJA1054 hardware)</span>
+    <span class="n">ERROR_FRAME</span> <span class="o">=</span> <span class="mh">0x0020</span>  <span class="c1">#: Message represents an error frame.</span>
+    <span class="n">TXACK</span> <span class="o">=</span> <span class="mh">0x0040</span>  <span class="c1">#: Message is a TX ACK (msg has really been sent)</span>
+    <span class="n">TXRQ</span> <span class="o">=</span> <span class="mh">0x0080</span>  <span class="c1">#: Message is a TX REQUEST (msg was transfered to the chip)</span>
+    <span class="n">LOCAL_TXACK</span> <span class="o">=</span> <span class="mh">0x10000000</span>  <span class="c1">#: Message is a LOCAL TX ACK (was transmitted from another handle on the same channel)</span>
+
+    <span class="c1">#</span>
+    <span class="n">SINGLE_SHOT</span> <span class="o">=</span> <span class="mh">0x1000000</span>  <span class="c1">#: Message is Single Shot, try to send once, no retransmission.</span>
+    <span class="n">TXNACK</span> <span class="o">=</span> <span class="mh">0x2000000</span>  <span class="c1">#: Message is a failed Single Shot, message was not sent.</span>
+    <span class="n">ABL</span> <span class="o">=</span> <span class="mh">0x4000000</span>  <span class="c1">#: Single shot message was not sent because arbitration was lost.</span>
+
+    <span class="c1"># canFDMSG_xxx</span>
+    <span class="n">FDMSG_MASK</span> <span class="o">=</span> <span class="mh">0xFF0000</span>  <span class="c1">#: obsolete</span>
+    <span class="n">FDF</span> <span class="o">=</span> <span class="mh">0x010000</span>  <span class="c1">#: Message is a CAN FD message.</span>
+    <span class="n">EDL</span> <span class="o">=</span> <span class="n">FDF</span>  <span class="c1">#: obsolete</span>
+    <span class="n">BRS</span> <span class="o">=</span> <span class="mh">0x020000</span>  <span class="c1">#: Message is sent/received with bit rate switch (CAN FD)</span>
+    <span class="n">ESI</span> <span class="o">=</span> <span class="mh">0x040000</span>  <span class="c1">#: Sender of the message is in error passive mode (CAN FD)</span>
+
+    <span class="c1"># canMSGERR_xxx</span>
+    <span class="n">MSGERR_MASK</span> <span class="o">=</span> <span class="mh">0xFF00</span>  <span class="c1">#: Used to mask the non-error bits</span>
+    <span class="n">HW_OVERRUN</span> <span class="o">=</span> <span class="mh">0x0200</span>  <span class="c1">#: Hardware buffer overrun.</span>
+    <span class="n">SW_OVERRUN</span> <span class="o">=</span> <span class="mh">0x0400</span>  <span class="c1">#: Software buffer overrun.</span>
+    <span class="n">STUFF</span> <span class="o">=</span> <span class="mh">0x0800</span>  <span class="c1">#: Stuff error.</span>
+    <span class="n">FORM</span> <span class="o">=</span> <span class="mh">0x1000</span>  <span class="c1">#: Form error.</span>
+    <span class="n">CRC</span> <span class="o">=</span> <span class="mh">0x2000</span>  <span class="c1">#: CRC error.</span>
+    <span class="n">BIT0</span> <span class="o">=</span> <span class="mh">0x4000</span>  <span class="c1">#: Sent dominant bit, read recessive bit</span>
+    <span class="n">BIT1</span> <span class="o">=</span> <span class="mh">0x8000</span>  <span class="c1">#: Sent recessive bit, read dominmant bit</span>
+    <span class="n">OVERRUN</span> <span class="o">=</span> <span class="n">HW_OVERRUN</span> <span class="o">|</span> <span class="n">SW_OVERRUN</span>  <span class="c1">#: Both SW and HW overrun conditions</span>
+    <span class="n">BIT</span> <span class="o">=</span> <span class="mh">0xC000</span>  <span class="c1">#: All bit error.</span>
+    <span class="n">BUSERR</span> <span class="o">=</span> <span class="mh">0xF800</span>  <span class="c1">#: All RX error.</span>
+
+    <span class="k">def</span> <span class="fm">__contains__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">item</span><span class="p">):</span>
+        <span class="c1"># The correct test for overrun would be:</span>
+        <span class="c1">#   if Stat.HW_OVERRUN in frame.flags or Stat.SW_OVERRUN in frame.flags</span>
+        <span class="c1"># But the user will probably just write:</span>
+        <span class="c1">#   if Stat.OVERRUN in frame.flags</span>
+        <span class="c1"># So let us help the user if the check is against the OVERRUN flag</span>
+        <span class="k">if</span> <span class="n">item</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">OVERRUN</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">HW_OVERRUN</span> <span class="ow">or</span> <span class="bp">self</span> <span class="o">&amp;</span> <span class="bp">self</span><span class="o">.</span><span class="n">SW_OVERRUN</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span> <span class="o">&amp;</span> <span class="n">item</span></div>
+
+
+<div class="viewcode-block" id="Driver"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.Driver">[docs]</a><span class="k">class</span> <span class="nc">Driver</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="n">NORMAL</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1">#: The &quot;normal&quot; driver type (push-pull). This is the default.</span>
+    <span class="n">SILENT</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: Sets the CAN controller in Silent Mode.</span>
+    <span class="n">SELFRECEPTION</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1">#: Self-reception. Not implemented.</span>
+    <span class="n">OFF</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#: The driver is turned off. Not implemented in all types of hardware.</span></div>
+
+
+<div class="viewcode-block" id="ScriptStatus"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.ScriptStatus">[docs]</a><span class="k">class</span> <span class="nc">ScriptStatus</span><span class="p">(</span><span class="n">CFlag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Status of t program</span>
+
+<span class="sd">    .. versionadded:: 1.6</span>
+
+<span class="sd">    .. versionchanged:: 1.7</span>
+<span class="sd">       Is now based on `IntFlag` instead of `IntEnum`</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">IDLE</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">LOADED</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">RUNNING</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="ScriptStop"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.ScriptStop">[docs]</a><span class="k">class</span> <span class="nc">ScriptStop</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="n">NORMAL</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">FORCED</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span></div>
+
+
+<div class="viewcode-block" id="TxeDataItem"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.TxeDataItem">[docs]</a><span class="k">class</span> <span class="nc">TxeDataItem</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="n">FILE_VERSION</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: The three part version number of the compiled script file (.txe) file format.</span>
+    <span class="n">COMPILER_VERSION</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: The three part version number of the compiler used to create the compiled script file (.txe).</span>
+    <span class="n">DATE</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="sd">&quot;&quot;&quot;Compilation date in Coordinated Universal Time (UTC) of the compiled script file (.txe).</span>
+
+<span class="sd">    Contents: 0. Year, 1. Month, 2. Day, 3. Hour, 4. Minute, 5. Second.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">DESCRIPTION</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1">#: Description of the compiled script file (.txe).</span>
+    <span class="n">SOURCE</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1">#: The name followed by the content of each unencrypted source file</span>
+    <span class="n">SIZE_OF_CODE</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1">#: The size of the compiled code in the .txe file.</span>
+    <span class="n">IS_ENCRYPTED</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1">#: Non-zero value if the compiled script file (.txe) contents is encrypted.</span></div>
+
+
+<div class="viewcode-block" id="DeviceMode"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.DeviceMode">[docs]</a><span class="k">class</span> <span class="nc">DeviceMode</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;kvDEVICE_MODE_xxx&quot;&quot;&quot;</span>
+    <span class="n">INTERFACE</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#: Device is running or should be running in interface mode.</span>
+    <span class="n">LOGGER</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: Device is running or should be running in logger mode.</span></div>
+
+
+<div class="viewcode-block" id="EnvVarType"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.EnvVarType">[docs]</a><span class="k">class</span> <span class="nc">EnvVarType</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;kvENVVAR_TYPE_xxx&quot;&quot;&quot;</span>
+    <span class="n">INT</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: The type of the envvar is C ``int``.</span>
+    <span class="n">FLOAT</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: The type of the envvar is C ``float``.</span>
+    <span class="n">STRING</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1">#: The type of the envvar is C ``string``.</span></div>
+
+
+<div class="viewcode-block" id="AcceptFilterFlag"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.AcceptFilterFlag">[docs]</a><span class="k">class</span> <span class="nc">AcceptFilterFlag</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canFILTER_SET_xxx&quot;&quot;&quot;</span>
+
+    <span class="c1"># Flags for canAccept().</span>
+    <span class="n">SET_CODE_STD</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">SET_MASK_STD</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">SET_CODE_EXT</span> <span class="o">=</span> <span class="mi">5</span>
+    <span class="n">SET_MASK_EXT</span> <span class="o">=</span> <span class="mi">6</span>
+    <span class="n">NULL_MASK</span> <span class="o">=</span> <span class="mi">0</span></div>
+
+
+<div class="viewcode-block" id="Bitrate"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.Bitrate">[docs]</a><span class="k">class</span> <span class="nc">Bitrate</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canBITRATE_xxx</span>
+
+<span class="sd">    Predefined CAN bitrates.</span>
+<span class="sd">    See `BitrateFD` for predefined CAN FD bitrates.</span>
+
+<span class="sd">    .. versionadded:: 1.17</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">BITRATE_1M</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1">#: Indicate a bitrate of 1 Mbit/s.</span>
+    <span class="n">BITRATE_500K</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>  <span class="c1">#: Indicate a bitrate of 500 kbit/s.</span>
+    <span class="n">BITRATE_250K</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>  <span class="c1">#: Indicate a bitrate of 250 kbit/s.</span>
+    <span class="n">BITRATE_125K</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>  <span class="c1">#: Indicate a bitrate of 125 kbit/s.</span>
+    <span class="n">BITRATE_100K</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>  <span class="c1">#: Indicate a bitrate of 100 kbit/s.</span>
+    <span class="n">BITRATE_62K</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>  <span class="c1">#: Indicate a bitrate of 62 kbit/s.</span>
+    <span class="n">BITRATE_50K</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span>  <span class="c1">#: Indicate a bitrate of 50 kbit/s.</span>
+    <span class="n">BITRATE_83K</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8</span>  <span class="c1">#: Indicate a bitrate of 83 kbit/s.</span>
+    <span class="n">BITRATE_10K</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span>  <span class="c1">#: Indicate a bitrate of 10 kbit/s.</span></div>
+
+
+<div class="viewcode-block" id="BitrateFD"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.BitrateFD">[docs]</a><span class="k">class</span> <span class="nc">BitrateFD</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canFD_BITRATE_xxx</span>
+
+<span class="sd">    Predefined CAN FD bitrates.  Used when setting bitrates using the CAN FD</span>
+<span class="sd">    protocol, see `Bitrate` for predefined CAN bitrates.</span>
+
+<span class="sd">    .. versionadded:: 1.17</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">BITRATE_500K_80P</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span>  <span class="c1">#: Indicates a bitrate of 500 kbit/s and sampling point at 80%.</span>
+    <span class="n">BITRATE_1M_80P</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1001</span>  <span class="c1">#: Indicates a bitrate of 1 Mbit/s and sampling point at 80%.</span>
+    <span class="n">BITRATE_2M_80P</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1002</span>  <span class="c1">#: Indicates a bitrate of 2 Mbit/s and sampling point at 80%.</span>
+    <span class="n">BITRATE_2M_60P</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1007</span>  <span class="c1">#: Indicates a bitrate of 2 Mbit/s and sampling point at 60%.</span>
+    <span class="n">BITRATE_4M_80P</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1003</span>  <span class="c1">#: Indicates a bitrate of 4 Mbit/s and sampling point at 80%.</span>
+    <span class="n">BITRATE_8M_60P</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1004</span>  <span class="c1">#: Indicates a bitrate of 8 Mbit/s and sampling point at 60%.</span>
+    <span class="n">BITRATE_8M_70P</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1006</span>  <span class="c1">#: Indicates a bitrate of 8 Mbit/s and sampling point at 70%.</span>
+    <span class="n">BITRATE_8M_80P</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1005</span>  <span class="c1">#: Indicates a bitrate of 8 Mbit/s and sampling point at 80%.</span></div>
+
+
+<div class="viewcode-block" id="LEDAction"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.LEDAction">[docs]</a><span class="k">class</span> <span class="nc">LEDAction</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;kvLED_ACTION_xxx</span>
+
+<span class="sd">    The following can be used together with `canlib.canlib.Channel.flashLeds`.</span>
+
+<span class="sd">    .. versionchanged:: 1.18</span>
+<span class="sd">       Added LEDs 4 through 11 (needs CANlib v5.19+)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ALL_LEDS_ON</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#: Turn all LEDs on.</span>
+    <span class="n">ALL_LEDS_OFF</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: Turn all LEDs off.</span>
+    <span class="n">LED_0_ON</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: Turn LED 0 on.</span>
+    <span class="n">LED_0_OFF</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1">#: Turn LED 0 off.</span>
+    <span class="n">LED_1_ON</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1">#: Turn LED 1 on.</span>
+    <span class="n">LED_1_OFF</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1">#: Turn LED 1 off.</span>
+    <span class="n">LED_2_ON</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1">#: Turn LED 2 on.</span>
+    <span class="n">LED_2_OFF</span> <span class="o">=</span> <span class="mi">7</span>  <span class="c1">#: Turn LED 2 off.</span>
+    <span class="n">LED_3_ON</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1">#: Turn LED 3 on.</span>
+    <span class="n">LED_3_OFF</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1">#: Turn LED 3 off.</span>
+    <span class="n">LED_4_ON</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1">#: Turn LED 4 on.</span>
+    <span class="n">LED_4_OFF</span> <span class="o">=</span> <span class="mi">11</span>  <span class="c1">#: Turn LED 4 off.</span>
+    <span class="n">LED_5_ON</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1">#: Turn LED 5 on.</span>
+    <span class="n">LED_5_OFF</span> <span class="o">=</span> <span class="mi">13</span>  <span class="c1">#: Turn LED 5 off.</span>
+    <span class="n">LED_6_ON</span> <span class="o">=</span> <span class="mi">14</span>  <span class="c1">#: Turn LED 6 on.</span>
+    <span class="n">LED_6_OFF</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1">#: Turn LED 6 off.</span>
+    <span class="n">LED_7_ON</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1">#: Turn LED 7 on.</span>
+    <span class="n">LED_7_OFF</span> <span class="o">=</span> <span class="mi">17</span>  <span class="c1">#: Turn LED 7 off.</span>
+    <span class="n">LED_8_ON</span> <span class="o">=</span> <span class="mi">18</span>  <span class="c1">#: Turn LED 8 on.</span>
+    <span class="n">LED_8_OFF</span> <span class="o">=</span> <span class="mi">19</span>  <span class="c1">#: Turn LED 8 off.</span>
+    <span class="n">LED_9_ON</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1">#: Turn LED 9 on.</span>
+    <span class="n">LED_9_OFF</span> <span class="o">=</span> <span class="mi">21</span>  <span class="c1">#: Turn LED 9 off.</span>
+    <span class="n">LED_10_ON</span> <span class="o">=</span> <span class="mi">22</span>  <span class="c1">#: Turn LED 10 on.</span>
+    <span class="n">LED_10_OFF</span> <span class="o">=</span> <span class="mi">23</span>  <span class="c1">#: Turn LED 10 off.</span>
+    <span class="n">LED_11_ON</span> <span class="o">=</span> <span class="mi">24</span>  <span class="c1">#: Turn LED 11 on.</span>
+    <span class="n">LED_11_OFF</span> <span class="o">=</span> <span class="mi">25</span>  <span class="c1">#: Turn LED 11 off.</span></div>
+
+
+<div class="viewcode-block" id="TransceiverType"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.TransceiverType">[docs]</a><span class="k">class</span> <span class="nc">TransceiverType</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Transceiver (logical) types</span>
+
+<span class="sd">    The following constants can be returned from canGetChannelData(), using the</span>
+<span class="sd">    canCHANNELDATA_TRANS_TYPE item code. They identify the bus transceiver type</span>
+<span class="sd">    for the channel specified in the call to canGetChannelData.</span>
+
+<span class="sd">    Note:</span>
+
+<span class="sd">        If the type starts with a number ``T_`` has been prepended to the name.</span>
+
+<span class="sd">        They indicate a hardware type, but not necessarily a specific circuit</span>
+<span class="sd">        or product.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">UNKNOWN</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#: Unknown or undefined</span>
+    <span class="n">T_251</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: 82c251</span>
+    <span class="n">T_252</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: 82c252, TJA1053, TJA1054</span>
+    <span class="n">DNOPTO</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1">#: Optoisolated 82C251</span>
+    <span class="n">W210</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="n">SWC_PROTO</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1">#: AU5790 prototype</span>
+    <span class="n">SWC</span> <span class="o">=</span> <span class="mi">6</span>  <span class="c1">#: AU5790</span>
+    <span class="n">EVA</span> <span class="o">=</span> <span class="mi">7</span>
+    <span class="n">FIBER</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1">#: 82c251 with fibre extension</span>
+    <span class="n">K251</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1">#: K-line + 82c251</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c1">#: K-line, without CAN.</span>
+    <span class="n">T_1054_OPTO</span> <span class="o">=</span> <span class="mi">11</span>  <span class="c1">#: TJA1054 with optical isolation</span>
+    <span class="n">SWC_OPTO</span> <span class="o">=</span> <span class="mi">12</span>  <span class="c1">#: AU5790 with optical isolation</span>
+    <span class="n">TT</span> <span class="o">=</span> <span class="mi">13</span>  <span class="c1">#: B10011S Truck-And-Trailer</span>
+    <span class="n">T_1050</span> <span class="o">=</span> <span class="mi">14</span>  <span class="c1">#: TJA1050</span>
+    <span class="n">T_1050_OPTO</span> <span class="o">=</span> <span class="mi">15</span>  <span class="c1">#: TJA1050 with optical isolation</span>
+    <span class="n">T_1041</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1">#: TJA1041</span>
+    <span class="n">T_1041_OPTO</span> <span class="o">=</span> <span class="mi">17</span>  <span class="c1">#: TJA1041 with optical isolation</span>
+    <span class="n">RS485</span> <span class="o">=</span> <span class="mi">18</span>  <span class="c1">#: RS485 (i.e. J1708)</span>
+    <span class="n">LIN</span> <span class="o">=</span> <span class="mi">19</span>
+    <span class="n">KONE</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="n">CANFD</span> <span class="o">=</span> <span class="mi">22</span>
+    <span class="n">CANFD_LIN</span> <span class="o">=</span> <span class="mi">24</span>  <span class="c1">#: HYBRID CAN-FD/LIN</span>
+    <span class="n">LINX_LIN</span> <span class="o">=</span> <span class="mi">64</span>
+    <span class="n">LINX_J1708</span> <span class="o">=</span> <span class="mi">66</span>
+    <span class="n">LINX_K</span> <span class="o">=</span> <span class="mi">68</span>
+    <span class="n">LINX_SWC</span> <span class="o">=</span> <span class="mi">70</span>
+    <span class="n">LINX_LS</span> <span class="o">=</span> <span class="mi">72</span></div>
+
+
+<div class="viewcode-block" id="Notify"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.Notify">[docs]</a><span class="k">class</span> <span class="nc">Notify</span><span class="p">(</span><span class="n">CFlag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canNOTIFY_xxx</span>
+
+<span class="sd">    These notify flags are used in `Channel.set_callback` to indicate</span>
+<span class="sd">    different kind of events.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#: Turn notifications off.</span>
+    <span class="n">RX</span> <span class="o">=</span> <span class="mh">0x0001</span>  <span class="c1">#: CAN message reception notification</span>
+    <span class="n">TX</span> <span class="o">=</span> <span class="mh">0x0002</span>  <span class="c1">#: CAN message transmission notification</span>
+    <span class="n">ERROR</span> <span class="o">=</span> <span class="mh">0x0004</span>  <span class="c1">#: CAN bus error notification</span>
+    <span class="n">STATUS</span> <span class="o">=</span> <span class="mh">0x0008</span>  <span class="c1">#: CAN chip status change</span>
+    <span class="n">ENVVAR</span> <span class="o">=</span> <span class="mh">0x0010</span>  <span class="c1">#: An environment variable was changed by a script. Note that you will not be notified when an environment variable is updated from the Canlib API.</span>
+    <span class="n">BUSONOFF</span> <span class="o">=</span> <span class="mh">0x0020</span>  <span class="c1">#: Notify on bus on/off status changed</span>
+    <span class="n">REMOVED</span> <span class="o">=</span> <span class="mh">0x0040</span>  <span class="c1">#: Notify on device removed</span></div>
+
+
+<div class="viewcode-block" id="ChannelFlags"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.ChannelFlags">[docs]</a><span class="k">class</span> <span class="nc">ChannelFlags</span><span class="p">(</span><span class="n">CFlag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canCHANNEL_IS_xxx</span>
+
+<span class="sd">    These channel flags are used in conjunction with `ChannelDataItem.channel_flags`.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">IS_EXCLUSIVE</span> <span class="o">=</span> <span class="mh">0x0001</span>  <span class="c1">#: Channel is opened exclusively.</span>
+    <span class="n">IS_OPEN</span> <span class="o">=</span> <span class="mh">0x0002</span>  <span class="c1">#: Channel is active, either opened in LIN mode or on-bus in CAN mode.</span>
+    <span class="n">IS_CANFD</span> <span class="o">=</span> <span class="mh">0x0004</span>  <span class="c1">#: Channel has been opened as CAN FD.</span>
+    <span class="n">IS_LIN</span> <span class="o">=</span> <span class="mh">0x0010</span>  <span class="c1">#: Channel has been opened as LIN.</span>
+    <span class="n">IS_LIN_MASTER</span> <span class="o">=</span> <span class="mh">0x0020</span>  <span class="c1">#: Channel has been opened as a LIN master.</span>
+    <span class="n">IS_LIN_SLAVE</span> <span class="o">=</span> <span class="mh">0x0040</span>  <span class="c1">#: Channel has been opened as a LIN slave.</span></div>
+
+
+<div class="viewcode-block" id="BusTypeGroup"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.BusTypeGroup">[docs]</a><span class="k">class</span> <span class="nc">BusTypeGroup</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;kvBUSTYPE_GROUP_xxx</span>
+
+<span class="sd">    Bus type group. This is a grouping of the individual kvBUSTYPE_xxx.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">VIRTUAL</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">LOCAL</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: kvBUSTYPE_USB</span>
+    <span class="n">REMOTE</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1">#: kvBUSTYPE_WLAN, kvBUSTYPE_LAN</span>
+    <span class="n">INTERNAL</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1">#: kvBUSTYPE_PCI, kvBUSTYPE_PCMCIA, ...</span></div>
+
+
+<div class="viewcode-block" id="HardwareType"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.HardwareType">[docs]</a><span class="k">class</span> <span class="nc">HardwareType</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canHWTYPE_xxx</span>
+
+<span class="sd">    The following constants can be returned from `ChannelData`, using the</span>
+<span class="sd">    `card_type` property. They identify the hardware type for the current</span>
+<span class="sd">    channel.</span>
+
+<span class="sd">    Note:</span>
+
+<span class="sd">        The members indicate a hardware type, but not necessarily a specific</span>
+<span class="sd">        product. For example, `canHWTYPE_LAPCAN` is returned both for LAPcan</span>
+<span class="sd">        and LAPcan II. (Use the `card_upc_no` property of `ChannelData` to</span>
+<span class="sd">        obtain the UPC/EAN code for the device. This number uniquely identifies</span>
+<span class="sd">        the product.)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#: Unknown or undefined.</span>
+    <span class="n">VIRTUAL</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: The virtual CAN bus.</span>
+    <span class="n">LAPCAN</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: LAPcan Family.</span>
+    <span class="n">PCCAN</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1">#: PCcan Family.</span>
+    <span class="n">PCICAN</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1">#: PCIcan Family.</span>
+    <span class="n">PCICAN_II</span> <span class="o">=</span> <span class="mi">40</span>  <span class="c1">#: PCIcan II family.</span>
+    <span class="n">USBCAN_II</span> <span class="o">=</span> <span class="mi">42</span>  <span class="c1">#: USBcan II, USBcan Rugged, Kvaser Memorator.</span>
+    <span class="n">LEAF</span> <span class="o">=</span> <span class="mi">48</span>  <span class="c1">#: Kvaser Leaf Family.</span>
+    <span class="n">PC104_PLUS</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1">#: Kvaser PC104+.</span>
+    <span class="n">PCICANX_II</span> <span class="o">=</span> <span class="mi">52</span>  <span class="c1">#: Kvaser PCIcanx II.</span>
+    <span class="n">MEMORATOR_II</span> <span class="o">=</span> <span class="mi">54</span>  <span class="c1">#: Kvaser Memorator Professional family.</span>
+    <span class="n">MEMORATOR_PRO</span> <span class="o">=</span> <span class="mi">54</span>  <span class="c1">#: Kvaser Memorator Professional family.</span>
+    <span class="n">USBCAN_PRO</span> <span class="o">=</span> <span class="mi">56</span>  <span class="c1">#: Kvaser USBcan Professional.</span>
+    <span class="n">BLACKBIRD</span> <span class="o">=</span> <span class="mi">58</span>  <span class="c1">#: Kvaser BlackBird.</span>
+    <span class="n">MEMORATOR_LIGHT</span> <span class="o">=</span> <span class="mi">60</span>  <span class="c1">#: Kvaser Memorator Light.</span>
+    <span class="n">EAGLE</span> <span class="o">=</span> <span class="mi">62</span>  <span class="c1">#: Kvaser Eagle family.</span>
+    <span class="n">BLACKBIRD_V2</span> <span class="o">=</span> <span class="mi">64</span>  <span class="c1">#: Kvaser BlackBird v2.</span>
+    <span class="n">MINIPCIE</span> <span class="o">=</span> <span class="mi">66</span>  <span class="c1">#: Kvaser Mini PCI Express.</span>
+    <span class="n">USBCAN_KLINE</span> <span class="o">=</span> <span class="mi">68</span>  <span class="c1">#: USBcan Pro HS/K-Line.</span>
+    <span class="n">ETHERCAN</span> <span class="o">=</span> <span class="mi">70</span>  <span class="c1">#: Kvaser Ethercan.</span>
+    <span class="n">USBCAN_LIGHT</span> <span class="o">=</span> <span class="mi">72</span>  <span class="c1">#: Kvaser USBcan Light.</span>
+    <span class="n">USBCAN_PRO2</span> <span class="o">=</span> <span class="mi">74</span>  <span class="c1">#: Kvaser USBcan Pro 5xHS and variants.</span>
+    <span class="n">PCIE_V2</span> <span class="o">=</span> <span class="mi">76</span>  <span class="c1">#: Kvaser PCIEcan 4xHS and variants.</span>
+    <span class="n">MEMORATOR_PRO2</span> <span class="o">=</span> <span class="mi">78</span>  <span class="c1">#: Kvaser Memorator Pro 5xHS and variants.</span>
+    <span class="n">LEAF2</span> <span class="o">=</span> <span class="mi">80</span>  <span class="c1">#: Kvaser Leaf Pro HS v2 and variants.</span>
+    <span class="n">MEMORATOR_V2</span> <span class="o">=</span> <span class="mi">82</span>  <span class="c1">#: Kvaser Memorator (2nd generation)</span>
+    <span class="n">CANLINHYBRID</span> <span class="o">=</span> <span class="mi">84</span>  <span class="c1">#: Kvaser Hybrid CAN/LIN.</span>
+    <span class="n">DINRAIL</span> <span class="o">=</span> <span class="mi">86</span>  <span class="c1">#: Kvaser DIN Rail SE400S and variants</span>
+    <span class="n">U100</span> <span class="o">=</span> <span class="mi">88</span>  <span class="c1">#: Kvaser U100 and variants</span>
+
+    <span class="c1"># Obsolete</span>
+    <span class="n">CANPARI</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1">#: CANpari (obsolete).</span>
+    <span class="n">USBCAN</span> <span class="o">=</span> <span class="mi">11</span>  <span class="c1">#: USBcan (obsolete).</span>
+    <span class="n">SIMULATED</span> <span class="o">=</span> <span class="mi">44</span>  <span class="c1">#: Simulated CAN bus for Kvaser Creator (obsolete).</span>
+    <span class="n">ACQUISITOR</span> <span class="o">=</span> <span class="mi">46</span>  <span class="c1">#: Kvaser Acquisitor (obsolete).</span>
+    <span class="n">IRIS</span> <span class="o">=</span> <span class="mi">58</span>  <span class="c1">#: Obsolete name, use `BLACKBIRD` instead.</span>
+    <span class="n">MINIHYDRA</span> <span class="o">=</span> <span class="mi">62</span>  <span class="c1">#: Obsolete name, use `EAGLE` instead.</span>
+    <span class="n">BAGEL</span> <span class="o">=</span> <span class="mi">64</span>  <span class="c1">#: Obsolete name, use `BLACKBIRD_V2` instead.</span></div>
+
+
+<div class="viewcode-block" id="ChannelCap"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.ChannelCap">[docs]</a><span class="k">class</span> <span class="nc">ChannelCap</span><span class="p">(</span><span class="n">CFlag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canCHANNEL_CAP_xxx</span>
+
+<span class="sd">    Channel capabilities.</span>
+
+<span class="sd">    .. versionchanged:: 1.8</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">EXTENDED_CAN</span> <span class="o">=</span> <span class="mh">0x00000001</span>  <span class="c1">#: Can use extended identifiers.</span>
+    <span class="n">BUS_STATISTICS</span> <span class="o">=</span> <span class="mh">0x00000002</span>  <span class="c1">#: Can report busload etc.</span>
+    <span class="n">ERROR_COUNTERS</span> <span class="o">=</span> <span class="mh">0x00000004</span>  <span class="c1">#: Can return error counters.</span>
+    <span class="n">RESERVED_2</span> <span class="o">=</span> <span class="mh">0x00000008</span>  <span class="c1">#: Obsolete, only used by LAPcan driver</span>
+    <span class="n">GENERATE_ERROR</span> <span class="o">=</span> <span class="mh">0x00000010</span>  <span class="c1">#: Can send error frames.</span>
+    <span class="n">GENERATE_OVERLOAD</span> <span class="o">=</span> <span class="mh">0x00000020</span>  <span class="c1">#: Can send CAN overload frame.</span>
+    <span class="n">TXREQUEST</span> <span class="o">=</span> <span class="mh">0x00000040</span>  <span class="c1">#: Can report when a CAN messsage transmission is initiated.</span>
+    <span class="n">TXACKNOWLEDGE</span> <span class="o">=</span> <span class="mh">0x00000080</span>  <span class="c1">#: Can report when a CAN messages has been transmitted.</span>
+    <span class="n">VIRTUAL</span> <span class="o">=</span> <span class="mh">0x00010000</span>  <span class="c1">#: Virtual CAN channel.</span>
+    <span class="n">SIMULATED</span> <span class="o">=</span> <span class="mh">0x00020000</span>  <span class="c1">#: Simulated CAN channel.</span>
+    <span class="n">RESERVED_1</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="mh">0x00040000</span>  <span class="c1"># Obsolete, use `canCHANNEL_CAP_REMOTE_ACCESS` or `.Channel.canGetChannelData()` instead.</span>
+    <span class="p">)</span>
+    <span class="n">CAN_FD</span> <span class="o">=</span> <span class="mh">0x00080000</span>  <span class="c1">#: CAN-FD ISO compliant channel.</span>
+    <span class="n">CAN_FD_NONISO</span> <span class="o">=</span> <span class="mh">0x00100000</span>  <span class="c1">#: CAN-FD NON-ISO compliant channel.</span>
+    <span class="n">SILENT_MODE</span> <span class="o">=</span> <span class="mh">0x00200000</span>  <span class="c1">#: Channel supports Silent mode.</span>
+    <span class="n">SINGLE_SHOT</span> <span class="o">=</span> <span class="mh">0x00400000</span>  <span class="c1">#: Channel supports Single Shot messages.</span>
+    <span class="n">LOGGER</span> <span class="o">=</span> <span class="mh">0x00800000</span>  <span class="c1">#: Channel has logger capabilities.</span>
+    <span class="n">REMOTE_ACCESS</span> <span class="o">=</span> <span class="mh">0x01000000</span>  <span class="c1">#: Channel has remote capabilities.</span>
+    <span class="n">SCRIPT</span> <span class="o">=</span> <span class="mh">0x02000000</span>  <span class="c1">#: Channel has script capabilities.</span>
+    <span class="n">LIN_HYBRID</span> <span class="o">=</span> <span class="mh">0x04000000</span>  <span class="c1">#: Channel has LIN capabilities.</span>
+    <span class="n">IO_API</span> <span class="o">=</span> <span class="mh">0x08000000</span>  <span class="c1">#: Channel has diagnostic capabilities.</span>
+    <span class="n">DIAGNOSTICS</span> <span class="o">=</span> <span class="mh">0x10000000</span>  <span class="c1">#: Channel has diagnostic capabilities.</span></div>
+
+
+<span class="k">class</span> <span class="nc">ChannelCapEx</span><span class="p">(</span><span class="n">CFlag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canCHANNEL_CAP_EX_xxx</span>
+
+<span class="sd">    Channel extended capabilities.</span>
+
+<span class="sd">    .. versionadded:: 1.17</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">BUSPARAMS_TQ</span> <span class="o">=</span> <span class="mh">0x0000000000000001</span>  <span class="c1"># Channel has BusParams TQ API.</span>
+
+
+<div class="viewcode-block" id="LoggerType"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.LoggerType">[docs]</a><span class="k">class</span> <span class="nc">LoggerType</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;kvLOGGER_TYPE_xxx</span>
+
+<span class="sd">    Logger type, returned when using `ChannelData.logger_type`.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NOT_A_LOGGER</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">V1</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">V2</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="OperationalMode"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.OperationalMode">[docs]</a><span class="k">class</span> <span class="nc">OperationalMode</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canCHANNEL_OPMODE_xxx</span>
+
+<span class="sd">    Current WLAN operational mode.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NONE</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: Not applicable, or unknown mode.</span>
+    <span class="n">INFRASTRUCTURE</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: Infrastructure mode</span>
+    <span class="n">RESERVED</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1">#: Reserved</span>
+    <span class="n">ADH</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1">#: Adhoc mode</span></div>
+
+
+<div class="viewcode-block" id="RemoteType"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.RemoteType">[docs]</a><span class="k">class</span> <span class="nc">RemoteType</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;kvREMOTE_TYPExxx</span>
+
+<span class="sd">    Remote type, returned when using canCHANNELDATA_REMOTE_TYPE</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">NOT_REMOTE</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">WLAN</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">LAN</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="DriverCap"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.DriverCap">[docs]</a><span class="k">class</span> <span class="nc">DriverCap</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;canDRIVER_CAP_xxx</span>
+
+<span class="sd">    Driver (transceiver) capabilities.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">HIGHSPEED</span> <span class="o">=</span> <span class="mh">0x00000001</span></div>
+
+
+<div class="viewcode-block" id="ScriptRequest"><a class="viewcode-back" href="../../../reference/canlib/enums.html#canlib.canlib.ScriptRequest">[docs]</a><span class="k">class</span> <span class="nc">ScriptRequest</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;kvSCRIPT_REQUEST_TEXT_xxx</span>
+
+<span class="sd">    These defines are used in kvScriptRequestText() for printf message</span>
+<span class="sd">    subscribe/unsubscribe.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">UNSUBSCRIBE</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">SUBSCRIBE</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">ALL_SLOTS</span> <span class="o">=</span> <span class="mi">255</span></div>
+
+
+<span class="k">class</span> <span class="nc">VersionEx</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="n">VERSION</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">PRODVER</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">PRODVER32</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">BETA</span> <span class="o">=</span> <span class="mi">3</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

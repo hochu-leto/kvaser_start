@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>canlib.linlib.enums &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>canlib.linlib.enums</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for canlib.linlib.enums</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..cenum</span> <span class="kn">import</span> <span class="n">CEnum</span><span class="p">,</span> <span class="n">CFlag</span>
+
+
+<div class="viewcode-block" id="MessageFlag"><a class="viewcode-back" href="../../../reference/linlib/enums.html#canlib.linlib.MessageFlag">[docs]</a><span class="k">class</span> <span class="nc">MessageFlag</span><span class="p">(</span><span class="n">CFlag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;LIN message flags</span>
+
+<span class="sd">    The following flags is used in `.LINFrame.flags`.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">TX</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: The message was something we transmitted on the bus.</span>
+    <span class="n">RX</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: The message was something we received from the bus.</span>
+    <span class="n">WAKEUP_FRAME</span> <span class="o">=</span> <span class="mi">4</span>  <span class="c1"># A: wake up frame was received. Id/msg/dlc are undefined.</span>
+    <span class="n">NODATA</span> <span class="o">=</span> <span class="mi">8</span>  <span class="c1">#: No data, only a header.</span>
+    <span class="n">CSUM_ERROR</span> <span class="o">=</span> <span class="mi">16</span>  <span class="c1">#: Checksum error</span>
+    <span class="n">PARITY_ERROR</span> <span class="o">=</span> <span class="mi">32</span>  <span class="c1">#: ID parity error</span>
+    <span class="n">SYNC_ERROR</span> <span class="o">=</span> <span class="mi">64</span>  <span class="c1">#: A synch error</span>
+    <span class="n">SYNCH_ERROR</span> <span class="o">=</span> <span class="n">SYNC_ERROR</span>  <span class="c1">#: A synch error</span>
+    <span class="n">BIT_ERROR</span> <span class="o">=</span> <span class="mi">128</span>  <span class="c1">#: Bit error when transmitting.</span></div>
+
+
+<div class="viewcode-block" id="ChannelData"><a class="viewcode-back" href="../../../reference/linlib/enums.html#canlib.linlib.ChannelData">[docs]</a><span class="k">class</span> <span class="nc">ChannelData</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;linCHANNELDATA_xxx</span>
+
+<span class="sd">    These defines are used in `getChannelData`.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">CARD_FIRMWARE_REV</span> <span class="o">=</span> <span class="mi">9</span>  <span class="c1">#: Firmware version from the LIN interface.</span></div>
+
+
+<div class="viewcode-block" id="ChannelType"><a class="viewcode-back" href="../../../reference/linlib/enums.html#canlib.linlib.ChannelType">[docs]</a><span class="k">class</span> <span class="nc">ChannelType</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Flags for `openChannel`&quot;&quot;&quot;</span>
+
+    <span class="n">MASTER</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: The LIN interface will be a LIN master</span>
+    <span class="n">SLAVE</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: The LIN interface will be a LIN slave</span></div>
+
+
+<div class="viewcode-block" id="MessageDisturb"><a class="viewcode-back" href="../../../reference/linlib/enums.html#canlib.linlib.MessageDisturb">[docs]</a><span class="k">class</span> <span class="nc">MessageDisturb</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;LIN illegal message flags&quot;&quot;&quot;</span>
+
+    <span class="n">CSUM</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1">#: The checksum of transmitted messages will be inverted</span>
+    <span class="n">PARITY</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1">#: The two parity bits will be inverted, used only in master mode.</span></div>
+
+
+<div class="viewcode-block" id="MessageParity"><a class="viewcode-back" href="../../../reference/linlib/enums.html#canlib.linlib.MessageParity">[docs]</a><span class="k">class</span> <span class="nc">MessageParity</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;LIN message parity</span>
+
+<span class="sd">    + `MessageParity.STANDARD` == ``LIN_MSG_USE_STANDARD_PARITY``</span>
+<span class="sd">    + `MessageParity.ENHANCED` == ``LIN_MSG_USE_ENHANCED_PARITY``</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">STANDARD</span> <span class="o">=</span> <span class="mh">0x04</span>  <span class="c1">#: Use standard (1.x) parity for the specified msg</span>
+    <span class="n">ENHANCED</span> <span class="o">=</span> <span class="mh">0x08</span>  <span class="c1">#: Use enhanced (2.x) parity for the specified msg</span></div>
+
+
+<div class="viewcode-block" id="Setup"><a class="viewcode-back" href="../../../reference/linlib/enums.html#canlib.linlib.Setup">[docs]</a><span class="k">class</span> <span class="nc">Setup</span><span class="p">(</span><span class="n">CFlag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Used in `Channel.setupLIN`&quot;&quot;&quot;</span>
+
+    <span class="c1">#: When specified, the LIN interface will use the &quot;enhanced&quot; checksum</span>
+    <span class="c1">#: according to LIN 2.0.</span>
+    <span class="c1">#: Note that as per the LIN 2.0 spec) the enhanced</span>
+    <span class="c1">#: checksum is not used on the diagnostic frames even if the</span>
+    <span class="c1">#: `Setup.ENHANCED_CHECKSUM` setting is in effect.</span>
+    <span class="n">ENHANCED_CHECKSUM</span> <span class="o">=</span> <span class="mi">1</span>
+
+    <span class="c1">#: When specified, turns variable message length on, so the the message</span>
+    <span class="c1">#: length will depend on the message ID.</span>
+    <span class="n">VARIABLE_DLC</span> <span class="o">=</span> <span class="mi">2</span></div>
+
+
+<div class="viewcode-block" id="Error"><a class="viewcode-back" href="../../../reference/linlib/enums.html#canlib.linlib.Error">[docs]</a><span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="n">NOMSG</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,)</span>  <span class="c1">#: No messages available</span>
+    <span class="n">NOTRUNNING</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,)</span>  <span class="c1">#: Handle not on-bus. Some functions requires that the handle is on-bus before being called.</span>
+    <span class="n">RUNNING</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,)</span>  <span class="c1">#: Handle not off-bus. Some functions requires that the handle is off-bus before being called.</span>
+    <span class="n">MASTERONLY</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,)</span>  <span class="c1">#: The function is only for a master.</span>
+    <span class="n">SLAVEONLY</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,)</span>  <span class="c1">#: The function is only for a slave.</span>
+    <span class="n">PARAM</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">7</span><span class="p">,)</span>  <span class="c1">#: Error in parameter</span>
+    <span class="n">NOTFOUND</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">,)</span>  <span class="c1">#: Specified hardware not found. This error is reported when the LIN transceiver isn&#39;t powered up</span>
+    <span class="n">NOMEM</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">9</span><span class="p">,)</span>  <span class="c1">#: Out of memory</span>
+    <span class="n">NOCHANNELS</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,)</span>  <span class="c1">#: No channels avaliable</span>
+    <span class="n">TIMEOUT</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">11</span><span class="p">,)</span>  <span class="c1">#: Timeout occurred</span>
+    <span class="n">NOTINITIALIZED</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">12</span><span class="p">,)</span>  <span class="c1">#: Library not initialized</span>
+    <span class="n">NOHANDLES</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">13</span><span class="p">,)</span>  <span class="c1">#: Can&#39;t get handle</span>
+    <span class="n">INVHANDLE</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">14</span><span class="p">,)</span>  <span class="c1">#: Handle is invalid</span>
+    <span class="n">CANERROR</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">15</span><span class="p">,)</span>  <span class="c1">#: Internal error in the driver</span>
+    <span class="n">ERRRESP</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">16</span><span class="p">,)</span>  <span class="c1">#: There was an error response from the LIN interface</span>
+    <span class="n">WRONGRESP</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">17</span><span class="p">,)</span>  <span class="c1">#: The LIN interface response wasn&#39;t the expected one</span>
+    <span class="n">DRIVER</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">18</span><span class="p">,)</span>  <span class="c1">#: CAN driver type not supported</span>
+    <span class="n">DRIVERFAILED</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">19</span><span class="p">,)</span>  <span class="c1">#: DeviceIOControl failed</span>
+    <span class="n">NOCARD</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,)</span>  <span class="c1">#: The card was removed or not inserted</span>
+    <span class="n">LICENSE</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">21</span><span class="p">,)</span>  <span class="c1">#: The license is not valid</span>
+    <span class="n">INTERNAL</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">22</span><span class="p">,)</span>  <span class="c1">#: Internal error in the driver</span>
+    <span class="n">NO_ACCESS</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">23</span><span class="p">,)</span>  <span class="c1">#: Access denied</span>
+    <span class="n">VERSION</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">24</span><span class="p">,)</span>  <span class="c1">#: Function not supported in this version</span>
+    <span class="n">NO_REF_POWER</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,)</span>  <span class="c1">#: Function not supported in this version</span>
+    <span class="n">NOT_IMPLEMENTED</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">26</span><span class="p">,)</span>  <span class="c1">#: The requested feature or function is not implemented in the device you are trying to use it on</span></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

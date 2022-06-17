@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>canlib.canlib.busparams &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>canlib.canlib.busparams</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for canlib.canlib.busparams</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;A set of helper functions to the new busparam API added in CANlib v5.34.</span>
+
+<span class="sd">    .. versionadded:: 1.16</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">collections</span>
+
+<span class="n">SI_PREFIXES</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">24</span><span class="p">:</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span>
+    <span class="mi">21</span><span class="p">:</span> <span class="s1">&#39;Z&#39;</span><span class="p">,</span>
+    <span class="mi">18</span><span class="p">:</span> <span class="s1">&#39;E&#39;</span><span class="p">,</span>
+    <span class="mi">15</span><span class="p">:</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span>
+    <span class="mi">12</span><span class="p">:</span> <span class="s1">&#39;T&#39;</span><span class="p">,</span>
+    <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;G&#39;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span>
+    <span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;u&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">12</span><span class="p">:</span> <span class="s1">&#39;p&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">15</span><span class="p">:</span> <span class="s1">&#39;f&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">18</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">21</span><span class="p">:</span> <span class="s1">&#39;z&#39;</span><span class="p">,</span>
+    <span class="o">-</span><span class="mi">24</span><span class="p">:</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="calc_bitrate"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.calc_bitrate">[docs]</a><span class="k">def</span> <span class="nf">calc_bitrate</span><span class="p">(</span><span class="n">target_bitrate</span><span class="p">,</span> <span class="n">clk_freq</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate nearest available bitrate</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        target_bitrate (`int`): Wanted bitrate (bit/s)</span>
+<span class="sd">        clk_freq (`int`): Device clock frequency (Hz)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The returned tuple is a ``(bitrate, tq)`` named tuple of:</span>
+
+<span class="sd">        #. ``bitrate`` (`int`): Available bitrate, could be a rounded value (bit/s)</span>
+<span class="sd">        #. ``tq`` (`int`): Number of time quanta in one bit</span>
+
+<span class="sd">    .. versionadded:: 1.16</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">tq</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">clk_freq</span> <span class="o">/</span> <span class="n">target_bitrate</span><span class="p">)</span>
+    <span class="c1"># Minimum tq is 3 (sync_seg + phase1 + phase2)</span>
+    <span class="k">if</span> <span class="n">tq</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+        <span class="n">tq</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">bitrate</span> <span class="o">=</span> <span class="n">clk_freq</span> <span class="o">/</span> <span class="n">tq</span>
+
+    <span class="n">Bitrate</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Bitrate&#39;</span><span class="p">,</span> <span class="s1">&#39;bitrate tq&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Bitrate</span><span class="p">(</span><span class="n">bitrate</span><span class="o">=</span><span class="n">bitrate</span><span class="p">,</span> <span class="n">tq</span><span class="o">=</span><span class="n">tq</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="calc_busparamstq"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.calc_busparamstq">[docs]</a><span class="k">def</span> <span class="nf">calc_busparamstq</span><span class="p">(</span>
+    <span class="n">target_bitrate</span><span class="p">,</span>
+    <span class="n">target_sample_point</span><span class="p">,</span>
+    <span class="n">target_sync_jump_width</span><span class="p">,</span>
+    <span class="n">clk_freq</span><span class="p">,</span>
+    <span class="n">target_prop_tq</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">prescaler</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate closest matching busparameters.</span>
+
+<span class="sd">    The device clock frequency, `clk_freq`, can be obtained via</span>
+<span class="sd">    `ClockInfo.frequency()`:</span>
+
+<span class="sd">        &gt;&gt;&gt; chd = canlib.ChannelData(channel_number=0)</span>
+<span class="sd">        &gt;&gt;&gt; clock_info = chd.clock_info</span>
+<span class="sd">        &gt;&gt;&gt; clock_info.frequency()</span>
+<span class="sd">        80000000.0</span>
+
+<span class="sd">    Now call `calc_busparamstq` with target values, and a `BusParamsTq`</span>
+<span class="sd">    object will be returned:</span>
+
+<span class="sd">        &gt;&gt;&gt; params = calc_busparamstq(</span>
+<span class="sd">        ... target_bitrate=470_000,</span>
+<span class="sd">        ... target_sample_point=82,</span>
+<span class="sd">        ... target_sync_jump_width=15.3,</span>
+<span class="sd">        ... clk_freq=clock_info.frequency())</span>
+<span class="sd">        &gt;&gt;&gt; params</span>
+<span class="sd">        BusParamsTq(tq=170, prop=107, phase1=31, phase2=31, sjw=26, prescaler=1)</span>
+
+<span class="sd">    A target number of time quanta in the propagation segment can also be specified</span>
+<span class="sd">    by the user.</span>
+
+<span class="sd">    The returned BusParamsTq may not be valid on all devices. If</span>
+<span class="sd">    `Error.NOT_IMPLEMENTED &lt;canlib.canlib.Error.NOT_IMPLEMENTED&gt;` is encountered</span>
+<span class="sd">    when trying to set the bitrate with the returned BusParamsTq, provide a</span>
+<span class="sd">    prescaler argument higher than one and retry. This will lower the total number</span>
+<span class="sd">    of time quanta in the bit and thus make the BusParamsTq valid.</span>
+
+<span class="sd">    Example:</span>
+
+<span class="sd">        &gt;&gt;&gt; params = calc_busparamstq(</span>
+<span class="sd">        ... target_bitrate=470_000,</span>
+<span class="sd">        ... target_sample_point=82,</span>
+<span class="sd">        ... target_sync_jump_width=15.3,</span>
+<span class="sd">        ... clk_freq=clock_info.frequency(),</span>
+<span class="sd">        ... target_prop_tq=50,</span>
+<span class="sd">        ... prescaler=2)</span>
+<span class="sd">        &gt;&gt;&gt; params</span>
+<span class="sd">        BusParamsTq(tq=85, prop=25, phase1=44, phase2=15, sjw=13, prescaler=2)</span>
+
+<span class="sd">    Note:</span>
+<span class="sd">        - Minimum sjw returned is 1, maximum sjw is min(phase1, phase2).</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        target_bitrate (`float`): Wanted bitrate (bit/s)</span>
+<span class="sd">        target_sample_point (`float`): Wanted sample point in percentage (0-100)</span>
+<span class="sd">        target_sync_jump_width (`float`): Wanted sync jump width in percentage (0-100)</span>
+<span class="sd">        clk_freq (`float`): Device clock frequency (Hz)</span>
+<span class="sd">        target_prop_tq (`int`, Optional): Wanted propagation segment (time quanta)</span>
+<span class="sd">        prescaler (`int`, Optional): Wanted prescaler (at most 2 for CAN FD)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `BusParamsTq`: Calculated bus parameters</span>
+
+<span class="sd">    .. versionadded:: 1.16</span>
+
+<span class="sd">    .. versionchanged:: 1.17</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">tq</span> <span class="o">=</span> <span class="n">calc_bitrate</span><span class="p">(</span><span class="n">target_bitrate</span> <span class="o">*</span> <span class="n">prescaler</span><span class="p">,</span> <span class="n">clk_freq</span><span class="p">)</span>
+    <span class="n">_</span><span class="p">,</span> <span class="n">phase2</span> <span class="o">=</span> <span class="n">calc_sample_point</span><span class="p">(</span><span class="n">tq</span><span class="p">,</span> <span class="n">target_sample_point</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">target_prop_tq</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">phase1</span> <span class="o">=</span> <span class="n">phase2</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">scaled_target_prop</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">target_prop_tq</span> <span class="o">/</span> <span class="n">prescaler</span><span class="p">)</span>
+        <span class="n">phase1</span> <span class="o">=</span> <span class="n">calc_phase_seg1</span><span class="p">(</span><span class="n">tq</span><span class="p">,</span> <span class="n">scaled_target_prop</span><span class="p">,</span> <span class="n">phase2</span><span class="p">)</span>
+
+    <span class="n">prop</span> <span class="o">=</span> <span class="n">calc_prop_seg</span><span class="p">(</span><span class="n">tq</span><span class="p">,</span> <span class="n">phase1</span><span class="p">,</span> <span class="n">phase2</span><span class="p">)</span>
+    <span class="n">sjw</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">calc_sjw</span><span class="p">(</span><span class="n">tq</span><span class="p">,</span> <span class="n">target_sync_jump_width</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">sjw</span> <span class="o">&gt;</span> <span class="nb">min</span><span class="p">(</span><span class="n">phase1</span><span class="p">,</span> <span class="n">phase2</span><span class="p">):</span>
+        <span class="n">sjw</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">phase1</span><span class="p">,</span> <span class="n">phase2</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">BusParamsTq</span><span class="p">(</span>
+        <span class="n">tq</span><span class="o">=</span><span class="n">tq</span><span class="p">,</span>
+        <span class="n">prop</span><span class="o">=</span><span class="n">prop</span><span class="p">,</span>
+        <span class="n">phase1</span><span class="o">=</span><span class="n">phase1</span><span class="p">,</span>
+        <span class="n">phase2</span><span class="o">=</span><span class="n">phase2</span><span class="p">,</span>
+        <span class="n">sjw</span><span class="o">=</span><span class="n">sjw</span><span class="p">,</span>
+        <span class="n">prescaler</span><span class="o">=</span><span class="n">prescaler</span><span class="p">,</span>
+    <span class="p">)</span></div>
+
+
+<span class="k">def</span> <span class="nf">calc_phase_seg1</span><span class="p">(</span><span class="n">tq</span><span class="p">,</span> <span class="n">prop</span><span class="p">,</span> <span class="n">phase2</span><span class="p">,</span> <span class="n">sync_tq</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate phase segment 1&quot;&quot;&quot;</span>
+    <span class="n">phase1</span> <span class="o">=</span> <span class="n">tq</span> <span class="o">-</span> <span class="n">prop</span> <span class="o">-</span> <span class="n">phase2</span> <span class="o">-</span> <span class="n">sync_tq</span>
+    <span class="k">if</span> <span class="n">phase1</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">tq</span> <span class="o">-</span> <span class="n">prop</span> <span class="o">-</span> <span class="n">phase2</span> <span class="o">-</span> <span class="n">sync_tq</span>
+
+
+<span class="k">def</span> <span class="nf">calc_prop_seg</span><span class="p">(</span><span class="n">tq</span><span class="p">,</span> <span class="n">phase1</span><span class="p">,</span> <span class="n">phase2</span><span class="p">,</span> <span class="n">sync_tq</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate propagation segment&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">tq</span> <span class="o">-</span> <span class="n">phase2</span> <span class="o">-</span> <span class="n">phase1</span> <span class="o">-</span> <span class="n">sync_tq</span>
+
+
+<span class="k">def</span> <span class="nf">calc_sample_point</span><span class="p">(</span><span class="n">tq</span><span class="p">,</span> <span class="n">target_sample_point</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate actual sample_point and phase segment 2</span>
+
+<span class="sd">    tq (`int`): Total number of quanta in one bit</span>
+<span class="sd">    target_sample_point (`float`): Wanted sample point in percentage (0-100)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        named tuple(sample_point, phase2)</span>
+
+<span class="sd">    phase2: Number of time quanta in phase segment 2</span>
+<span class="sd">    sample_point: Sample point in percentage</span>
+
+<span class="sd">    .. versionadded:: 1.16</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">phase2</span> <span class="o">=</span> <span class="n">tq</span> <span class="o">-</span> <span class="p">(</span><span class="nb">round</span><span class="p">((</span><span class="n">target_sample_point</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="n">tq</span><span class="p">))</span>
+    <span class="n">sample_point</span> <span class="o">=</span> <span class="p">((</span><span class="n">tq</span> <span class="o">-</span> <span class="n">phase2</span><span class="p">)</span> <span class="o">/</span> <span class="n">tq</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span>
+
+    <span class="n">SamplePoint</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;SamplePoint&#39;</span><span class="p">,</span> <span class="s1">&#39;sample_point phase2&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">SamplePoint</span><span class="p">(</span><span class="n">sample_point</span><span class="o">=</span><span class="n">sample_point</span><span class="p">,</span> <span class="n">phase2</span><span class="o">=</span><span class="n">phase2</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="calc_sjw"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.calc_sjw">[docs]</a><span class="k">def</span> <span class="nf">calc_sjw</span><span class="p">(</span><span class="n">tq</span><span class="p">,</span> <span class="n">target_sync_jump_width</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate sync jump width</span>
+
+<span class="sd">    tq: Number of time quanta in one bit</span>
+<span class="sd">    target_sync_jump_width: Wanted sync jump width, 0-100 (%)</span>
+
+<span class="sd">    Note: Minimum sjw_tq returned is 1.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        The returned named tuple is a ``(sjw_tq, sync_jump_width)`` consisting of:</span>
+
+<span class="sd">        #. ``sjw_tq`` (`int`): Size of sync jump width in number of time quanta,</span>
+<span class="sd">        #. ``sync_jump_width`` (`number`): Size of sync jump width in percentage (%))</span>
+
+<span class="sd">    .. versionadded:: 1.16</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">sjw_tq</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">target_sync_jump_width</span> <span class="o">/</span> <span class="mi">100</span><span class="p">)</span> <span class="o">*</span> <span class="n">tq</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">sjw_tq</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">sjw_tq</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">sync_jump_width</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">sjw_tq</span> <span class="o">/</span> <span class="n">tq</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="n">Sjw</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Sjw&#39;</span><span class="p">,</span> <span class="s1">&#39;sjw_tq sync_jump_width&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Sjw</span><span class="p">(</span><span class="n">sjw_tq</span><span class="o">=</span><span class="n">sjw_tq</span><span class="p">,</span> <span class="n">sync_jump_width</span><span class="o">=</span><span class="n">sync_jump_width</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="to_BusParamsTq"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.to_BusParamsTq">[docs]</a><span class="k">def</span> <span class="nf">to_BusParamsTq</span><span class="p">(</span><span class="n">clk_freq</span><span class="p">,</span> <span class="n">bus_param</span><span class="p">,</span> <span class="n">prescaler</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert `BitrateSetting` or `tuple` to `BusParamsTq`.</span>
+
+<span class="sd">    The device clock frequency, `clk_freq`, can be obtained via</span>
+<span class="sd">    `ClockInfo.frequency()`:</span>
+
+<span class="sd">        &gt;&gt;&gt; chd = canlib.ChannelData(channel_number=0)</span>
+<span class="sd">        &gt;&gt;&gt; clock_info = chd.clock_info</span>
+<span class="sd">        &gt;&gt;&gt; clock_info.frequency()</span>
+<span class="sd">        80000000.0</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        clk_freq (`float`): Clock frequency of device.</span>
+
+<span class="sd">        bus_param (`BitrateSetting` or `tuple`): `BitrateSetting` object or</span>
+<span class="sd">        (freq, tseg1, tseg2, sjw) `tuple` to convert.</span>
+
+<span class="sd">        prescaler (`int`): The prescaler to use in the created `BusParamsTq`</span>
+<span class="sd">        object.</span>
+
+<span class="sd">        data (`bool`): Set to True if the resulting `BusParamsTq` should be</span>
+<span class="sd">        used for CAN FD data bitrate parameters.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `BusParamsTq` object with equivalent settings as the input argument.</span>
+
+<span class="sd">    .. versionadded:: 1.17</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">bus_param</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bus_param</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+        <span class="n">bs</span> <span class="o">=</span> <span class="n">BitrateSetting</span><span class="p">(</span><span class="o">*</span><span class="n">bus_param</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bus_param</span><span class="p">,</span> <span class="n">BitrateSetting</span><span class="p">):</span>
+        <span class="n">bs</span> <span class="o">=</span> <span class="n">bus_param</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">err_msg</span> <span class="o">=</span> <span class="s2">&quot;bus_param must be a BitrateSetting or a (freq, tseg1, tseg2, sjw) tuple.&quot;</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="n">err_msg</span><span class="p">)</span>
+
+    <span class="n">target_sample_point</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">bs</span><span class="o">.</span><span class="n">tseg1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">bs</span><span class="o">.</span><span class="n">tseg1</span> <span class="o">+</span> <span class="n">bs</span><span class="o">.</span><span class="n">tseg2</span><span class="p">)</span>
+    <span class="n">target_sjw</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">*</span> <span class="n">bs</span><span class="o">.</span><span class="n">sjw</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">bs</span><span class="o">.</span><span class="n">tseg1</span> <span class="o">+</span> <span class="n">bs</span><span class="o">.</span><span class="n">tseg2</span><span class="p">)</span>
+    <span class="n">bptq</span> <span class="o">=</span> <span class="n">calc_busparamstq</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">bs</span><span class="o">.</span><span class="n">freq</span><span class="p">),</span> <span class="n">target_sample_point</span><span class="p">,</span> <span class="n">target_sjw</span><span class="p">,</span> <span class="n">clk_freq</span><span class="p">)</span>
+
+    <span class="c1"># calc_busparamstq uses prescaler 1, so needs conversion</span>
+    <span class="k">if</span> <span class="n">prescaler</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">bptq</span><span class="o">.</span><span class="n">prescaler</span> <span class="o">=</span> <span class="n">prescaler</span>
+        <span class="n">bptq</span><span class="o">.</span><span class="n">tq</span> <span class="o">=</span> <span class="n">bptq</span><span class="o">.</span><span class="n">tq</span> <span class="o">//</span> <span class="n">prescaler</span>
+        <span class="n">bptq</span><span class="o">.</span><span class="n">phase1</span> <span class="o">=</span> <span class="n">bptq</span><span class="o">.</span><span class="n">phase1</span> <span class="o">//</span> <span class="n">prescaler</span>
+        <span class="n">bptq</span><span class="o">.</span><span class="n">phase2</span> <span class="o">=</span> <span class="n">bptq</span><span class="o">.</span><span class="n">phase2</span> <span class="o">//</span> <span class="n">prescaler</span>
+        <span class="n">bptq</span><span class="o">.</span><span class="n">sjw</span> <span class="o">=</span> <span class="n">bptq</span><span class="o">.</span><span class="n">sjw</span> <span class="o">//</span> <span class="n">prescaler</span>
+        <span class="n">bptq</span><span class="o">.</span><span class="n">prop</span> <span class="o">=</span> <span class="n">bptq</span><span class="o">.</span><span class="n">prop</span> <span class="o">//</span> <span class="n">prescaler</span>
+        <span class="k">assert</span> <span class="n">bptq</span><span class="o">.</span><span class="n">tq</span> <span class="o">==</span> <span class="n">bptq</span><span class="o">.</span><span class="n">prop</span> <span class="o">+</span> <span class="n">bptq</span><span class="o">.</span><span class="n">phase1</span> <span class="o">+</span> <span class="n">bptq</span><span class="o">.</span><span class="n">phase2</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># if bptq.sjw &lt; 1:</span>
+    <span class="c1">#     bptq.sjw = 1</span>
+
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">bptq</span><span class="o">.</span><span class="n">phase1</span> <span class="o">+=</span> <span class="n">bptq</span><span class="o">.</span><span class="n">prop</span>
+        <span class="n">bptq</span><span class="o">.</span><span class="n">prop</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">return</span> <span class="n">bptq</span></div>
+
+
+<div class="viewcode-block" id="to_BitrateSetting"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.to_BitrateSetting">[docs]</a><span class="k">def</span> <span class="nf">to_BitrateSetting</span><span class="p">(</span><span class="n">clk_freq</span><span class="p">,</span> <span class="n">bus_param</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Convert `BusParamsTq` to `BitrateSetting`.</span>
+
+<span class="sd">    The device clock frequency, `clk_freq`, can be obtained via</span>
+<span class="sd">    `ClockInfo.frequency()`:</span>
+
+<span class="sd">        &gt;&gt;&gt; chd = canlib.ChannelData(channel_number=0)</span>
+<span class="sd">        &gt;&gt;&gt; clock_info = chd.clock_info</span>
+<span class="sd">        &gt;&gt;&gt; clock_info.frequency()</span>
+<span class="sd">        80000000.0</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        clk_freq (`float`): Clock frequency of device.</span>
+
+<span class="sd">        bus_param (`BusParamsTq`): `BusParamsTq` object to convert.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `BitrateSetting` object with equivalent settings as the input argument.</span>
+
+<span class="sd">    .. versionadded:: 1.17</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">bus_param</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">bus_param</span><span class="p">,</span> <span class="n">BusParamsTq</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;bus_param must be a BusParamsTq object.&quot;</span><span class="p">)</span>
+
+    <span class="n">bitrate</span> <span class="o">=</span> <span class="n">bus_param</span><span class="o">.</span><span class="n">bitrate</span><span class="p">(</span><span class="n">clk_freq</span><span class="p">)</span>
+    <span class="n">tseg1</span> <span class="o">=</span> <span class="n">bus_param</span><span class="o">.</span><span class="n">prop</span> <span class="o">+</span> <span class="n">bus_param</span><span class="o">.</span><span class="n">phase1</span>
+    <span class="k">return</span> <span class="n">BitrateSetting</span><span class="p">(</span><span class="n">bitrate</span><span class="p">,</span> <span class="n">tseg1</span><span class="p">,</span> <span class="n">bus_param</span><span class="o">.</span><span class="n">phase2</span><span class="p">,</span> <span class="n">bus_param</span><span class="o">.</span><span class="n">sjw</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ClockInfo"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.ClockInfo">[docs]</a><span class="k">class</span> <span class="nc">ClockInfo</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Information about clock a oscillator</span>
+
+<span class="sd">    The clock frequency is set in the form:</span>
+
+<span class="sd">        frequency = numerator / denominator * 10 ** power_of_ten +/- accuracy</span>
+
+<span class="sd">    .. versionadded:: 1.16</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_list</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a `ClockInfo` object from a versioned list of values.</span>
+
+<span class="sd">        The first number in the list is the version number for the list and</span>
+<span class="sd">        must be 1. See the `kvClockInfo` structure in CANlib for more</span>
+<span class="sd">        information.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            args (`list` (version (`int`), ...)): where version must be 1.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            `ClockInfo`</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">version</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">version</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">ClockInfo</span><span class="p">(</span>
+                <span class="n">numerator</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="n">denominator</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                <span class="n">power_of_ten</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+                <span class="n">accuracy</span><span class="o">=</span><span class="n">args</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Clock info version &#39;</span><span class="si">{</span><span class="n">version</span><span class="si">}</span><span class="s2">&#39; is unknown, perhaps update canlib?&quot;</span>
+            <span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">numerator</span><span class="p">,</span> <span class="n">denominator</span><span class="p">,</span> <span class="n">power_of_ten</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">numerator</span> <span class="o">=</span> <span class="n">numerator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span> <span class="o">=</span> <span class="n">denominator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">power_of_ten</span> <span class="o">=</span> <span class="n">power_of_ten</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ClockInfo</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">accuracy</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">accuracy</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="p">()</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">frequency</span><span class="p">():</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">txt</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;ClockInfo(numerator=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">numerator</span><span class="si">}</span><span class="s2">, denominator=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">denominator</span><span class="si">}</span><span class="s2">, &quot;</span>
+            <span class="sa">f</span><span class="s2">&quot;power_of_ten=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">power_of_ten</span><span class="si">}</span><span class="s2">, accuracy=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">accuracy</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">txt</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">frequency</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">frequency</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">power_of_ten</span> <span class="ow">in</span> <span class="n">SI_PREFIXES</span><span class="p">:</span>
+            <span class="n">frequency</span> <span class="o">=</span> <span class="n">frequency</span> <span class="o">/</span> <span class="mi">10</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">power_of_ten</span>
+            <span class="n">si_prefix</span> <span class="o">=</span> <span class="n">SI_PREFIXES</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">power_of_ten</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">si_prefix</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">txt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="fm">__repr__</span><span class="p">()</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;, (frequency: </span><span class="si">{</span><span class="n">frequency</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">si_prefix</span><span class="si">}</span><span class="s2">Hz)&quot;</span>
+        <span class="k">return</span> <span class="n">txt</span>
+
+<div class="viewcode-block" id="ClockInfo.frequency"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.ClockInfo.frequency">[docs]</a>    <span class="k">def</span> <span class="nf">frequency</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Returns an approximation of the clock frequency as a float.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">numerator</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">denominator</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="bp">self</span><span class="o">.</span><span class="n">power_of_ten</span></div></div>
+
+
+<div class="viewcode-block" id="BusParamTqLimits"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.BusParamTqLimits">[docs]</a><span class="k">class</span> <span class="nc">BusParamTqLimits</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Hold min and max values for both arbitration and data phase.</span>
+
+<span class="sd">    The ``tq`` field is ignored during validation since</span>
+<span class="sd">    `.ChannelData.bus_param_limits` always returns zero for this field.</span>
+
+<span class="sd">    If ``prop`` is zero for both ``min`` and ``max`` values, the ``phase1``</span>
+<span class="sd">    limit applies to (``phase1`` + ``prop``). This is used when a device</span>
+<span class="sd">    does not distinguish between phase segment one and the propagation</span>
+<span class="sd">    segment.</span>
+
+<span class="sd">    Example usage:</span>
+
+<span class="sd">        &gt;&gt;&gt; ch = canlib.openChannel(channel=0)</span>
+<span class="sd">        &gt;&gt;&gt; limits = canlib.ChannelData(channel_number=0).bus_param_limits</span>
+<span class="sd">        &gt;&gt;&gt; limits.arbitration_max._asdict()</span>
+<span class="sd">        {&#39;tq&#39;: 0, &#39;phase1&#39;: 32, &#39;phase2&#39;: 32, &#39;sjw&#39;: 32, &#39;prescaler&#39;: 1024, &#39;prop&#39;: 64}</span>
+<span class="sd">        &gt;&gt;&gt; bp_tq = canlib.busparams.BusParamsTq(tq=121, phase1=100, phase2=10, sjw=10,</span>
+<span class="sd">        ... prescaler=10, prop=10)</span>
+<span class="sd">        &gt;&gt;&gt; limits.validate(bp_tq)</span>
+<span class="sd">        ValueError: The following does not match:</span>
+<span class="sd">          Arbitration phase1: 1 &lt;= 100 &lt;= 32</span>
+
+<span class="sd">    NOTE: This class is preliminary and may change!</span>
+
+<span class="sd">    .. versionadded:: 1.20</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">arbitration_min</span><span class="p">,</span> <span class="n">arbitration_max</span><span class="p">,</span> <span class="n">data_min</span><span class="p">,</span> <span class="n">data_max</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arbitration_min</span> <span class="o">=</span> <span class="n">arbitration_min</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">arbitration_max</span> <span class="o">=</span> <span class="n">arbitration_max</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_min</span> <span class="o">=</span> <span class="n">data_min</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data_max</span> <span class="o">=</span> <span class="n">data_max</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">txt</span> <span class="o">=</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;BusParamTqLimits(arbitration_min=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">arbitration_min</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span><span class="si">}</span><span class="s2">,&quot;</span>
+               <span class="sa">f</span><span class="s2">&quot; arbitration_max=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">arbitration_max</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span><span class="si">}</span><span class="s2">,&quot;</span>
+               <span class="sa">f</span><span class="s2">&quot; data_min=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data_min</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span><span class="si">}</span><span class="s2">, data_max=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">data_max</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">txt</span>
+
+    <span class="k">def</span> <span class="nf">_validation_error_text</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">minimum</span><span class="p">,</span> <span class="n">maximum</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validate that minimum &lt;= value &lt;= maximum</span>
+
+<span class="sd">        Returns empty string if validation suceeds, otherwise returns a string</span>
+<span class="sd">        with the comparison done.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">minimum</span> <span class="o">&lt;=</span> <span class="n">value</span> <span class="o">&lt;=</span> <span class="n">maximum</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">minimum</span><span class="si">}</span><span class="s2"> &lt;= </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2"> &lt;= </span><span class="si">{</span><span class="n">maximum</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">message</span>
+
+<div class="viewcode-block" id="BusParamTqLimits.validate"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.BusParamTqLimits.validate">[docs]</a>    <span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bus_param</span><span class="p">,</span> <span class="n">data_param</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Validates busparameters for arbitration and data</span>
+
+<span class="sd">        Raises a `ValueError` if busparameters for arbritation and data is not</span>
+<span class="sd">        within current limits. The failed validation is provided as an explanation::</span>
+
+<span class="sd">            ValueError: The following does not match:</span>
+<span class="sd">              Arbitration phase1: 11 &lt;= 1 &lt;= 21</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">error_message</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;phase1&quot;</span><span class="p">,</span> <span class="s2">&quot;phase2&quot;</span><span class="p">,</span> <span class="s2">&quot;sjw&quot;</span><span class="p">,</span> <span class="s2">&quot;prescaler&quot;</span><span class="p">,</span> <span class="s2">&quot;prop&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">arbitration_min</span><span class="o">.</span><span class="n">prop</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">arbitration_max</span><span class="o">.</span><span class="n">prop</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">is_prop_limit_zero</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">is_prop_limit_zero</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">bus_param</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">bus_param</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">is_prop_limit_zero</span> <span class="ow">and</span> <span class="n">attribute</span> <span class="o">==</span> <span class="s2">&quot;phase1&quot;</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">+=</span> <span class="n">bus_param</span><span class="o">.</span><span class="n">prop</span>
+                <span class="k">if</span> <span class="n">is_prop_limit_zero</span> <span class="ow">and</span> <span class="n">attribute</span> <span class="o">==</span> <span class="s2">&quot;prop&quot;</span><span class="p">:</span>
+                    <span class="k">continue</span>
+
+                <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validation_error_text</span><span class="p">(</span>
+                    <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
+                    <span class="n">minimum</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arbitration_min</span><span class="p">,</span> <span class="n">attribute</span><span class="p">),</span>
+                    <span class="n">maximum</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">arbitration_max</span><span class="p">,</span> <span class="n">attribute</span><span class="p">),</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">message</span><span class="p">:</span>
+                    <span class="n">error_message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Arbitration </span><span class="si">{</span><span class="n">attribute</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_min</span><span class="o">.</span><span class="n">prop</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">data_max</span><span class="o">.</span><span class="n">prop</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">is_prop_limit_zero</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">is_prop_limit_zero</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="n">data_param</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">params</span><span class="p">:</span>
+                <span class="n">value</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">data_param</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">is_prop_limit_zero</span> <span class="ow">and</span> <span class="n">attribute</span> <span class="o">==</span> <span class="s2">&quot;phase1&quot;</span><span class="p">:</span>
+                    <span class="n">value</span> <span class="o">+=</span> <span class="n">data_param</span><span class="o">.</span><span class="n">prop</span>
+                <span class="k">if</span> <span class="n">is_prop_limit_zero</span> <span class="ow">and</span> <span class="n">attribute</span> <span class="o">==</span> <span class="s2">&quot;prop&quot;</span><span class="p">:</span>
+                    <span class="k">continue</span>
+                <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validation_error_text</span><span class="p">(</span>
+                    <span class="n">value</span><span class="o">=</span><span class="n">value</span><span class="p">,</span>
+                    <span class="n">minimum</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_min</span><span class="p">,</span> <span class="n">attribute</span><span class="p">),</span>
+                    <span class="n">maximum</span><span class="o">=</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data_max</span><span class="p">,</span> <span class="n">attribute</span><span class="p">),</span>
+                <span class="p">)</span>
+                <span class="k">if</span> <span class="n">message</span><span class="p">:</span>
+                    <span class="n">error_message</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">  Data </span><span class="si">{</span><span class="n">attribute</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">message</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">if</span> <span class="n">error_message</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The following does not match:&quot;</span> <span class="o">+</span> <span class="n">error_message</span><span class="p">)</span></div></div>
+
+
+<div class="viewcode-block" id="BusParamsTq"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.BusParamsTq">[docs]</a><span class="k">class</span> <span class="nc">BusParamsTq</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Holds parameters for busparameters in number of time quanta.</span>
+
+<span class="sd">    If you don&#39;t want to specify the busparameters in time quanta directly,</span>
+<span class="sd">    you may use `calc_busparamstq` which returns an object of this class.</span>
+
+<span class="sd">        &gt;&gt;&gt; params = calc_busparamstq(</span>
+<span class="sd">        ... target_bitrate=470_000,</span>
+<span class="sd">        ... target_sample_point=82,</span>
+<span class="sd">        ... target_sync_jump_width=33.5,</span>
+<span class="sd">        ... clk_freq=clk_freq)</span>
+<span class="sd">        &gt;&gt;&gt; params</span>
+<span class="sd">        BusParamsTq(tq=170, prop=107, phase1=31, phase2=31, sjw=57, prescaler=1)</span>
+
+<span class="sd">    You may now query for the actual Sample Point and Sync Jump Width expressed</span>
+<span class="sd">    as percentages of total bit time quanta:</span>
+
+<span class="sd">        &gt;&gt;&gt; params.sample_point()</span>
+<span class="sd">        81.76470588235294</span>
+
+<span class="sd">        &gt;&gt;&gt; params.sync_jump_width()</span>
+<span class="sd">        33.52941176470588</span>
+
+
+<span class="sd">    If you supply the clock frequency, you may also calculate the corresponding bitrate:</span>
+
+<span class="sd">        &gt;&gt;&gt; params.bitrate(clk_freq=80_000_000)</span>
+<span class="sd">        470588.23529411765</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        tq (`int`): Number of time quanta in one bit.</span>
+<span class="sd">        phase1 (`int`): Number of time quanta in Phase Segment 1.</span>
+<span class="sd">        phase2 (`int`): Number of time quanta in Phase Segment 2.</span>
+<span class="sd">        sjw (`int`): Number of time quanta in Sync Jump Width.</span>
+<span class="sd">        prescaler (`int`): Prescaler value (1-2 to enable auto in CAN FD)</span>
+<span class="sd">        prop (`int`, optional): Number of time quanta in Propagation Segment.</span>
+
+
+<span class="sd">    .. versionadded:: 1.16</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">tq</span><span class="p">,</span> <span class="n">phase1</span><span class="p">,</span> <span class="n">phase2</span><span class="p">,</span> <span class="n">sjw</span><span class="p">,</span> <span class="n">prescaler</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">prop</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sync</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">prop</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prop</span> <span class="o">=</span> <span class="n">tq</span> <span class="o">-</span> <span class="n">phase1</span> <span class="o">-</span> <span class="n">phase2</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">sync</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">prop</span> <span class="o">=</span> <span class="n">prop</span>
+        <span class="k">if</span> <span class="n">tq</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sync</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">prop</span> <span class="o">+</span> <span class="n">phase1</span> <span class="o">+</span> <span class="n">phase2</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Total number of time quanta does not match: </span><span class="si">{</span><span class="n">tq</span><span class="si">}</span><span class="s2">(tq) !=&quot;</span>
+                <span class="sa">f</span><span class="s2">&quot; </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sync</span><span class="si">}</span><span class="s2">(sync) + </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prop</span><span class="si">}</span><span class="s2">(prop) + </span><span class="si">{</span><span class="n">phase1</span><span class="si">}</span><span class="s2">(phase1) + </span><span class="si">{</span><span class="n">phase2</span><span class="si">}</span><span class="s2">(phase2)&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tq</span> <span class="o">=</span> <span class="n">tq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phase1</span> <span class="o">=</span> <span class="n">phase1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">phase2</span> <span class="o">=</span> <span class="n">phase2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sjw</span> <span class="o">=</span> <span class="n">sjw</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prescaler</span> <span class="o">=</span> <span class="n">prescaler</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">BusParamsTq</span><span class="p">):</span>
+            <span class="k">return</span> <span class="bp">NotImplemented</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tq</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">tq</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase1</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">phase1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase2</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">phase2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sjw</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">sjw</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prescaler</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">prescaler</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prop</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">prop</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">txt</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;BusParamsTq(tq=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tq</span><span class="si">}</span><span class="s2">, prop=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prop</span><span class="si">}</span><span class="s2">, phase1=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">phase1</span><span class="si">}</span><span class="s2">,&quot;</span>
+            <span class="sa">f</span><span class="s2">&quot; phase2=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">phase2</span><span class="si">}</span><span class="s2">, sjw=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sjw</span><span class="si">}</span><span class="s2">, prescaler=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">prescaler</span><span class="si">}</span><span class="s2">)&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">txt</span>
+
+<div class="viewcode-block" id="BusParamsTq.bitrate"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.BusParamsTq.bitrate">[docs]</a>    <span class="k">def</span> <span class="nf">bitrate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clk_freq</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return bitrate assuming the given clock frequency</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            clk_freq (`int`): Clock frequency (in Hz)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">clk_freq</span> <span class="o">/</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tq</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">prescaler</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BusParamsTq.sample_point"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.BusParamsTq.sample_point">[docs]</a>    <span class="k">def</span> <span class="nf">sample_point</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return sample point in percentage.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">tq</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase2</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">tq</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span></div>
+
+<div class="viewcode-block" id="BusParamsTq.sample_point_ns"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.BusParamsTq.sample_point_ns">[docs]</a>    <span class="k">def</span> <span class="nf">sample_point_ns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clk_freq</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return sample point in ns.</span>
+
+<span class="sd">        .. versionadded:: 1.17</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">prescaler</span> <span class="o">*</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tq</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">phase2</span><span class="p">))</span> <span class="o">/</span> <span class="n">clk_freq</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1_000_000_000</span></div>
+
+<div class="viewcode-block" id="BusParamsTq.sync_jump_width"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.BusParamsTq.sync_jump_width">[docs]</a>    <span class="k">def</span> <span class="nf">sync_jump_width</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return sync jump width (SJW) in percentage.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sjw</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">tq</span> <span class="o">*</span> <span class="mi">100</span></div></div>
+
+
+<div class="viewcode-block" id="BitrateSetting"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.BitrateSetting">[docs]</a><span class="k">class</span> <span class="nc">BitrateSetting</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Class that holds bitrate setting.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        freq: Bitrate in bit/s.</span>
+<span class="sd">        tseg1: Number of quanta from (but not including) the Sync Segment to \</span>
+<span class="sd">            the sampling point.</span>
+<span class="sd">        tseg2: Number of quanta from the sampling point to the end of the bit.</span>
+<span class="sd">        sjw: The Synchronization Jump Width.</span>
+<span class="sd">        nosamp: The number of sampling points, only 1 is supported.</span>
+<span class="sd">        syncMode: Unsupported and ignored.</span>
+
+<span class="sd">    .. versionadded:: 1.17</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">freq</span><span class="p">,</span> <span class="n">tseg1</span><span class="p">,</span> <span class="n">tseg2</span><span class="p">,</span> <span class="n">sjw</span><span class="p">,</span> <span class="n">nosamp</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">syncMode</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">=</span> <span class="n">freq</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tseg1</span> <span class="o">=</span> <span class="n">tseg1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tseg2</span> <span class="o">=</span> <span class="n">tseg2</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sjw</span> <span class="o">=</span> <span class="n">sjw</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nosamp</span> <span class="o">=</span> <span class="n">nosamp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">syncMode</span> <span class="o">=</span> <span class="n">syncMode</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">freq</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">freq</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tseg1</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">tseg1</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">tseg2</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">tseg2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sjw</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">sjw</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">nosamp</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">nosamp</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">syncMode</span> <span class="o">!=</span> <span class="n">other</span><span class="o">.</span><span class="n">syncMode</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+    <span class="c1"># required in Python 2</span>
+    <span class="k">def</span> <span class="fm">__ne__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+        <span class="k">return</span> <span class="ow">not</span> <span class="bp">self</span> <span class="o">==</span> <span class="n">other</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">txt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;freq    : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">freq</span><span class="si">:</span><span class="s2">8</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">txt</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;tseg1   : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tseg1</span><span class="si">:</span><span class="s2">8</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">txt</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;tseg2   : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">tseg2</span><span class="si">:</span><span class="s2">8</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">txt</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;sjw     : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">sjw</span><span class="si">:</span><span class="s2">8</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">txt</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;nosamp  : </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nosamp</span><span class="si">:</span><span class="s2">8</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">txt</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;syncMode: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">syncMode</span><span class="si">:</span><span class="s2">8</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">txt</span>
+
+<div class="viewcode-block" id="BitrateSetting.from_predefined"><a class="viewcode-back" href="../../../reference/canlib/busparams.html#canlib.canlib.busparams.BitrateSetting.from_predefined">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_predefined</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">bitrate</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create a BitrateSetting object using one of the `~canlib.canlib.Bitrate` or</span>
+<span class="sd">        `~canlib.canlib.BitrateFD` enumerations.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="n">bitrate</span><span class="p">,</span> <span class="n">tseg1</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tseg2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sjw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">nosamp</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">syncMode</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></div></div>
+
+
+<span class="k">def</span> <span class="nf">calc_tolerance</span><span class="p">(</span><span class="n">nominal</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Calculate tolerance with the given `BusParamsTq`.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nominal (`BusParamsTq`): Nominal bus parameters</span>
+<span class="sd">        data (`BusParamsTq`, optional): Bus parameters for data phase (in CAN FD)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `namedtuple`: (df1, df2, df3, df4, df5)</span>
+
+<span class="sd">    .. versionadded:: 1.16</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="n">nominal</span><span class="o">.</span><span class="n">sjw</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">nominal</span><span class="o">.</span><span class="n">tq</span><span class="p">)</span>
+    <span class="n">df1</span> <span class="o">=</span> <span class="nb">round</span><span class="p">((</span><span class="n">df1</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span>
+
+    <span class="n">min_Tphase_seg</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">nominal</span><span class="o">.</span><span class="n">phase1</span><span class="p">,</span> <span class="n">nominal</span><span class="o">.</span><span class="n">phase2</span><span class="p">)</span>
+    <span class="n">df2</span> <span class="o">=</span> <span class="n">min_Tphase_seg</span> <span class="o">/</span> <span class="p">((</span><span class="mi">13</span> <span class="o">*</span> <span class="n">nominal</span><span class="o">.</span><span class="n">tq</span><span class="p">)</span> <span class="o">-</span> <span class="n">nominal</span><span class="o">.</span><span class="n">phase2</span><span class="p">)</span>
+    <span class="n">df2</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">df2</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">df3</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">df4</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">df5</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">df3</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">sjw</span> <span class="o">/</span> <span class="p">(</span><span class="mi">10</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">tq</span><span class="p">)</span>
+        <span class="n">df3</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">df3</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span>
+
+        <span class="n">d_n_ratio</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">prescaler</span> <span class="o">/</span> <span class="n">nominal</span><span class="o">.</span><span class="n">prescaler</span>
+        <span class="n">df4</span> <span class="o">=</span> <span class="n">min_Tphase_seg</span> <span class="o">/</span> <span class="p">(</span><span class="mi">6</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">tq</span> <span class="o">-</span> <span class="n">data</span><span class="o">.</span><span class="n">phase2</span> <span class="o">*</span> <span class="n">d_n_ratio</span> <span class="o">+</span> <span class="mi">7</span> <span class="o">*</span> <span class="n">nominal</span><span class="o">.</span><span class="n">tq</span><span class="p">)</span>
+        <span class="n">df4</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">df4</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span>
+
+        <span class="n">n_d_ratio</span> <span class="o">=</span> <span class="n">nominal</span><span class="o">.</span><span class="n">prescaler</span> <span class="o">/</span> <span class="n">data</span><span class="o">.</span><span class="n">prescaler</span>
+        <span class="n">df5</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">sjw</span> <span class="o">-</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_d_ratio</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span>
+            <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">nominal</span><span class="o">.</span><span class="n">tq</span> <span class="o">-</span> <span class="n">nominal</span><span class="o">.</span><span class="n">phase2</span><span class="p">)</span> <span class="o">*</span> <span class="n">n_d_ratio</span> <span class="o">+</span> <span class="n">data</span><span class="o">.</span><span class="n">phase2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">data</span><span class="o">.</span><span class="n">tq</span>
+        <span class="p">)</span>
+        <span class="n">df5</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">df5</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">)</span>
+
+    <span class="n">Tolerance</span> <span class="o">=</span> <span class="n">collections</span><span class="o">.</span><span class="n">namedtuple</span><span class="p">(</span><span class="s1">&#39;Tolerance&#39;</span><span class="p">,</span> <span class="s1">&#39;df1 df2 df3 df4 df5&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">Tolerance</span><span class="p">(</span><span class="n">df1</span><span class="o">=</span><span class="n">df1</span><span class="p">,</span> <span class="n">df2</span><span class="o">=</span><span class="n">df2</span><span class="p">,</span> <span class="n">df3</span><span class="o">=</span><span class="n">df3</span><span class="p">,</span> <span class="n">df4</span><span class="o">=</span><span class="n">df4</span><span class="p">,</span> <span class="n">df5</span><span class="o">=</span><span class="n">df5</span><span class="p">)</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

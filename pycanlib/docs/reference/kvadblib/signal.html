@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signals &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Miscellaneous" href="wrapper.html" />
+    <link rel="prev" title="Node" href="node.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canlib/index.html">canlib</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">kvadblib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attribute.html">Attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attributedef.html">Attribute Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dbc.html">dbc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enums.html">Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="framebox.html">Frame Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html">Message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="node.html">Node</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Signals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enumsignal">EnumSignal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#signal">Signal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valuelimits">ValueLimits</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valuescaling">ValueScaling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valuesize">ValueSize</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">kvadblib</a> &raquo;</li>
+      <li>Signals</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/kvadblib/signal.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="signals">
+<h1>Signals<a class="headerlink" href="#signals" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="enumsignal">
+<h2>EnumSignal<a class="headerlink" href="#enumsignal" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvadblib.EnumSignal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">EnumSignal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">byte_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enums</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#EnumSignal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.EnumSignal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Database signal of type enum, holds meta data about a signal.</p>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.17: </span>default settings byte_order=SignalByteOrder.INTEL and mode=SignalMultiplexMode.SIGNAL chaged to None.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.EnumSignal.add_enum_definition">
+<span class="sig-name descname"><span class="pre">add_enum_definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">enums</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#EnumSignal.add_enum_definition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.EnumSignal.add_enum_definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add enums dictionary to definition.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.EnumSignal.enums">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">enums</span></span><a class="headerlink" href="#canlib.kvadblib.EnumSignal.enums" title="Permalink to this definition">¶</a></dt>
+<dd><p>Signal enum definition dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">dict</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="signal">
+<h2>Signal<a class="headerlink" href="#signal" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">Signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">byte_order</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">representation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limits</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">unit</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Database signal, holds meta data about a signal</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.add_node">
+<span class="sig-name descname"><span class="pre">add_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.add_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.add_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add receiving node to signal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.attributes">
+<span class="sig-name descname"><span class="pre">attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a generator over all signal attributes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.bind">
+<span class="sig-name descname"><span class="pre">bind</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.bind"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bind this signal to a frame</p>
+<p>Creates a new BoundSignal object representing this signal bound to
+the given Frame object, or a new Frame object if <code class="xref py py-obj docutils literal notranslate"><span class="pre">frame</span></code> is <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code>..</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.byte_order">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">byte_order</span></span><a class="headerlink" href="#canlib.kvadblib.Signal.byte_order" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the signal byte order encoding.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="enums.html#canlib.kvadblib.SignalByteOrder" title="canlib.kvadblib.SignalByteOrder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SignalByteOrder</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.comment">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">comment</span></span><a class="headerlink" href="#canlib.kvadblib.Signal.comment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the signal comment.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.data_from">
+<span class="sig-name descname"><span class="pre">data_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">can_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">phys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">raw</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.data_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.data_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert a raw or physical value into CAN data bytes.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.delete_attribute">
+<span class="sig-name descname"><span class="pre">delete_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.delete_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.delete_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete attribute from signal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.get_attribute_value">
+<span class="sig-name descname"><span class="pre">get_attribute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.get_attribute_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.get_attribute_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return attribute value</p>
+<p>If the attribute is not set on the signal, we return the attribute
+definition default value.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.limits">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">limits</span></span><a class="headerlink" href="#canlib.kvadblib.Signal.limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get message min and max values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#canlib.kvadblib.ValueLimits" title="canlib.kvadblib.ValueLimits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueLimits</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.mode">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">mode</span></span><a class="headerlink" href="#canlib.kvadblib.Signal.mode" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#canlib.kvadblib.Signal.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the signal name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.nodes">
+<span class="sig-name descname"><span class="pre">nodes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a generator over all receiving nodes of the signal.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.phys_from">
+<span class="sig-name descname"><span class="pre">phys_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">can_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.phys_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.phys_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return signals physical value from data</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.qualified_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">qualified_name</span></span><a class="headerlink" href="#canlib.kvadblib.Signal.qualified_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the qualified signal name.</p>
+<p>Returns database, message and signal names separated by dots.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.raw_from">
+<span class="sig-name descname"><span class="pre">raw_from</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">can_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.raw_from"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.raw_from" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return signals raw value from data</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.remove_node">
+<span class="sig-name descname"><span class="pre">remove_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.remove_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.remove_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove receiving node from signal.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.scaling">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">scaling</span></span><a class="headerlink" href="#canlib.kvadblib.Signal.scaling" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the signals factor and offset</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#canlib.kvadblib.ValueScaling" title="canlib.kvadblib.ValueScaling"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueScaling</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.set_attribute_value">
+<span class="sig-name descname"><span class="pre">set_attribute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/signal.html#Signal.set_attribute_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Signal.set_attribute_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set value of attribute ‘name’ on signal.</p>
+<p>If no attribute called ‘name’ is set on signal, attach a signal
+attribute from the database attribute definition first.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.size">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#canlib.kvadblib.Signal.size" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the signals startbit and length</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#canlib.kvadblib.ValueSize" title="canlib.kvadblib.ValueSize"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ValueSize</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#canlib.kvadblib.Signal.type" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the signal representation type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="enums.html#canlib.kvadblib.SignalType" title="canlib.kvadblib.SignalType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SignalType</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Signal.unit">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">unit</span></span><a class="headerlink" href="#canlib.kvadblib.Signal.unit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the signal unit</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="valuelimits">
+<h2>ValueLimits<a class="headerlink" href="#valuelimits" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvadblib.ValueLimits">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">ValueLimits</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#canlib.kvadblib.ValueLimits" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.ValueLimits.max">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max</span></span><a class="headerlink" href="#canlib.kvadblib.ValueLimits.max" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.ValueLimits.min">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">min</span></span><a class="headerlink" href="#canlib.kvadblib.ValueLimits.min" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="valuescaling">
+<h2>ValueScaling<a class="headerlink" href="#valuescaling" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvadblib.ValueScaling">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">ValueScaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">factor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#canlib.kvadblib.ValueScaling" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.ValueScaling.factor">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">factor</span></span><a class="headerlink" href="#canlib.kvadblib.ValueScaling.factor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.ValueScaling.offset">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">offset</span></span><a class="headerlink" href="#canlib.kvadblib.ValueScaling.offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="valuesize">
+<h2>ValueSize<a class="headerlink" href="#valuesize" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvadblib.ValueSize">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">ValueSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">startbit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#canlib.kvadblib.ValueSize" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.ValueSize.length">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">length</span></span><a class="headerlink" href="#canlib.kvadblib.ValueSize.length" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.ValueSize.startbit">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">startbit</span></span><a class="headerlink" href="#canlib.kvadblib.ValueSize.startbit" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="node.html" class="btn btn-neutral float-left" title="Node" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="wrapper.html" class="btn btn-neutral float-right" title="Miscellaneous" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exceptions &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Bus Parameters" href="busparams.html" />
+    <link rel="prev" title="canlib" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">canlib</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#canerror">CanError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cangeneralerror">CanGeneralError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cannomsg">CanNoMsg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cannotfound">CanNotFound</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#canscriptfail">CanScriptFail</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cantimeout">CanTimeout</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#envvarexception">EnvvarException</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#envvarnameerror">EnvvarNameError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#envvarvalueerror">EnvvarValueError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ionovalidconfiguration">IoNoValidConfiguration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iopinconfigurationnotconfirmed">IoPinConfigurationNotConfirmed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#txefileisencrypted">TxeFileIsEncrypted</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="busparams.html">Bus Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="busparams.html#bitratesetting">BitrateSetting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="channel.html">Channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="channeldata.html">ChannelData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="envvar.html">Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enums.html">Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iocontrol.html">IOControl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iopin.html">I/O pin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="txe.html">Script Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kvadblib/index.html">kvadblib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">canlib</a> &raquo;</li>
+      <li>Exceptions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/canlib/exceptions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="exceptions">
+<h1>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="canerror">
+<h2>CanError<a class="headerlink" href="#canerror" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.CanError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">CanError</span></span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#CanError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.CanError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../exceptions.html#canlib.DllException" title="canlib.exceptions.DllException"><code class="xref py py-class docutils literal notranslate"><span class="pre">DllException</span></code></a></p>
+<p>Base class for exceptions raised by the canlib class</p>
+<p>Looks up the error text in the canlib dll and presents it together with the
+error code and the wrapper function that triggered the exception.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="cangeneralerror">
+<h2>CanGeneralError<a class="headerlink" href="#cangeneralerror" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.exceptions.CanGeneralError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.exceptions.</span></span><span class="sig-name descname"><span class="pre">CanGeneralError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#CanGeneralError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.exceptions.CanGeneralError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.canlib.CanError" title="canlib.canlib.exceptions.CanError"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanError</span></code></a></p>
+<p>A canlib error that does not (yet) have its own Exception</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not explicitly catch this error, instead catch <a class="reference internal" href="#canlib.canlib.CanError" title="canlib.canlib.exceptions.CanError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CanError</span></code></a>. Your
+error may at any point in the future get its own exception class, and
+so will no longer be of this type. The actual status code that raised
+any <a class="reference internal" href="#canlib.canlib.CanError" title="canlib.canlib.exceptions.CanError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CanError</span></code></a> can always be accessed through a <code class="xref py py-obj docutils literal notranslate"><span class="pre">status</span></code> attribute.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="cannomsg">
+<h2>CanNoMsg<a class="headerlink" href="#cannomsg" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.CanNoMsg">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">CanNoMsg</span></span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#CanNoMsg"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.CanNoMsg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.canlib.CanError" title="canlib.canlib.exceptions.CanError"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanError</span></code></a></p>
+<p>Raised when no matching message was available</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.canlib.CanNoMsg.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-2</span></em><a class="headerlink" href="#canlib.canlib.CanNoMsg.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="cannotfound">
+<h2>CanNotFound<a class="headerlink" href="#cannotfound" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.CanNotFound">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">CanNotFound</span></span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#CanNotFound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.CanNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.canlib.CanError" title="canlib.canlib.exceptions.CanError"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanError</span></code></a></p>
+<p>Specified device or channel not found</p>
+<p>There is no hardware available that matches the given search criteria. For
+example, you may have specified <a class="reference internal" href="enums.html#canlib.canlib.Open.REQUIRE_EXTENDED" title="canlib.canlib.Open.REQUIRE_EXTENDED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Open.REQUIRE_EXTENDED</span></code></a> but there’s no
+controller capable of extended CAN. You may have specified a channel number
+that is out of the range for the hardware in question. You may have
+requested exclusive access to a channel, but the channel is already
+occupied.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.6.</span></p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.canlib.CanNotFound.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-3</span></em><a class="headerlink" href="#canlib.canlib.CanNotFound.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="canscriptfail">
+<h2>CanScriptFail<a class="headerlink" href="#canscriptfail" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.CanScriptFail">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">CanScriptFail</span></span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#CanScriptFail"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.CanScriptFail" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.canlib.CanError" title="canlib.canlib.exceptions.CanError"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanError</span></code></a></p>
+<p>Raised when a script call failed.</p>
+<p>This exception represents several different failures, for example:</p>
+<ul class="simple">
+<li><p>Trying to load a corrupt file or not a .txe file</p></li>
+<li><p>Trying to start a t script that has not been loaded</p></li>
+<li><p>Trying to load a t script compiled with the wrong version of the t compiler</p></li>
+<li><p>Trying to unload a t script that has not been stopped</p></li>
+<li><p>Trying to use an envvar that does not exist</p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.canlib.CanScriptFail.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-39</span></em><a class="headerlink" href="#canlib.canlib.CanScriptFail.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="cantimeout">
+<h2>CanTimeout<a class="headerlink" href="#cantimeout" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.CanTimeout">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">CanTimeout</span></span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#CanTimeout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.CanTimeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.canlib.CanError" title="canlib.canlib.exceptions.CanError"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanError</span></code></a></p>
+<p>Raised when a timeout occured</p>
+<p>Raised when an expected event did not happen within the expected time
+frame, see e.g. <a class="reference internal" href="channel.html#canlib.canlib.Channel.writeWait" title="canlib.canlib.Channel.writeWait"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.Channel.writeWait()</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.21.</span></p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.canlib.CanTimeout.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-7</span></em><a class="headerlink" href="#canlib.canlib.CanTimeout.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="envvarexception">
+<h2>EnvvarException<a class="headerlink" href="#envvarexception" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.EnvvarException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">EnvvarException</span></span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#EnvvarException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.EnvvarException" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../exceptions.html#canlib.CanlibException" title="canlib.exceptions.CanlibException"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanlibException</span></code></a></p>
+<p>Base class for exceptions related to environment variables.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="envvarnameerror">
+<h2>EnvvarNameError<a class="headerlink" href="#envvarnameerror" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.EnvvarNameError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">EnvvarNameError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">envvar</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#EnvvarNameError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.EnvvarNameError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.canlib.EnvvarException" title="canlib.canlib.exceptions.EnvvarException"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnvvarException</span></code></a></p>
+<p>Raised when the name of the environment variable is illegal.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="envvarvalueerror">
+<h2>EnvvarValueError<a class="headerlink" href="#envvarvalueerror" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.EnvvarValueError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">EnvvarValueError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">envvar</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#EnvvarValueError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.EnvvarValueError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.canlib.EnvvarException" title="canlib.canlib.exceptions.EnvvarException"><code class="xref py py-class docutils literal notranslate"><span class="pre">EnvvarException</span></code></a></p>
+<p>Raised when the type of the value does not match the type of the
+environment variable.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="ionovalidconfiguration">
+<h2>IoNoValidConfiguration<a class="headerlink" href="#ionovalidconfiguration" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.IoNoValidConfiguration">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">IoNoValidConfiguration</span></span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#IoNoValidConfiguration"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.IoNoValidConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.canlib.CanError" title="canlib.canlib.exceptions.CanError"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanError</span></code></a></p>
+<p>I/O pin configuration is invalid</p>
+<p>No I/O pins was found, or unknown I/O pins was discovered.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.8.</span></p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.canlib.IoNoValidConfiguration.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-48</span></em><a class="headerlink" href="#canlib.canlib.IoNoValidConfiguration.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="iopinconfigurationnotconfirmed">
+<h2>IoPinConfigurationNotConfirmed<a class="headerlink" href="#iopinconfigurationnotconfirmed" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.IoPinConfigurationNotConfirmed">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">IoPinConfigurationNotConfirmed</span></span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#IoPinConfigurationNotConfirmed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.IoPinConfigurationNotConfirmed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.canlib.CanError" title="canlib.canlib.exceptions.CanError"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanError</span></code></a></p>
+<p>I/O pin configuration is not confirmed</p>
+<p>Before accessing any I/O pin value, the device I/O pin configuration must be
+confirmed, using e.g. <a class="reference internal" href="channel.html#canlib.canlib.Channel.io_confirm_config" title="canlib.canlib.Channel.io_confirm_config"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.io_confirm_config</span></code></a>.</p>
+<p>See also <a class="reference internal" href="iopin.html#canlib.canlib.iopin.Configuration" title="canlib.canlib.iopin.Configuration"><code class="xref py py-obj docutils literal notranslate"><span class="pre">iopin.Configuration</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.8.</span></p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.canlib.IoPinConfigurationNotConfirmed.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-45</span></em><a class="headerlink" href="#canlib.canlib.IoPinConfigurationNotConfirmed.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="txefileisencrypted">
+<h2>TxeFileIsEncrypted<a class="headerlink" href="#txefileisencrypted" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.canlib.TxeFileIsEncrypted">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">TxeFileIsEncrypted</span></span><a class="reference internal" href="../../_modules/canlib/canlib/exceptions.html#TxeFileIsEncrypted"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.TxeFileIsEncrypted" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../exceptions.html#canlib.CanlibException" title="canlib.exceptions.CanlibException"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanlibException</span></code></a></p>
+<p>Raised when trying to access <a class="reference internal" href="txe.html#canlib.canlib.Txe.source" title="canlib.canlib.Txe.source"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Txe.source</span></code></a> and the source and byte-code
+sections of the .txe binary have been encrypted.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.6.</span></p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="canlib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="busparams.html" class="btn btn-neutral float-right" title="Bus Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

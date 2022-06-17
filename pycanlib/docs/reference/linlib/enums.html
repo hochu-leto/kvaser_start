@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enumerations &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="MessageInfo" href="structures.html" />
+    <link rel="prev" title="Channel" href="channel.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canlib/index.html">canlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvadblib/index.html">kvadblib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">linlib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="channel.html">Channel</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Enumerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#channeldata">ChannelData</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#channeltype">ChannelType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error">Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#messagedisturb">MessageDisturb</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#messageflag">MessageFlag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#messageparity">MessageParity</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="structures.html">MessageInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">linlib</a> &raquo;</li>
+      <li>Enumerations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/linlib/enums.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="enumerations">
+<h1>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="channeldata">
+<h2>ChannelData<a class="headerlink" href="#channeldata" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.linlib.ChannelData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">ChannelData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/linlib/enums.html#ChannelData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.ChannelData" title="Permalink to this definition">¶</a></dt>
+<dd><p>linCHANNELDATA_xxx</p>
+<p>These defines are used in <a class="reference internal" href="wrapper.html#canlib.linlib.getChannelData" title="canlib.linlib.getChannelData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getChannelData</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.ChannelData.CARD_FIRMWARE_REV">
+<span class="sig-name descname"><span class="pre">CARD_FIRMWARE_REV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#canlib.linlib.ChannelData.CARD_FIRMWARE_REV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Firmware version from the LIN interface.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="channeltype">
+<h2>ChannelType<a class="headerlink" href="#channeltype" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.linlib.ChannelType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">ChannelType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/linlib/enums.html#ChannelType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.ChannelType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Flags for <a class="reference internal" href="channel.html#canlib.linlib.openChannel" title="canlib.linlib.openChannel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openChannel</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.ChannelType.MASTER">
+<span class="sig-name descname"><span class="pre">MASTER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.linlib.ChannelType.MASTER" title="Permalink to this definition">¶</a></dt>
+<dd><p>The LIN interface will be a LIN master</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.ChannelType.SLAVE">
+<span class="sig-name descname"><span class="pre">SLAVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.linlib.ChannelType.SLAVE" title="Permalink to this definition">¶</a></dt>
+<dd><p>The LIN interface will be a LIN slave</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="error">
+<h2>Error<a class="headerlink" href="#error" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.linlib.Error">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">Error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/linlib/enums.html#Error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.Error" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.CANERROR">
+<span class="sig-name descname"><span class="pre">CANERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-15</span></em><a class="headerlink" href="#canlib.linlib.Error.CANERROR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal error in the driver</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.DRIVER">
+<span class="sig-name descname"><span class="pre">DRIVER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-18</span></em><a class="headerlink" href="#canlib.linlib.Error.DRIVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>CAN driver type not supported</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.DRIVERFAILED">
+<span class="sig-name descname"><span class="pre">DRIVERFAILED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-19</span></em><a class="headerlink" href="#canlib.linlib.Error.DRIVERFAILED" title="Permalink to this definition">¶</a></dt>
+<dd><p>DeviceIOControl failed</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.ERRRESP">
+<span class="sig-name descname"><span class="pre">ERRRESP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-16</span></em><a class="headerlink" href="#canlib.linlib.Error.ERRRESP" title="Permalink to this definition">¶</a></dt>
+<dd><p>There was an error response from the LIN interface</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.INTERNAL">
+<span class="sig-name descname"><span class="pre">INTERNAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-22</span></em><a class="headerlink" href="#canlib.linlib.Error.INTERNAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Internal error in the driver</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.INVHANDLE">
+<span class="sig-name descname"><span class="pre">INVHANDLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-14</span></em><a class="headerlink" href="#canlib.linlib.Error.INVHANDLE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle is invalid</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.LICENSE">
+<span class="sig-name descname"><span class="pre">LICENSE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-21</span></em><a class="headerlink" href="#canlib.linlib.Error.LICENSE" title="Permalink to this definition">¶</a></dt>
+<dd><p>The license is not valid</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.MASTERONLY">
+<span class="sig-name descname"><span class="pre">MASTERONLY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-5</span></em><a class="headerlink" href="#canlib.linlib.Error.MASTERONLY" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function is only for a master.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NOCARD">
+<span class="sig-name descname"><span class="pre">NOCARD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-20</span></em><a class="headerlink" href="#canlib.linlib.Error.NOCARD" title="Permalink to this definition">¶</a></dt>
+<dd><p>The card was removed or not inserted</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NOCHANNELS">
+<span class="sig-name descname"><span class="pre">NOCHANNELS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-10</span></em><a class="headerlink" href="#canlib.linlib.Error.NOCHANNELS" title="Permalink to this definition">¶</a></dt>
+<dd><p>No channels avaliable</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NOHANDLES">
+<span class="sig-name descname"><span class="pre">NOHANDLES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-13</span></em><a class="headerlink" href="#canlib.linlib.Error.NOHANDLES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can’t get handle</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NOMEM">
+<span class="sig-name descname"><span class="pre">NOMEM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-9</span></em><a class="headerlink" href="#canlib.linlib.Error.NOMEM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Out of memory</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NOMSG">
+<span class="sig-name descname"><span class="pre">NOMSG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#canlib.linlib.Error.NOMSG" title="Permalink to this definition">¶</a></dt>
+<dd><p>No messages available</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NOTFOUND">
+<span class="sig-name descname"><span class="pre">NOTFOUND</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-8</span></em><a class="headerlink" href="#canlib.linlib.Error.NOTFOUND" title="Permalink to this definition">¶</a></dt>
+<dd><p>Specified hardware not found. This error is reported when the LIN transceiver isn’t powered up</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NOTINITIALIZED">
+<span class="sig-name descname"><span class="pre">NOTINITIALIZED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-12</span></em><a class="headerlink" href="#canlib.linlib.Error.NOTINITIALIZED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Library not initialized</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NOTRUNNING">
+<span class="sig-name descname"><span class="pre">NOTRUNNING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-3</span></em><a class="headerlink" href="#canlib.linlib.Error.NOTRUNNING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle not on-bus. Some functions requires that the handle is on-bus before being called.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NOT_IMPLEMENTED">
+<span class="sig-name descname"><span class="pre">NOT_IMPLEMENTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-26</span></em><a class="headerlink" href="#canlib.linlib.Error.NOT_IMPLEMENTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>The requested feature or function is not implemented in the device you are trying to use it on</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NO_ACCESS">
+<span class="sig-name descname"><span class="pre">NO_ACCESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-23</span></em><a class="headerlink" href="#canlib.linlib.Error.NO_ACCESS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Access denied</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.NO_REF_POWER">
+<span class="sig-name descname"><span class="pre">NO_REF_POWER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-25</span></em><a class="headerlink" href="#canlib.linlib.Error.NO_REF_POWER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function not supported in this version</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.PARAM">
+<span class="sig-name descname"><span class="pre">PARAM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-7</span></em><a class="headerlink" href="#canlib.linlib.Error.PARAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error in parameter</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.RUNNING">
+<span class="sig-name descname"><span class="pre">RUNNING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-4</span></em><a class="headerlink" href="#canlib.linlib.Error.RUNNING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handle not off-bus. Some functions requires that the handle is off-bus before being called.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.SLAVEONLY">
+<span class="sig-name descname"><span class="pre">SLAVEONLY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-6</span></em><a class="headerlink" href="#canlib.linlib.Error.SLAVEONLY" title="Permalink to this definition">¶</a></dt>
+<dd><p>The function is only for a slave.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.TIMEOUT">
+<span class="sig-name descname"><span class="pre">TIMEOUT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-11</span></em><a class="headerlink" href="#canlib.linlib.Error.TIMEOUT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Timeout occurred</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.VERSION">
+<span class="sig-name descname"><span class="pre">VERSION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-24</span></em><a class="headerlink" href="#canlib.linlib.Error.VERSION" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function not supported in this version</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Error.WRONGRESP">
+<span class="sig-name descname"><span class="pre">WRONGRESP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-17</span></em><a class="headerlink" href="#canlib.linlib.Error.WRONGRESP" title="Permalink to this definition">¶</a></dt>
+<dd><p>The LIN interface response wasn’t the expected one</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="messagedisturb">
+<h2>MessageDisturb<a class="headerlink" href="#messagedisturb" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.linlib.MessageDisturb">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">MessageDisturb</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/linlib/enums.html#MessageDisturb"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.MessageDisturb" title="Permalink to this definition">¶</a></dt>
+<dd><p>LIN illegal message flags</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageDisturb.CSUM">
+<span class="sig-name descname"><span class="pre">CSUM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.linlib.MessageDisturb.CSUM" title="Permalink to this definition">¶</a></dt>
+<dd><p>The checksum of transmitted messages will be inverted</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageDisturb.PARITY">
+<span class="sig-name descname"><span class="pre">PARITY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.linlib.MessageDisturb.PARITY" title="Permalink to this definition">¶</a></dt>
+<dd><p>The two parity bits will be inverted, used only in master mode.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="messageflag">
+<h2>MessageFlag<a class="headerlink" href="#messageflag" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.linlib.MessageFlag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">MessageFlag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/linlib/enums.html#MessageFlag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.MessageFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>LIN message flags</p>
+<p>The following flags is used in <a class="reference internal" href="../frame.html#canlib.LINFrame.flags" title="canlib.LINFrame.flags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LINFrame.flags</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageFlag.BIT_ERROR">
+<span class="sig-name descname"><span class="pre">BIT_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">128</span></em><a class="headerlink" href="#canlib.linlib.MessageFlag.BIT_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bit error when transmitting.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageFlag.CSUM_ERROR">
+<span class="sig-name descname"><span class="pre">CSUM_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></em><a class="headerlink" href="#canlib.linlib.MessageFlag.CSUM_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checksum error</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageFlag.NODATA">
+<span class="sig-name descname"><span class="pre">NODATA</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#canlib.linlib.MessageFlag.NODATA" title="Permalink to this definition">¶</a></dt>
+<dd><p>No data, only a header.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageFlag.PARITY_ERROR">
+<span class="sig-name descname"><span class="pre">PARITY_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">32</span></em><a class="headerlink" href="#canlib.linlib.MessageFlag.PARITY_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd><p>ID parity error</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageFlag.RX">
+<span class="sig-name descname"><span class="pre">RX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.linlib.MessageFlag.RX" title="Permalink to this definition">¶</a></dt>
+<dd><p>The message was something we received from the bus.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageFlag.SYNCH_ERROR">
+<span class="sig-name descname"><span class="pre">SYNCH_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">64</span></em><a class="headerlink" href="#canlib.linlib.MessageFlag.SYNCH_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd><p>A synch error</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageFlag.SYNC_ERROR">
+<span class="sig-name descname"><span class="pre">SYNC_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">64</span></em><a class="headerlink" href="#canlib.linlib.MessageFlag.SYNC_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd><p>A synch error</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageFlag.TX">
+<span class="sig-name descname"><span class="pre">TX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.linlib.MessageFlag.TX" title="Permalink to this definition">¶</a></dt>
+<dd><p>The message was something we transmitted on the bus.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageFlag.WAKEUP_FRAME">
+<span class="sig-name descname"><span class="pre">WAKEUP_FRAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.linlib.MessageFlag.WAKEUP_FRAME" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="messageparity">
+<h2>MessageParity<a class="headerlink" href="#messageparity" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.linlib.MessageParity">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">MessageParity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/linlib/enums.html#MessageParity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.MessageParity" title="Permalink to this definition">¶</a></dt>
+<dd><p>LIN message parity</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#canlib.linlib.MessageParity.STANDARD" title="canlib.linlib.MessageParity.STANDARD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageParity.STANDARD</span></code></a> == <code class="docutils literal notranslate"><span class="pre">LIN_MSG_USE_STANDARD_PARITY</span></code></p></li>
+<li><p><a class="reference internal" href="#canlib.linlib.MessageParity.ENHANCED" title="canlib.linlib.MessageParity.ENHANCED"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageParity.ENHANCED</span></code></a> == <code class="docutils literal notranslate"><span class="pre">LIN_MSG_USE_ENHANCED_PARITY</span></code></p></li>
+</ul>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageParity.ENHANCED">
+<span class="sig-name descname"><span class="pre">ENHANCED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#canlib.linlib.MessageParity.ENHANCED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use enhanced (2.x) parity for the specified msg</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.MessageParity.STANDARD">
+<span class="sig-name descname"><span class="pre">STANDARD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.linlib.MessageParity.STANDARD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use standard (1.x) parity for the specified msg</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.linlib.Setup">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">Setup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/linlib/enums.html#Setup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.Setup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used in <a class="reference internal" href="channel.html#canlib.linlib.Channel.setupLIN" title="canlib.linlib.Channel.setupLIN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.setupLIN</span></code></a></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Setup.ENHANCED_CHECKSUM">
+<span class="sig-name descname"><span class="pre">ENHANCED_CHECKSUM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.linlib.Setup.ENHANCED_CHECKSUM" title="Permalink to this definition">¶</a></dt>
+<dd><p>When specified, the LIN interface will use the “enhanced” checksum
+according to LIN 2.0.
+Note that as per the LIN 2.0 spec) the enhanced
+checksum is not used on the diagnostic frames even if the
+<a class="reference internal" href="#canlib.linlib.Setup.ENHANCED_CHECKSUM" title="canlib.linlib.Setup.ENHANCED_CHECKSUM"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Setup.ENHANCED_CHECKSUM</span></code></a> setting is in effect.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.Setup.VARIABLE_DLC">
+<span class="sig-name descname"><span class="pre">VARIABLE_DLC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.linlib.Setup.VARIABLE_DLC" title="Permalink to this definition">¶</a></dt>
+<dd><p>When specified, turns variable message length on, so the the message
+length will depend on the message ID.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="channel.html" class="btn btn-neutral float-left" title="Channel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="structures.html" class="btn btn-neutral float-right" title="MessageInfo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

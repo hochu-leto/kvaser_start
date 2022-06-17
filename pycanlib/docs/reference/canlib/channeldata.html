@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChannelData &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Environment Variables" href="envvar.html" />
+    <link rel="prev" title="Channel" href="channel.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">canlib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="busparams.html">Bus Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="busparams.html#bitratesetting">BitrateSetting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="channel.html">Channel</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ChannelData</a></li>
+<li class="toctree-l3"><a class="reference internal" href="envvar.html">Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enums.html">Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iocontrol.html">IOControl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="iopin.html">I/O pin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="txe.html">Script Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kvadblib/index.html">kvadblib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">canlib</a> &raquo;</li>
+      <li>ChannelData</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/canlib/channeldata.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="channeldata">
+<h1>ChannelData<a class="headerlink" href="#channeldata" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.canlib.ChannelData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">ChannelData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel_number</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/channeldata.html#ChannelData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.ChannelData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object for querying various information about a channel</p>
+<p>After instantiating a <a class="reference internal" href="#canlib.canlib.ChannelData" title="canlib.canlib.ChannelData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelData</span></code></a> object with a channel number, a variety
+of information is available as attributes. Most attributes are named after
+the C constant used to retrieve the information and are found in the list
+below.</p>
+<p>Other information does not follow the C implementation completely, and are
+documented as separate properties further down.</p>
+<p>There is also the <a class="reference internal" href="#canlib.canlib.ChannelData.raw" title="canlib.canlib.ChannelData.raw"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raw</span></code></a> function, that is used internally to get all
+information and can also be used to interact more directly with the dll.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bus_type</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.BusTypeGroup" title="canlib.canlib.BusTypeGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusTypeGroup</span></code></a> enum. Not implemented in Linux.</p></li>
+<li><p><strong>card_firmware_rev</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> object with the version of the card’s firmware.</p></li>
+<li><p><strong>card_hardware_rev</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> object with the version of the card’s hardware.</p></li>
+<li><p><strong>card_number</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the card’s number in the computer. Each card type is numbered separately.</p></li>
+<li><p><strong>card_serial_no</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the serial number of the card, or 0 if it doesn’t have a serial number.</p></li>
+<li><p><strong>card_type</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.HardwareType" title="canlib.canlib.HardwareType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HardwareType</span></code></a> enum representing the hardware type of the card.</p></li>
+<li><p><strong>card_upc_no</strong> – An <a class="reference internal" href="../ean.html#canlib.EAN" title="canlib.EAN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.EAN</span></code></a> object with the EAN of the card, or <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> if it doesn’t one.</p></li>
+<li><p><strong>chan_no_on_card</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> of the channel number on the card.</p></li>
+<li><p><strong>channel_cap</strong> – A <a class="reference internal" href="enums.html#canlib.canlib.ChannelCap" title="canlib.canlib.ChannelCap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelCap</span></code></a> object with the capabilities of the channel as flags. Also see <code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelData.channel_cap_mask</span></code>.</p></li>
+<li><p><strong>channel_cap_ex</strong> – A tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelCapEx</span></code> with the extended capabilities of the channel (added in v1.17).</p></li>
+<li><p><strong>channel_cap_mask</strong> – A <a class="reference internal" href="enums.html#canlib.canlib.ChannelCap" title="canlib.canlib.ChannelCap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelCap</span></code></a> with which flags this device knows about.</p></li>
+<li><p><strong>channel_flags</strong> – A <a class="reference internal" href="enums.html#canlib.canlib.ChannelFlags" title="canlib.canlib.ChannelFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelFlags</span></code></a> object with the status of the channel as flags.</p></li>
+<li><p><strong>channel_quality</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> between 0 and 100 (inclusively) with the quality of the channel in percent of optimal quality. Not implemented in Linux.</p></li>
+<li><p><strong>clock_info</strong> – A <a class="reference internal" href="busparams.html#canlib.canlib.busparams.ClockInfo" title="canlib.canlib.busparams.ClockInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClockInfo</span></code></a> object with clock characteristics for the device (added in v1.16).</p></li>
+<li><p><strong>devdescr_ascii</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the product name of the device.</p></li>
+<li><p><strong>devdescr_unicode</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the product name of the device. Not implemented in Linux.</p></li>
+<li><p><strong>device_physical_position</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the address of the device on its underlying bus. Not implemented in Linux.</p></li>
+<li><p><strong>devname_ascii</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the current device name. Not implemented in Linux.</p></li>
+<li><p><strong>dll_file_version</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> with the version of the dll file.</p></li>
+<li><p><strong>dll_filetype</strong> – 1 if “kvalapw.dll” is used, 2 if “kvalapw2.dll”</p></li>
+<li><p><strong>dll_product_version</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> with the product version of the dll.</p></li>
+<li><p><strong>driver_file_version</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> with the version of the kernel-mode driver. Not implemented in Linux.</p></li>
+<li><p><strong>driver_name</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the name of the device driver.</p></li>
+<li><p><strong>driver_product_version</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> with the product version of the kernel-mode driver. Not implemented in Linux.</p></li>
+<li><p><strong>feature_ean</strong> – An <a class="reference internal" href="../ean.html#canlib.EAN" title="canlib.EAN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.EAN</span></code></a> object with an internal EAN. This is only intended for internal use.</p></li>
+<li><p><strong>hw_status</strong> – Six <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with hardware status codes. This is only intended for internal use.</p></li>
+<li><p><strong>is_remote</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code> for whether the device is currently connected as a remote device. Not implemented in Linux.</p></li>
+<li><p><strong>logger_type</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.LoggerType" title="canlib.canlib.LoggerType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LoggerType</span></code></a> enum. Not implemented in Linux.</p></li>
+<li><p><strong>max_bitrate</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the maximum bitrate of the device. Zero means no limit on the bitrate.</p></li>
+<li><p><strong>mfgname_ascii</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the manufacturer’s name.</p></li>
+<li><p><strong>mfgname_unicode</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the manufacturer’s name. Not implemented in Linux.</p></li>
+<li><p><strong>remote_host_name</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the remote host name of the device. Not implemented in Linux.</p></li>
+<li><p><strong>remote_mac</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the remote mac address of the device. Not implemented in Linux.</p></li>
+<li><p><strong>remote_operational_mode</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.OperationalMode" title="canlib.canlib.OperationalMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperationalMode</span></code></a> enum. Not implemented in Linux.</p></li>
+<li><p><strong>remote_profile_name</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the remote profile name of the device. Not implemented in Linux.</p></li>
+<li><p><strong>remote_type</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.RemoteType" title="canlib.canlib.RemoteType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RemoteType</span></code></a> enum. Not implemented in Linux.</p></li>
+<li><p><strong>roundtrip_time</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the roundtrip time measured in milliseconds. Not implemented in Linux.</p></li>
+<li><p><strong>time_since_last_seen</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the time in milliseconds since last communication occured. Not implemented in Linux.</p></li>
+<li><p><strong>timesync_enabled</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code> for whether legacy time synchronization is enabled. Not implemented in Linux.</p></li>
+<li><p><strong>trans_cap</strong> – A <a class="reference internal" href="enums.html#canlib.canlib.DriverCap" title="canlib.canlib.DriverCap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DriverCap</span></code></a> object with the capabilities of the transceiver as flags. Not implemented in Linux.</p></li>
+<li><p><strong>trans_serial_no</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the serial number of the transceiver, or 0 if it doesn’t have a serial number. Not implemented in Linux.</p></li>
+<li><p><strong>trans_type</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.TransceiverType" title="canlib.canlib.TransceiverType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransceiverType</span></code></a> enum.</p></li>
+<li><p><strong>trans_upc_no</strong> – An <a class="reference internal" href="../ean.html#canlib.EAN" title="canlib.EAN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.EAN</span></code></a> object with the EAN of the transceiver, or <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> if it doesn’t have one. Not implemented in Linux.</p></li>
+<li><p><strong>ui_number</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the number associated with the device that can be displayed in the user interface. Not implemented in Linux.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.canlib.ChannelData.bus_param_limits">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bus_param_limits</span></span><a class="headerlink" href="#canlib.canlib.ChannelData.bus_param_limits" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get device’s bus parameter limits</p>
+<p>Example usage:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">chd</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">ChannelData</span><span class="p">(</span><span class="n">channel_number</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limits</span> <span class="o">=</span> <span class="n">chd</span><span class="o">.</span><span class="n">bus_param_limits</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limits</span><span class="o">.</span><span class="n">arbitration_min</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+<span class="go">{&#39;tq&#39;: 0, &#39;phase1&#39;: 1, &#39;phase2&#39;: 1, &#39;sjw&#39;: 1, &#39;prescaler&#39;: 1, &#39;prop&#39;: 0}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limits</span><span class="o">.</span><span class="n">arbitration_max</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+<span class="go">{&#39;tq&#39;: 0, &#39;phase1&#39;: 512, &#39;phase2&#39;: 32, &#39;sjw&#39;: 16, &#39;prescaler&#39;: 8192, &#39;prop&#39;: 0}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limits</span><span class="o">.</span><span class="n">data_min</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+<span class="go">{&#39;tq&#39;: 0, &#39;phase1&#39;: 1, &#39;phase2&#39;: 1, &#39;sjw&#39;: 1, &#39;prescaler&#39;: 1, &#39;prop&#39;: 0}</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">limits</span><span class="o">.</span><span class="n">data_max</span><span class="o">.</span><span class="n">_asdict</span><span class="p">()</span>
+<span class="go">{&#39;tq&#39;: 0, &#39;phase1&#39;: 512, &#39;phase2&#39;: 32, &#39;sjw&#39;: 16, &#39;prescaler&#39;: 8192, &#39;prop&#39;: 0}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">tq</span></code> field is always zero, and is reserved for possible other
+uses in future releases.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">prop</span></code> is zero for both <code class="docutils literal notranslate"><span class="pre">min</span></code> and <code class="docutils literal notranslate"><span class="pre">max</span></code> values, that means that the device
+does not distinguish between phase segment one and the propagation
+segment, i.e. the <code class="docutils literal notranslate"><span class="pre">phase1</span></code> limit applies to (<code class="docutils literal notranslate"><span class="pre">phase1</span></code> + <code class="docutils literal notranslate"><span class="pre">prop</span></code>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><a class="reference internal" href="busparams.html#canlib.canlib.busparams.BusParamTqLimits" title="canlib.canlib.busparams.BusParamTqLimits"><code class="xref py py-obj docutils literal notranslate"><span class="pre">busparams.BusParamTqLimits</span></code></a></p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.20.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.canlib.ChannelData.channel_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">channel_name</span></span><a class="headerlink" href="#canlib.canlib.ChannelData.channel_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The product channel name.</p>
+<p>Retrieves a clear text name of the channel. The name is returned as a
+string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.canlib.ChannelData.custom_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">custom_name</span></span><a class="headerlink" href="#canlib.canlib.ChannelData.custom_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The custom channel name if set, or an empty string otherwise</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.canlib.ChannelData.device_name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">device_name</span></span><a class="headerlink" href="#canlib.canlib.ChannelData.device_name" title="Permalink to this definition">¶</a></dt>
+<dd><div class="deprecated">
+<p><span class="versionmodified deprecated">Deprecated since version 1.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.canlib.ChannelData.raw">
+<span class="sig-name descname"><span class="pre">raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctype=&lt;class</span> <span class="pre">'ctypes.c_ulong'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/channeldata.html#ChannelData.raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.ChannelData.raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>A raw call to <code class="xref py py-obj docutils literal notranslate"><span class="pre">canGetChannelData</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="enums.html#canlib.canlib.ChannelDataItem" title="canlib.canlib.ChannelDataItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelDataItem</span></code></a>) – The information to be retrieved.</p></li>
+<li><p><strong>ctype</strong> – The <code class="xref py py-obj docutils literal notranslate"><span class="pre">ctypes</span></code> type that the information should be interpreted as.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.canlib.HandleData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.canlib.</span></span><span class="sig-name descname"><span class="pre">HandleData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">channel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/channeldata.html#HandleData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.HandleData" title="Permalink to this definition">¶</a></dt>
+<dd><p>Object for querying various information about a handle</p>
+<p>This is identical to the <a class="reference internal" href="#canlib.canlib.ChannelData" title="canlib.canlib.ChannelData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelData</span></code></a> object but it’s constructor takes a
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.Channel</span></code> instead of a channel number.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.13.</span></p>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bus_type</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.BusTypeGroup" title="canlib.canlib.BusTypeGroup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusTypeGroup</span></code></a> enum. Not implemented in Linux.</p></li>
+<li><p><strong>card_firmware_rev</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> object with the version of the card’s firmware.</p></li>
+<li><p><strong>card_hardware_rev</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> object with the version of the card’s hardware.</p></li>
+<li><p><strong>card_number</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the card’s number in the computer. Each card type is numbered separately.</p></li>
+<li><p><strong>card_serial_no</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the serial number of the card, or 0 if it doesn’t have a serial number.</p></li>
+<li><p><strong>card_type</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.HardwareType" title="canlib.canlib.HardwareType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">HardwareType</span></code></a> enum representing the hardware type of the card.</p></li>
+<li><p><strong>card_upc_no</strong> – An <a class="reference internal" href="../ean.html#canlib.EAN" title="canlib.EAN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.EAN</span></code></a> object with the EAN of the card, or <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> if it doesn’t one.</p></li>
+<li><p><strong>chan_no_on_card</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> of the channel number on the card.</p></li>
+<li><p><strong>channel_cap</strong> – A <a class="reference internal" href="enums.html#canlib.canlib.ChannelCap" title="canlib.canlib.ChannelCap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelCap</span></code></a> object with the capabilities of the channel as flags. Also see <code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelData.channel_cap_mask</span></code>.</p></li>
+<li><p><strong>channel_cap_ex</strong> – A tuple of <code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelCapEx</span></code> with the extended capabilities of the channel (added in v1.17).</p></li>
+<li><p><strong>channel_cap_mask</strong> – A <a class="reference internal" href="enums.html#canlib.canlib.ChannelCap" title="canlib.canlib.ChannelCap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelCap</span></code></a> with which flags this device knows about.</p></li>
+<li><p><strong>channel_flags</strong> – A <a class="reference internal" href="enums.html#canlib.canlib.ChannelFlags" title="canlib.canlib.ChannelFlags"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelFlags</span></code></a> object with the status of the channel as flags.</p></li>
+<li><p><strong>channel_quality</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> between 0 and 100 (inclusively) with the quality of the channel in percent of optimal quality. Not implemented in Linux.</p></li>
+<li><p><strong>clock_info</strong> – A <a class="reference internal" href="busparams.html#canlib.canlib.busparams.ClockInfo" title="canlib.canlib.busparams.ClockInfo"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ClockInfo</span></code></a> object with clock characteristics for the device (added in v1.16).</p></li>
+<li><p><strong>devdescr_ascii</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the product name of the device.</p></li>
+<li><p><strong>devdescr_unicode</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the product name of the device. Not implemented in Linux.</p></li>
+<li><p><strong>device_physical_position</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the address of the device on its underlying bus. Not implemented in Linux.</p></li>
+<li><p><strong>devname_ascii</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the current device name. Not implemented in Linux.</p></li>
+<li><p><strong>dll_file_version</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> with the version of the dll file.</p></li>
+<li><p><strong>dll_filetype</strong> – 1 if “kvalapw.dll” is used, 2 if “kvalapw2.dll”</p></li>
+<li><p><strong>dll_product_version</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> with the product version of the dll.</p></li>
+<li><p><strong>driver_file_version</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> with the version of the kernel-mode driver. Not implemented in Linux.</p></li>
+<li><p><strong>driver_name</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the name of the device driver.</p></li>
+<li><p><strong>driver_product_version</strong> – A <a class="reference internal" href="../versionnumber.html#canlib.VersionNumber" title="canlib.VersionNumber"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.VersionNumber</span></code></a> with the product version of the kernel-mode driver. Not implemented in Linux.</p></li>
+<li><p><strong>feature_ean</strong> – An <a class="reference internal" href="../ean.html#canlib.EAN" title="canlib.EAN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.EAN</span></code></a> object with an internal EAN. This is only intended for internal use.</p></li>
+<li><p><strong>hw_status</strong> – Six <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with hardware status codes. This is only intended for internal use.</p></li>
+<li><p><strong>is_remote</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code> for whether the device is currently connected as a remote device. Not implemented in Linux.</p></li>
+<li><p><strong>logger_type</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.LoggerType" title="canlib.canlib.LoggerType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LoggerType</span></code></a> enum. Not implemented in Linux.</p></li>
+<li><p><strong>max_bitrate</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the maximum bitrate of the device. Zero means no limit on the bitrate.</p></li>
+<li><p><strong>mfgname_ascii</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the manufacturer’s name.</p></li>
+<li><p><strong>mfgname_unicode</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the manufacturer’s name. Not implemented in Linux.</p></li>
+<li><p><strong>remote_host_name</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the remote host name of the device. Not implemented in Linux.</p></li>
+<li><p><strong>remote_mac</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the remote mac address of the device. Not implemented in Linux.</p></li>
+<li><p><strong>remote_operational_mode</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.OperationalMode" title="canlib.canlib.OperationalMode"><code class="xref py py-obj docutils literal notranslate"><span class="pre">OperationalMode</span></code></a> enum. Not implemented in Linux.</p></li>
+<li><p><strong>remote_profile_name</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> with the remote profile name of the device. Not implemented in Linux.</p></li>
+<li><p><strong>remote_type</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.RemoteType" title="canlib.canlib.RemoteType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">RemoteType</span></code></a> enum. Not implemented in Linux.</p></li>
+<li><p><strong>roundtrip_time</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the roundtrip time measured in milliseconds. Not implemented in Linux.</p></li>
+<li><p><strong>time_since_last_seen</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the time in milliseconds since last communication occured. Not implemented in Linux.</p></li>
+<li><p><strong>timesync_enabled</strong> – A <code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code> for whether legacy time synchronization is enabled. Not implemented in Linux.</p></li>
+<li><p><strong>trans_cap</strong> – A <a class="reference internal" href="enums.html#canlib.canlib.DriverCap" title="canlib.canlib.DriverCap"><code class="xref py py-obj docutils literal notranslate"><span class="pre">DriverCap</span></code></a> object with the capabilities of the transceiver as flags. Not implemented in Linux.</p></li>
+<li><p><strong>trans_serial_no</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the serial number of the transceiver, or 0 if it doesn’t have a serial number. Not implemented in Linux.</p></li>
+<li><p><strong>trans_type</strong> – A member of the <a class="reference internal" href="enums.html#canlib.canlib.TransceiverType" title="canlib.canlib.TransceiverType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">TransceiverType</span></code></a> enum.</p></li>
+<li><p><strong>trans_upc_no</strong> – An <a class="reference internal" href="../ean.html#canlib.EAN" title="canlib.EAN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.EAN</span></code></a> object with the EAN of the transceiver, or <code class="xref py py-obj docutils literal notranslate"><span class="pre">None</span></code> if it doesn’t have one. Not implemented in Linux.</p></li>
+<li><p><strong>ui_number</strong> – An <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code> with the number associated with the device that can be displayed in the user interface. Not implemented in Linux.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.canlib.HandleData.raw">
+<span class="sig-name descname"><span class="pre">raw</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">item</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ctype=&lt;class</span> <span class="pre">'ctypes.c_ulong'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/canlib/channeldata.html#HandleData.raw"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.canlib.HandleData.raw" title="Permalink to this definition">¶</a></dt>
+<dd><p>A raw call to <code class="xref py py-obj docutils literal notranslate"><span class="pre">canGetHandleData</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>item</strong> (<a class="reference internal" href="enums.html#canlib.canlib.ChannelDataItem" title="canlib.canlib.ChannelDataItem"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelDataItem</span></code></a>) – The information to be retrieved.</p></li>
+<li><p><strong>ctype</strong> – The <code class="xref py py-obj docutils literal notranslate"><span class="pre">ctypes</span></code> type that the information should be interpreted as.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="channel.html" class="btn btn-neutral float-left" title="Channel" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="envvar.html" class="btn btn-neutral float-right" title="Environment Variables" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

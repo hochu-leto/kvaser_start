@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enumerations &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Property" href="property.html" />
+    <link rel="prev" title="Converter" href="converter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canlib/index.html">canlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvadblib/index.html">kvadblib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">kvlclib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="converter.html">Converter</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Enumerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#channelmask">ChannelMask</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error">Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fileformat">FileFormat</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="property.html">Property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="readerformat.html">Reader Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writerformat.html">Writer Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">kvlclib</a> &raquo;</li>
+      <li>Enumerations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/kvlclib/enums.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="enumerations">
+<h1>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="channelmask">
+<h2>ChannelMask<a class="headerlink" href="#channelmask" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvlclib.ChannelMask">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvlclib.</span></span><span class="sig-name descname"><span class="pre">ChannelMask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvlclib/enums.html#ChannelMask"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvlclib.ChannelMask" title="Permalink to this definition">¶</a></dt>
+<dd><p>Masking channels</p>
+<p>The <a class="reference internal" href="#canlib.kvlclib.ChannelMask" title="canlib.kvlclib.ChannelMask"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelMask</span></code></a> is used in <a class="reference internal" href="converter.html#canlib.kvlclib.Converter.addDatabaseFile" title="canlib.kvlclib.Converter.addDatabaseFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Converter.addDatabaseFile</span></code></a> to indicate which channels to use.</p>
+<p>Multiple channels may be specified using <code class="xref py py-obj docutils literal notranslate"><span class="pre">|</span></code>, e.g. to specify channel one and three use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">channel_one_and_three</span> <span class="o">=</span> <span class="n">ChannelMask</span><span class="o">.</span><span class="n">ONE</span> <span class="o">|</span> <span class="n">ChannelMask</span><span class="o">.</span><span class="n">THREE</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.20: </span>Added <a class="reference internal" href="#canlib.kvlclib.ChannelMask.ALL" title="canlib.kvlclib.ChannelMask.ALL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ALL</span></code></a> as a convenience.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.ChannelMask.ALL">
+<span class="sig-name descname"><span class="pre">ALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">65535</span></em><a class="headerlink" href="#canlib.kvlclib.ChannelMask.ALL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mask for all channels</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.ChannelMask.FIVE">
+<span class="sig-name descname"><span class="pre">FIVE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></em><a class="headerlink" href="#canlib.kvlclib.ChannelMask.FIVE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mask for fifth channel</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.ChannelMask.FOUR">
+<span class="sig-name descname"><span class="pre">FOUR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#canlib.kvlclib.ChannelMask.FOUR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mask for fourth channel</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.ChannelMask.ONE">
+<span class="sig-name descname"><span class="pre">ONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvlclib.ChannelMask.ONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mask for first channel</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.ChannelMask.THREE">
+<span class="sig-name descname"><span class="pre">THREE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvlclib.ChannelMask.THREE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mask for third channel</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.ChannelMask.TWO">
+<span class="sig-name descname"><span class="pre">TWO</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvlclib.ChannelMask.TWO" title="Permalink to this definition">¶</a></dt>
+<dd><p>Mask for second channel</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="error">
+<h2>Error<a class="headerlink" href="#error" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvlclib.</span></span><span class="sig-name descname"><span class="pre">Error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvlclib/enums.html#Error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvlclib.Error" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.BUFFER_SIZE">
+<span class="sig-name descname"><span class="pre">BUFFER_SIZE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-15</span></em><a class="headerlink" href="#canlib.kvlclib.Error.BUFFER_SIZE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supplied buffer too small to hold the result.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.CONVERTING">
+<span class="sig-name descname"><span class="pre">CONVERTING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-14</span></em><a class="headerlink" href="#canlib.kvlclib.Error.CONVERTING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call failed since conversion is running.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.EOF">
+<span class="sig-name descname"><span class="pre">EOF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-3</span></em><a class="headerlink" href="#canlib.kvlclib.Error.EOF" title="Permalink to this definition">¶</a></dt>
+<dd><p>End of input file reached.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.FAIL">
+<span class="sig-name descname"><span class="pre">FAIL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#canlib.kvlclib.Error.FAIL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic error.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.FILE_ERROR">
+<span class="sig-name descname"><span class="pre">FILE_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-5</span></em><a class="headerlink" href="#canlib.kvlclib.Error.FILE_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd><p>File I/O error.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.FILE_EXISTS">
+<span class="sig-name descname"><span class="pre">FILE_EXISTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-6</span></em><a class="headerlink" href="#canlib.kvlclib.Error.FILE_EXISTS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file already exists.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.FILE_TOO_LARGE">
+<span class="sig-name descname"><span class="pre">FILE_TOO_LARGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-10</span></em><a class="headerlink" href="#canlib.kvlclib.Error.FILE_TOO_LARGE" title="Permalink to this definition">¶</a></dt>
+<dd><p>File size too large for specified format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.INTERNAL_ERROR">
+<span class="sig-name descname"><span class="pre">INTERNAL_ERROR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-7</span></em><a class="headerlink" href="#canlib.kvlclib.Error.INTERNAL_ERROR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unhandled internal error.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.INVALID_LOG_EVENT">
+<span class="sig-name descname"><span class="pre">INVALID_LOG_EVENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-30</span></em><a class="headerlink" href="#canlib.kvlclib.Error.INVALID_LOG_EVENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event is unknown to converter.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.MIXED_ENDIANESS">
+<span class="sig-name descname"><span class="pre">MIXED_ENDIANESS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-33</span></em><a class="headerlink" href="#canlib.kvlclib.Error.MIXED_ENDIANESS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrong data type in MDF.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.NOT_IMPLEMENTED">
+<span class="sig-name descname"><span class="pre">NOT_IMPLEMENTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-4</span></em><a class="headerlink" href="#canlib.kvlclib.Error.NOT_IMPLEMENTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not implemented.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.NO_FREE_HANDLES">
+<span class="sig-name descname"><span class="pre">NO_FREE_HANDLES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-12</span></em><a class="headerlink" href="#canlib.kvlclib.Error.NO_FREE_HANDLES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Too many open KvlcHandle handles.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.NO_INPUT_SELECTED">
+<span class="sig-name descname"><span class="pre">NO_INPUT_SELECTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-13</span></em><a class="headerlink" href="#canlib.kvlclib.Error.NO_INPUT_SELECTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Missing call to kvlcSetInputFile or kvlcFeedSelectFormat.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.NO_TIME_REFERENCE">
+<span class="sig-name descname"><span class="pre">NO_TIME_REFERENCE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-31</span></em><a class="headerlink" href="#canlib.kvlclib.Error.NO_TIME_REFERENCE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required timestamp missing.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.NULL_POINTER">
+<span class="sig-name descname"><span class="pre">NULL_POINTER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-8</span></em><a class="headerlink" href="#canlib.kvlclib.Error.NULL_POINTER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unexpected null pointer.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.PARAM">
+<span class="sig-name descname"><span class="pre">PARAM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-2</span></em><a class="headerlink" href="#canlib.kvlclib.Error.PARAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error in supplied parameters.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.RESULT_TOO_BIG">
+<span class="sig-name descname"><span class="pre">RESULT_TOO_BIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-34</span></em><a class="headerlink" href="#canlib.kvlclib.Error.RESULT_TOO_BIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Result is too big for an out-parameter</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.TIME_DECREASING">
+<span class="sig-name descname"><span class="pre">TIME_DECREASING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-32</span></em><a class="headerlink" href="#canlib.kvlclib.Error.TIME_DECREASING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Decreasing time between files.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Error.TYPE_MISMATCH">
+<span class="sig-name descname"><span class="pre">TYPE_MISMATCH</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-11</span></em><a class="headerlink" href="#canlib.kvlclib.Error.TYPE_MISMATCH" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supplied parameter has incorrect type.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="fileformat">
+<h2>FileFormat<a class="headerlink" href="#fileformat" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvlclib.</span></span><span class="sig-name descname"><span class="pre">FileFormat</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvlclib/enums.html#FileFormat"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvlclib.FileFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>FILE_FORMAT_xxx</p>
+<p>Format used for input and output, used in <a class="reference internal" href="converter.html#canlib.kvlclib.Converter.setInputFile" title="canlib.kvlclib.Converter.setInputFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Converter.setInputFile()</span></code></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not all formats are valid as both output and input format.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.CSV">
+<span class="sig-name descname"><span class="pre">CSV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.CSV" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.CSV_SIGNAL">
+<span class="sig-name descname"><span class="pre">CSV_SIGNAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">100</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.CSV_SIGNAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.DEBUG">
+<span class="sig-name descname"><span class="pre">DEBUG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1000</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.DEBUG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reserved for debug.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.DIADEM">
+<span class="sig-name descname"><span class="pre">DIADEM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">110</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.DIADEM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.FAMOS">
+<span class="sig-name descname"><span class="pre">FAMOS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">105</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.FAMOS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.FAMOS_XCP">
+<span class="sig-name descname"><span class="pre">FAMOS_XCP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">201</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.FAMOS_XCP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.INVALID">
+<span class="sig-name descname"><span class="pre">INVALID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.INVALID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid file format</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.J1587">
+<span class="sig-name descname"><span class="pre">J1587</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">103</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.J1587" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.J1587_ALT">
+<span class="sig-name descname"><span class="pre">J1587_ALT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">104</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.J1587_ALT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obsolete.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.KME24">
+<span class="sig-name descname"><span class="pre">KME24</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.KME24" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input and output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.KME25">
+<span class="sig-name descname"><span class="pre">KME25</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.KME25" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input and output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.KME40">
+<span class="sig-name descname"><span class="pre">KME40</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.KME40" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input and output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.KME50">
+<span class="sig-name descname"><span class="pre">KME50</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.KME50" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input and output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.KME60">
+<span class="sig-name descname"><span class="pre">KME60</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.KME60" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.MATLAB">
+<span class="sig-name descname"><span class="pre">MATLAB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">102</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.MATLAB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.MDF">
+<span class="sig-name descname"><span class="pre">MDF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">101</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.MDF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.MDF_4X">
+<span class="sig-name descname"><span class="pre">MDF_4X</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">107</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.MDF_4X" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.MDF_4X_SIGNAL">
+<span class="sig-name descname"><span class="pre">MDF_4X_SIGNAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">108</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.MDF_4X_SIGNAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.MDF_SIGNAL">
+<span class="sig-name descname"><span class="pre">MDF_SIGNAL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">106</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.MDF_SIGNAL" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.MEMO_LOG">
+<span class="sig-name descname"><span class="pre">MEMO_LOG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.MEMO_LOG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input (internal device logfile format).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.PLAIN_ASC">
+<span class="sig-name descname"><span class="pre">PLAIN_ASC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.PLAIN_ASC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.RPCIII">
+<span class="sig-name descname"><span class="pre">RPCIII</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">111</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.RPCIII" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.VECTOR_ASC">
+<span class="sig-name descname"><span class="pre">VECTOR_ASC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.VECTOR_ASC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.VECTOR_BLF">
+<span class="sig-name descname"><span class="pre">VECTOR_BLF</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.VECTOR_BLF" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.VECTOR_BLF_FD">
+<span class="sig-name descname"><span class="pre">VECTOR_BLF_FD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">109</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.VECTOR_BLF_FD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Input and output format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.FileFormat.XCP">
+<span class="sig-name descname"><span class="pre">XCP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">200</span></em><a class="headerlink" href="#canlib.kvlclib.FileFormat.XCP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Output file format.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="converter.html" class="btn btn-neutral float-left" title="Converter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="property.html" class="btn btn-neutral float-right" title="Property" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

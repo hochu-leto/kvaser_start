@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exceptions &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Attribute" href="attribute.html" />
+    <link rel="prev" title="kvadblib" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canlib/index.html">canlib</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">kvadblib</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#kvderror">KvdError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kvdbuffertoosmall">KvdBufferTooSmall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kvddbfileparse">KvdDbFileParse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kvderrinparameter">KvdErrInParameter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kvdinuse">KvdInUse</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kvdnoattribute">KvdNoAttribute</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kvdnomessage">KvdNoMessage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kvdnosignal">KvdNoSignal</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kvdnonode">KvdNoNode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kvdnotfound">KvdNotFound</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#kvdonlyoneallowed">KvdOnlyOneAllowed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#signalnotfound">SignalNotFound</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="attribute.html">Attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attributedef.html">Attribute Definitions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="dbc.html">dbc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enums.html">Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="framebox.html">Frame Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html">Message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="node.html">Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signal.html">Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">kvadblib</a> &raquo;</li>
+      <li>Exceptions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/kvadblib/exceptions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="exceptions">
+<h1>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="kvderror">
+<h2>KvdError<a class="headerlink" href="#kvderror" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdError</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for exceptions raised by the kvadblib dll</p>
+</dd></dl>
+
+</div>
+<div class="section" id="kvdbuffertoosmall">
+<h2>KvdBufferTooSmall<a class="headerlink" href="#kvdbuffertoosmall" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdBufferTooSmall">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdBufferTooSmall</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdBufferTooSmall"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdBufferTooSmall" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvadblib.KvdError" title="canlib.kvadblib.exceptions.KvdError"><code class="xref py py-class docutils literal notranslate"><span class="pre">KvdError</span></code></a></p>
+<p>The buffer provided was not large enough to contain the requested data.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.10.</span></p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdBufferTooSmall.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-14</span></em><a class="headerlink" href="#canlib.kvadblib.KvdBufferTooSmall.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="kvddbfileparse">
+<h2>KvdDbFileParse<a class="headerlink" href="#kvddbfileparse" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdDbFileParse">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdDbFileParse</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdDbFileParse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdDbFileParse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvadblib.KvdError" title="canlib.kvadblib.exceptions.KvdError"><code class="xref py py-class docutils literal notranslate"><span class="pre">KvdError</span></code></a></p>
+<p>The database file could not be parsed.</p>
+<p>More information can be obtained by running <a class="reference internal" href="dbc.html#canlib.kvadblib.get_last_parse_error" title="canlib.kvadblib.get_last_parse_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_last_parse_error</span></code></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.10.</span></p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdDbFileParse.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-15</span></em><a class="headerlink" href="#canlib.kvadblib.KvdDbFileParse.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="kvderrinparameter">
+<h2>KvdErrInParameter<a class="headerlink" href="#kvderrinparameter" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdErrInParameter">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdErrInParameter</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdErrInParameter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdErrInParameter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvadblib.KvdError" title="canlib.kvadblib.exceptions.KvdError"><code class="xref py py-class docutils literal notranslate"><span class="pre">KvdError</span></code></a></p>
+<p>One or more of the parameters in call is erronous.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdErrInParameter.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-3</span></em><a class="headerlink" href="#canlib.kvadblib.KvdErrInParameter.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="kvdinuse">
+<h2>KvdInUse<a class="headerlink" href="#kvdinuse" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdInUse">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdInUse</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdInUse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdInUse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvadblib.KvdError" title="canlib.kvadblib.exceptions.KvdError"><code class="xref py py-class docutils literal notranslate"><span class="pre">KvdError</span></code></a></p>
+<p>An item is in use.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdInUse.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-13</span></em><a class="headerlink" href="#canlib.kvadblib.KvdInUse.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="kvdnoattribute">
+<h2>KvdNoAttribute<a class="headerlink" href="#kvdnoattribute" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdNoAttribute">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdNoAttribute</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdNoAttribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdNoAttribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvadblib.KvdNotFound" title="canlib.kvadblib.exceptions.KvdNotFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">KvdNotFound</span></code></a></p>
+<p>No attribute found.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdNoAttribute.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-10</span></em><a class="headerlink" href="#canlib.kvadblib.KvdNoAttribute.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="kvdnomessage">
+<h2>KvdNoMessage<a class="headerlink" href="#kvdnomessage" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdNoMessage">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdNoMessage</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdNoMessage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdNoMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvadblib.KvdNotFound" title="canlib.kvadblib.exceptions.KvdNotFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">KvdNotFound</span></code></a></p>
+<p>No message was found.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdNoMessage.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-4</span></em><a class="headerlink" href="#canlib.kvadblib.KvdNoMessage.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="kvdnosignal">
+<h2>KvdNoSignal<a class="headerlink" href="#kvdnosignal" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdNoSignal">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdNoSignal</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdNoSignal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdNoSignal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvadblib.KvdNotFound" title="canlib.kvadblib.exceptions.KvdNotFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">KvdNotFound</span></code></a></p>
+<p>No signal was found.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdNoSignal.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-5</span></em><a class="headerlink" href="#canlib.kvadblib.KvdNoSignal.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="kvdnonode">
+<h2>KvdNoNode<a class="headerlink" href="#kvdnonode" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdNoNode">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdNoNode</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdNoNode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdNoNode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvadblib.KvdNotFound" title="canlib.kvadblib.exceptions.KvdNotFound"><code class="xref py py-class docutils literal notranslate"><span class="pre">KvdNotFound</span></code></a></p>
+<p>Could not find the database node.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdNoNode.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-9</span></em><a class="headerlink" href="#canlib.kvadblib.KvdNoNode.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="kvdnotfound">
+<h2>KvdNotFound<a class="headerlink" href="#kvdnotfound" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdNotFound">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdNotFound</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdNotFound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvadblib.KvdError" title="canlib.kvadblib.exceptions.KvdError"><code class="xref py py-class docutils literal notranslate"><span class="pre">KvdError</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="kvdonlyoneallowed">
+<h2>KvdOnlyOneAllowed<a class="headerlink" href="#kvdonlyoneallowed" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdOnlyOneAllowed">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">KvdOnlyOneAllowed</span></span><a class="reference internal" href="../../_modules/canlib/kvadblib/exceptions.html#KvdOnlyOneAllowed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.KvdOnlyOneAllowed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvadblib.KvdError" title="canlib.kvadblib.exceptions.KvdError"><code class="xref py py-class docutils literal notranslate"><span class="pre">KvdError</span></code></a></p>
+<p>An identical kvaDbLib structure already exists.</p>
+<p>Only one database at a time can be used).</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvadblib.KvdOnlyOneAllowed.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-11</span></em><a class="headerlink" href="#canlib.kvadblib.KvdOnlyOneAllowed.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="signalnotfound">
+<h2>SignalNotFound<a class="headerlink" href="#signalnotfound" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.kvadblib.SignalNotFound">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">SignalNotFound</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/framebox.html#SignalNotFound"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.SignalNotFound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="../exceptions.html#canlib.CanlibException" title="canlib.exceptions.CanlibException"><code class="xref py py-class docutils literal notranslate"><span class="pre">CanlibException</span></code></a></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="kvadblib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="attribute.html" class="btn btn-neutral float-right" title="Attribute" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

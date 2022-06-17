@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Channel &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CAN Frames" href="canframes.html" />
+    <link rel="prev" title="Devices and Channels" href="devicesandchannels.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using canlib (CANlib)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initialization.html">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devicesandchannels.html">Devices and Channels</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Open Channel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#open-as-can">Open as CAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#open-as-can-fd">Open as CAN FD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#close-channel">Close Channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-channel-capabilities">Check Channel Capabilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-can-bitrate">Set CAN Bitrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-can-fd-bitrate">Set CAN FD Bitrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#can-driver-modes">CAN Driver Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#legacy-functions">Legacy Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Set CAN Bitrate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Set CAN FD Bitrate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="canframes.html">CAN Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sendandreceive.html">Send and Receive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="buserrors.html">Bus Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timemeasurement.html">Time Measurement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingthreads.html">Using Threads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tprogramming.html">t Programming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="iopinhandling.html">I/O Pin Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Using canlib (CANlib)</a> &raquo;</li>
+      <li>Open Channel</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/canlib/openchannel.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="open-channel">
+<h1>Open Channel<a class="headerlink" href="#open-channel" title="Permalink to this heading">¶</a></h1>
+<p>Once we have imported <code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.canlib</span></code> to enumerate the connected Kvaser CAN
+devices, the next call is likely to be a call to <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.openChannel" title="canlib.canlib.openChannel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openChannel</span></code></a>,
+which returns a <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel" title="canlib.canlib.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel</span></code></a> object for the specific CAN
+circuit. This object is then used for subsequent calls to the library. The
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.openChannel" title="canlib.canlib.openChannel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openChannel</span></code></a> function’s first argument is the number of the
+desired channel, the second argument is modifier flags <a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Open" title="canlib.canlib.Open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Open</span></code></a>.</p>
+<p><a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.openChannel" title="canlib.canlib.openChannel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openChannel</span></code></a> may raise several different exceptions, one of
+which is <a class="reference internal" href="../reference/canlib/exceptions.html#canlib.canlib.CanNotFound" title="canlib.canlib.CanNotFound"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CanNotFound</span></code></a>. This means that the channel specified in
+the first parameter was not found, or that the flags passed to
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.openChannel" title="canlib.canlib.openChannel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openChannel</span></code></a> is not applicable to the specified channel.</p>
+<div class="section" id="open-as-can">
+<span id="id1"></span><h2>Open as CAN<a class="headerlink" href="#open-as-can" title="Permalink to this heading">¶</a></h2>
+<p>No special <a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Open" title="canlib.canlib.Open"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Open</span></code></a> modifier flag is needed in the flags argument to <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.openChannel" title="canlib.canlib.openChannel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openChannel</span></code></a> when opening a channel in CAN mode.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">canlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">&lt;canlib.canlib.channel.Channel object at 0x0000015B787EDA90&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="open-as-can-fd">
+<span id="id2"></span><h2>Open as CAN FD<a class="headerlink" href="#open-as-can-fd" title="Permalink to this heading">¶</a></h2>
+<p>To open a channel in CAN FD mode, either <a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Open.CAN_FD" title="canlib.canlib.Open.CAN_FD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CAN_FD</span></code></a> or
+<a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Open.CAN_FD_NONISO" title="canlib.canlib.Open.CAN_FD_NONISO"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CAN_FD_NONISO</span></code></a> needs to be given in the flags argument to
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.openChannel" title="canlib.canlib.openChannel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openChannel</span></code></a>.</p>
+<p>This example opens channel 0 in CAN FD mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">canlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">channel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">flags</span><span class="o">=</span><span class="n">canlib</span><span class="o">.</span><span class="n">Open</span><span class="o">.</span><span class="n">CAN_FD</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="close-channel">
+<h2>Close Channel<a class="headerlink" href="#close-channel" title="Permalink to this heading">¶</a></h2>
+<p>Closing a channel is done using <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.close" title="canlib.canlib.Channel.close"><code class="xref py py-obj docutils literal notranslate"><span class="pre">close</span></code></a>. If no other
+handles are referencing the same CANlib channel, the channel is taken off
+bus.</p>
+<p>The CAN channel can also be opened and closed using a context manager:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">canlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">ch</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-channel-capabilities">
+<span id="id3"></span><h2>Check Channel Capabilities<a class="headerlink" href="#check-channel-capabilities" title="Permalink to this heading">¶</a></h2>
+<p>Channel specific information and capabilities are made available by
+reading attributes of an instance of type <a class="reference internal" href="../reference/canlib/channeldata.html#canlib.canlib.ChannelData" title="canlib.canlib.ChannelData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ChannelData</span></code></a>.</p>
+<p>The device clock frequency can be obtained via <code class="xref py py-obj docutils literal notranslate"><span class="pre">frequency():</span></code></p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">canlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chd</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">ChannelData</span><span class="p">(</span><span class="n">channel_number</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clock_info</span> <span class="o">=</span> <span class="n">chd</span><span class="o">.</span><span class="n">clock_info</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">clock_info</span><span class="o">.</span><span class="n">frequency</span><span class="p">()</span>
+<span class="go">80000000</span>
+</pre></div>
+</div>
+<p>The capabilities of a channel can be obtained by reading attribute <code class="xref py py-obj docutils literal notranslate"><span class="pre">channel_cap</span></code>
+and <code class="xref py py-obj docutils literal notranslate"><span class="pre">channel_cap_ex</span></code>:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">canlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chd</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">ChannelData</span><span class="p">(</span><span class="n">channel_number</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chd</span><span class="o">.</span><span class="n">channel_cap</span>
+<span class="go">ChannelCap.IO_API|SCRIPT|LOGGER|SINGLE_SHOT|SILENT_MODE|CAN_FD_NONISO|CAN_FD|</span>
+<span class="go">TXACKNOWLEDGE|TXREQUEST|GENERATE_ERROR|ERROR_COUNTERS|BUS_STATISTICS|EXTENDED_CAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">chd</span><span class="o">.</span><span class="n">channel_cap_ex</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="go">ChannelCapEx.BUSPARAMS_TQ</span>
+</pre></div>
+</div>
+<p>A bitwise AND operator can be used to see if a channel has a specific capability.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="k">if</span> <span class="p">(</span><span class="n">chd</span><span class="o">.</span><span class="n">channel_cap</span> <span class="o">&amp;</span> <span class="n">canlib</span><span class="o">.</span><span class="n">ChannelCap</span><span class="o">.</span><span class="n">CAN_FD</span><span class="p">):</span>
+<span class="gp">&gt;&gt;&gt; </span>  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Channel has support for CAN FD!&quot;</span><span class="p">)</span>
+<span class="go">Channel has support for CAN FD!</span>
+</pre></div>
+</div>
+<p>The above printouts are just an example, and will differ for different devices and
+installed firmware.</p>
+</div>
+<div class="section" id="set-can-bitrate">
+<span id="id4"></span><h2>Set CAN Bitrate<a class="headerlink" href="#set-can-bitrate" title="Permalink to this heading">¶</a></h2>
+<p>After opening the channel in classic CAN mode (see <a class="reference internal" href="#open-as-can"><span class="std std-ref">Open as CAN</span></a>), use <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.set_bus_params_tq" title="canlib.canlib.Channel.set_bus_params_tq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_bus_params_tq</span></code></a> to specify the bit timing parameters on the CAN bus.
+Bit timing parameters are packaged in an instance of type <a class="reference internal" href="../reference/canlib/busparams.html#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a>.
+Note that the synchronization segment is excluded as it is always one time quantum long.</p>
+<p><strong>Example:</strong> Set the bus speed to 500 kbit/s on a CAN device with an 80 MHz oscillator:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">canlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">busparams</span><span class="o">.</span><span class="n">BusParamsTq</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">tq</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">phase1</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">phase2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">sjw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">prescaler</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">prop</span><span class="o">=</span><span class="mi">3</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">set_bus_params_tq</span><span class="p">(</span><span class="n">params</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In the example a prescaler of 20 is used, resulting in each bit comprising of 160 time quanta (8 * 20).
+The nominal bus speed is given by 80 * 10^6 / (20 * 8) = 500 * 10^3.</p>
+<p>If uncertain how to set a specific bus speed, one can use <a class="reference internal" href="../reference/canlib/busparams.html#canlib.canlib.busparams.calc_busparamstq" title="canlib.canlib.busparams.calc_busparamstq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">calc_busparamstq</span></code></a>,
+which returns a <a class="reference internal" href="../reference/canlib/busparams.html#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a> object:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">calc_busparamstq</span><span class="p">(</span>
+<span class="gp">... </span><span class="n">target_bitrate</span><span class="o">=</span><span class="mi">470_000</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">target_sample_point</span><span class="o">=</span><span class="mi">82</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">target_sync_jump_width</span><span class="o">=</span><span class="mf">15.3</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">clk_freq</span><span class="o">=</span><span class="n">clock_info</span><span class="o">.</span><span class="n">frequency</span><span class="p">(),</span>
+<span class="gp">... </span><span class="n">target_prop_tq</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<span class="gp">... </span><span class="n">prescaler</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="go">BusParamsTq(tq=85, prop=25, phase1=44, phase2=15, sjw=13, prescaler=2)</span>
+</pre></div>
+</div>
+<p>For users that are not interested in specifying individual bit timing parameters,
+CANlib also provides a set of default parameter settings for the most common
+bus speeds through the <a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Bitrate" title="canlib.canlib.Bitrate"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Bitrate</span></code></a> class. The predefined
+bitrate constants may be set directly in the call to <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.openChannel" title="canlib.canlib.openChannel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openChannel</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">bitrate</span><span class="o">=</span><span class="n">canlib</span><span class="o">.</span><span class="n">Bitrate</span><span class="o">.</span><span class="n">BITRATE_500K</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-text">Bit timing parameters for some of the most common bus speeds on a CAN device with an 80 MHz oscillator <a class="footnote-reference brackets" href="#id11" id="id5">1</a></span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>tq</p></th>
+<th class="head"><p>phase1</p></th>
+<th class="head"><p>phase2</p></th>
+<th class="head"><p>sjw</p></th>
+<th class="head"><p>prop</p></th>
+<th class="head"><p>prescaler</p></th>
+<th class="head"><p>Sample point</p></th>
+<th class="head"><p>Bitrate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Bitrate.BITRATE_10K" title="canlib.canlib.Bitrate.BITRATE_10K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_10K</span></code></a></p></th>
+<td><p>16</p></td>
+<td><p>4</p></td>
+<td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>7</p></td>
+<td><p>500</p></td>
+<td><p>75%</p></td>
+<td><p>10 kbit/s</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Bitrate.BITRATE_50K" title="canlib.canlib.Bitrate.BITRATE_50K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_50K</span></code></a></p></th>
+<td><p>16</p></td>
+<td><p>4</p></td>
+<td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>7</p></td>
+<td><p>100</p></td>
+<td><p>75%</p></td>
+<td><p>50 kbit/s</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Bitrate.BITRATE_62K" title="canlib.canlib.Bitrate.BITRATE_62K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_62K</span></code></a></p></th>
+<td><p>16</p></td>
+<td><p>4</p></td>
+<td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>7</p></td>
+<td><p>80</p></td>
+<td><p>75%</p></td>
+<td><p>62 kbit/s</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Bitrate.BITRATE_83K" title="canlib.canlib.Bitrate.BITRATE_83K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_83K</span></code></a></p></th>
+<td><p>8</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>3</p></td>
+<td><p>120</p></td>
+<td><p>75%</p></td>
+<td><p>83 kbit/s</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Bitrate.BITRATE_100K" title="canlib.canlib.Bitrate.BITRATE_100K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_100K</span></code></a></p></th>
+<td><p>16</p></td>
+<td><p>4</p></td>
+<td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>7</p></td>
+<td><p>50</p></td>
+<td><p>75%</p></td>
+<td><p>100 kbit/s</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Bitrate.BITRATE_125K" title="canlib.canlib.Bitrate.BITRATE_125K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_125K</span></code></a></p></th>
+<td><p>16</p></td>
+<td><p>4</p></td>
+<td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>7</p></td>
+<td><p>40</p></td>
+<td><p>75%</p></td>
+<td><p>125 kbit/s</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Bitrate.BITRATE_250K" title="canlib.canlib.Bitrate.BITRATE_250K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_250K</span></code></a></p></th>
+<td><p>8</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+<td><p>40</p></td>
+<td><p>75%</p></td>
+<td><p>250 kbit/s</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Bitrate.BITRATE_500K" title="canlib.canlib.Bitrate.BITRATE_500K"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_500K</span></code></a></p></th>
+<td><p>8</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+<td><p>20</p></td>
+<td><p>75%</p></td>
+<td><p>500 kbit/s</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Bitrate.BITRATE_1M" title="canlib.canlib.Bitrate.BITRATE_1M"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_1M</span></code></a></p></th>
+<td><p>8</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+<td><p>10</p></td>
+<td><p>75%</p></td>
+<td><p>1 Mbit/s</p></td>
+</tr>
+</tbody>
+</table>
+<p>If uncertain how to calculate bit timing parameters, appropriate values can be acquired using the
+<a class="reference external" href="https://www.kvaser.com/support/calculators/can-fd-bit-timing-calculator/">Bit Timing Calculator</a>.
+Note that in classic CAN mode, only the nominal bus parameters are of concern when using the
+Bit Timing Calculator.</p>
+</div>
+<div class="section" id="set-can-fd-bitrate">
+<h2>Set CAN FD Bitrate<a class="headerlink" href="#set-can-fd-bitrate" title="Permalink to this heading">¶</a></h2>
+<p>After opening a channel in CAN FD mode (see <a class="reference internal" href="#open-as-can-fd"><span class="std std-ref">Open as CAN FD</span></a>), bit timing parameters
+for both the arbitration and data phases need to be set. This is done by a call to
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.set_bus_params_tq" title="canlib.canlib.Channel.set_bus_params_tq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_bus_params_tq</span></code></a>, with two separate instances of type
+<a class="reference internal" href="../reference/canlib/busparams.html#canlib.canlib.busparams.BusParamsTq" title="canlib.canlib.busparams.BusParamsTq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BusParamsTq</span></code></a> as arguments.</p>
+<p><strong>Example:</strong> Set the arbitration phase bitrate to 500 kbit/s and the data phase bitrate to
+1000 kbit/s, with sampling points at 80%.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">canlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">canlib</span><span class="o">.</span><span class="n">Open</span><span class="o">.</span><span class="n">CAN_FD</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params_arbitration</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">busparams</span><span class="o">.</span><span class="n">BusParamsTq</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">tq</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">phase1</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">phase2</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">sjw</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">prescaler</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">prop</span><span class="o">=</span><span class="mi">47</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">params_data</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">busparams</span><span class="o">.</span><span class="n">BusParamsTq</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">tq</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">phase1</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">phase2</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">sjw</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">prescaler</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">prop</span><span class="o">=</span><span class="mi">0</span>
+<span class="gp">... </span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">set_bus_params_tq</span><span class="p">(</span><span class="n">params_arbitration</span><span class="p">,</span> <span class="n">params_data</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For users that are not interested in specifying individual bit timing parameters,
+CANlib also provides a set of default parameter settings for the most common
+bus speeds through the <a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.BitrateFD" title="canlib.canlib.BitrateFD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BitrateFD</span></code></a> class. The predefined
+bitrates may be set directly in the call to <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.openChannel" title="canlib.canlib.openChannel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">openChannel</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span>
+<span class="gp">... </span>    <span class="n">channel</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">flags</span><span class="o">=</span><span class="n">canlib</span><span class="o">.</span><span class="n">Open</span><span class="o">.</span><span class="n">CAN_FD</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">bitrate</span><span class="o">=</span><span class="n">canlib</span><span class="o">.</span><span class="n">BitrateFD</span><span class="o">.</span><span class="n">BITRATE_500K_80P</span><span class="p">,</span>
+<span class="gp">... </span>    <span class="n">data_bitrate</span><span class="o">=</span><span class="n">canlib</span><span class="o">.</span><span class="n">BitrateFD</span><span class="o">.</span><span class="n">BITRATE_1M_80P</span><span class="p">,</span>
+<span class="gp">... </span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For CAN FD bus speeds other than the predefined <a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.BitrateFD" title="canlib.canlib.BitrateFD"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BitrateFD</span></code></a>,
+bit timing parameters have to be specified manually.</p>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">Available predefined bitrate constants with corresponding bit timing parameters for a CAN FD device with an 80 MHz oscillator <a class="footnote-reference brackets" href="#id11" id="id6">1</a></span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head stub"></th>
+<th class="head"><p>tq</p></th>
+<th class="head"><p>phase1</p></th>
+<th class="head"><p>phase2</p></th>
+<th class="head"><p>sjw</p></th>
+<th class="head"><p>prop</p></th>
+<th class="head"><p>prescaler</p></th>
+<th class="head"><p>Sample point</p></th>
+<th class="head"><p>Bitrate</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.BitrateFD.BITRATE_500K_80P" title="canlib.canlib.BitrateFD.BITRATE_500K_80P"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_500K_80P</span></code></a></p></th>
+<td><p>40</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>23</p></td>
+<td><p>4</p></td>
+<td><p>80%</p></td>
+<td><p>500 kbit/s</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.BitrateFD.BITRATE_1M_80P" title="canlib.canlib.BitrateFD.BITRATE_1M_80P"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_1M_80P</span></code></a></p></th>
+<td><p>40</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>23</p></td>
+<td><p>2</p></td>
+<td><p>80%</p></td>
+<td><p>1 Mbit/s</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.BitrateFD.BITRATE_2M_80P" title="canlib.canlib.BitrateFD.BITRATE_2M_80P"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_2M_80P</span></code></a></p></th>
+<td><p>20</p></td>
+<td><p>8</p></td>
+<td><p>4</p></td>
+<td><p>4</p></td>
+<td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>80%</p></td>
+<td><p>2 Mbit/s</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.BitrateFD.BITRATE_2M_60P" title="canlib.canlib.BitrateFD.BITRATE_2M_60P"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_2M_60P</span></code></a></p></th>
+<td><p>20</p></td>
+<td><p>8</p></td>
+<td><p>8</p></td>
+<td><p>4</p></td>
+<td><p>3</p></td>
+<td><p>2</p></td>
+<td><p>60%</p></td>
+<td><p>2 Mbit/s</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.BitrateFD.BITRATE_4M_80P" title="canlib.canlib.BitrateFD.BITRATE_4M_80P"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_4M_80P</span></code></a></p></th>
+<td><p>10</p></td>
+<td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>2</p></td>
+<td><p>80%</p></td>
+<td><p>4 Mbit/s</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.BitrateFD.BITRATE_8M_80P" title="canlib.canlib.BitrateFD.BITRATE_8M_80P"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_8M_80P</span></code></a></p></th>
+<td><p>10</p></td>
+<td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>80%</p></td>
+<td><p>8 Mbit/s</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.BitrateFD.BITRATE_8M_70P" title="canlib.canlib.BitrateFD.BITRATE_8M_70P"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_8M_70P</span></code></a></p></th>
+<td><p>10</p></td>
+<td><p>6</p></td>
+<td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>70%</p></td>
+<td><p>8 Mbit/s</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.BitrateFD.BITRATE_8M_60P" title="canlib.canlib.BitrateFD.BITRATE_8M_60P"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BITRATE_8M_60P</span></code></a></p></th>
+<td><p>5</p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>2</p></td>
+<td><p>60%</p></td>
+<td><p>8 Mbit/s</p></td>
+</tr>
+</tbody>
+</table>
+<p>If uncertain how to calculate bit timing parameters, appropriate values can be acquired using the
+<a class="reference external" href="https://www.kvaser.com/support/calculators/can-fd-bit-timing-calculator/">Bit Timing Calculator</a>.</p>
+</div>
+<div class="section" id="can-driver-modes">
+<span id="id8"></span><h2>CAN Driver Modes<a class="headerlink" href="#can-driver-modes" title="Permalink to this heading">¶</a></h2>
+<p>Use <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.setBusOutputControl" title="canlib.canlib.Channel.setBusOutputControl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBusOutputControl</span></code></a> to set the bus driver
+mode. This is usually set to <a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Driver.NORMAL" title="canlib.canlib.Driver.NORMAL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NORMAL</span></code></a> to obtain the
+standard push-pull type of driver. Some controllers also support
+<a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Driver.SILENT" title="canlib.canlib.Driver.SILENT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SILENT</span></code></a> which makes the controller receive only, not
+transmit anything, not even ACK bits. This might be handy for e.g. when
+listening to a CAN bus without interfering.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">canlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span><span class="n">channel</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">as</span> <span class="n">ch</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">ch</span><span class="o">.</span><span class="n">setBusOutputControl</span><span class="p">(</span><span class="n">canlib</span><span class="o">.</span><span class="n">Driver</span><span class="o">.</span><span class="n">SILENT</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="o">...</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Driver.NORMAL" title="canlib.canlib.Driver.NORMAL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NORMAL</span></code></a> is set by default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.setBusOutputControl" title="canlib.canlib.Channel.setBusOutputControl"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBusOutputControl</span></code></a> to set the bus
+driver mode to <a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Driver.SILENT" title="canlib.canlib.Driver.SILENT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SILENT</span></code></a> on a device that do not
+support Silent mode will not result in any error messages or warnings, the
+CAN Driver Mode will just remain in <a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.Driver.NORMAL" title="canlib.canlib.Driver.NORMAL"><code class="xref py py-obj docutils literal notranslate"><span class="pre">NORMAL</span></code></a> mode.</p>
+<p>A device that supports Silent mode returns
+<a class="reference internal" href="../reference/canlib/enums.html#canlib.canlib.ChannelCap.SILENT_MODE" title="canlib.canlib.ChannelCap.SILENT_MODE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SILENT_MODE</span></code></a> when asked using
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.ChannelData.channel_cap</span></code>.</p>
+</div>
+</div>
+<div class="section" id="legacy-functions">
+<h2>Legacy Functions<a class="headerlink" href="#legacy-functions" title="Permalink to this heading">¶</a></h2>
+<p>The following functions are still supported by canlib.</p>
+<div class="section" id="id9">
+<h3>Set CAN Bitrate<a class="headerlink" href="#id9" title="Permalink to this heading">¶</a></h3>
+<p><a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.setBusParams" title="canlib.canlib.Channel.setBusParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBusParams</span></code></a> can be used to set the CAN bus parameters,
+including bitrate, the position of the sampling point etc, they are also described
+in most CAN controller data sheets. Depending on device and installed firmware,
+the requested parameters may be subject to scaling in order to accommodate device
+specific restrictions. As such, reading back bus parameters using
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.getBusParamsFd" title="canlib.canlib.Channel.getBusParamsFd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getBusParamsFd</span></code></a> can return bus parameter settings different
+than the ones supplied. Note however, that a successful call to
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.setBusParamsFd" title="canlib.canlib.Channel.setBusParamsFd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBusParamsFd</span></code></a> will always result in the requested bit rate
+being set on the bus, along with bus parameters that for all intents and purposes
+are equivalent to the ones requested.</p>
+<p>Set the speed to 125 kbit/s, each bit comprising 8 (= 1 + 4 + 3) quanta, the
+sampling point occurs at 5/8 of a bit; SJW = 1; one sampling point:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">setBusParams</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">125000</span><span class="p">,</span> <span class="n">tseg1</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">tseg2</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">sjw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">noSamp</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Set the speed to 111111 kbit/s, the sampling point to 75%, the SJW to 2 and the
+number of samples to 1:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">setBusParams</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">111111</span><span class="p">,</span> <span class="n">tseg1</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">tseg2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">sjw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">noSamp</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For full bit timing control, use <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.set_bus_params_tq" title="canlib.canlib.Channel.set_bus_params_tq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_bus_params_tq</span></code></a> instead.</p>
+</div>
+<div class="section" id="id10">
+<h3>Set CAN FD Bitrate<a class="headerlink" href="#id10" title="Permalink to this heading">¶</a></h3>
+<p>After a channel has been opened in CAN FD mode, <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.setBusParams" title="canlib.canlib.Channel.setBusParams"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBusParams</span></code></a>,
+and <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.setBusParamsFd" title="canlib.canlib.Channel.setBusParamsFd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBusParamsFd</span></code></a> can be used to set the arbitration
+and data phase bitrates respectively. Depending on device and installed firmware,
+the requested parameters may be subject to scaling in order to accommodate device
+specific restrictions. As such, reading back bus parameters using
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.getBusParamsFd" title="canlib.canlib.Channel.getBusParamsFd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">getBusParamsFd</span></code></a> can return bus parameter settings different
+than the ones supplied. Note however, that a successful call to
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.setBusParamsFd" title="canlib.canlib.Channel.setBusParamsFd"><code class="xref py py-obj docutils literal notranslate"><span class="pre">setBusParamsFd</span></code></a> will always result in the requested bit rate
+being set on the bus, along with bus parameters that for all intents and purposes
+are equivalent to the ones requested.</p>
+<p>Set the nominal bitrate to 500 kbit/s and the data phase bitrate to 1000 kbit/s,
+with sampling points at 80%.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">setBusParams</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="mi">500000</span><span class="p">,</span> <span class="n">tseg1</span><span class="o">=</span><span class="mi">63</span><span class="p">,</span> <span class="n">tseg2</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">sjw</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">noSamp</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">setBusParamsFd</span><span class="p">(</span><span class="n">freq_brs</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">tseg1_brs</span><span class="o">=</span><span class="mi">31</span><span class="p">,</span> <span class="n">tseg2_brs</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">sjw_brs</span><span class="o">=</span><span class="mi">8</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>For full bit timing control, use <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.set_bus_params_tq" title="canlib.canlib.Channel.set_bus_params_tq"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_bus_params_tq</span></code></a> instead.</p>
+<dl class="footnote brackets">
+<dt class="label" id="id11"><span class="brackets">1</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id6">2</a>)</span></dt>
+<dd><p>See <a class="reference internal" href="#check-channel-capabilities"><span class="std std-ref">Check Channel Capabilities</span></a> for information on clock frequency.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="devicesandchannels.html" class="btn btn-neutral float-left" title="Devices and Channels" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="canframes.html" class="btn btn-neutral float-right" title="CAN Frames" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

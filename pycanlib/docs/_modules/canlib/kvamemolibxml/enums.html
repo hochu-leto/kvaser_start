@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>canlib.kvamemolibxml.enums &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../reference/index.html">Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../../index.html">Module code</a> &raquo;</li>
+      <li>canlib.kvamemolibxml.enums</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for canlib.kvamemolibxml.enums</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">..cenum</span> <span class="kn">import</span> <span class="n">CEnum</span>
+
+
+<span class="c1"># StatusERR</span>
+<div class="viewcode-block" id="Error"><a class="viewcode-back" href="../../../reference/kvamemolibxml/enums.html#canlib.kvamemolibxml.Error">[docs]</a><span class="k">class</span> <span class="nc">Error</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="n">OK</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#: OK</span>
+    <span class="n">FAIL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1">#: Generic error</span>
+    <span class="n">ATTR_NOT_FOUND</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>  <span class="c1">#: Failed to find an attribute in a node</span>
+    <span class="n">ATTR_VALUE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>  <span class="c1">#: The attribute value is not correct, e.g. whitespace after a number.</span>
+    <span class="n">ELEM_NOT_FOUND</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>  <span class="c1">#: Could not find a required element</span>
+    <span class="n">VALUE_RANGE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>  <span class="c1">#: The value is outside the allowed range</span>
+    <span class="n">VALUE_UNIQUE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span>  <span class="c1">#: The value is not unique; usually idx attributes</span>
+    <span class="n">VALUE_CONSECUTIVE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8</span>  <span class="c1">#: The values are not consecutive; usually idx attributes</span>
+    <span class="n">POSTFIXEXPR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span>  <span class="c1">#: The trigger expression could not be parsed</span>
+    <span class="n">XML_PARSER</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>  <span class="c1">#: The XML settings contain syntax errors.</span>
+    <span class="n">DTD_VALIDATION</span> <span class="o">=</span> <span class="o">-</span><span class="mi">11</span>  <span class="c1">#: The XML settings do not follow the DTD.</span>
+    <span class="n">SCRIPT_ERROR</span> <span class="o">=</span> <span class="o">-</span><span class="mi">12</span>  <span class="c1">#: t-script related errors, e.g. file not found.</span>
+    <span class="n">INTERNAL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">20</span>  <span class="c1">#: Internal errors, e.g. null pointers.</span>
+
+<div class="viewcode-block" id="Error.from_number"><a class="viewcode-back" href="../../../reference/kvamemolibxml/enums.html#canlib.kvamemolibxml.Error.from_number">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_number</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create `Error` object from number.</span>
+
+<span class="sd">        If the number is not defined in the class, return the number instead.</span>
+<span class="sd">        This is used in order to be forward compatible with new codes in the dll.</span>
+
+<span class="sd">        .. versionadded:: 1.19</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">number</span></div></div>
+
+
+<span class="c1"># ValidationError and ValidationWarning are the same enum</span>
+<span class="c1"># (KvaXmlValidationStatus) in C.</span>
+<div class="viewcode-block" id="ValidationError"><a class="viewcode-back" href="../../../reference/kvamemolibxml/enums.html#canlib.kvamemolibxml.ValidationError">[docs]</a><span class="k">class</span> <span class="nc">ValidationError</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="n">OK</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1">#: OK</span>
+    <span class="n">FAIL</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1">#: Generic error.</span>
+    <span class="n">ABORT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>  <span class="c1">#: Too many errors, validation aborted.</span>
+    <span class="n">SILENT_TRANSMIT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>  <span class="c1">#: Transmit lists used in silent mode.</span>
+    <span class="n">UNDEFINED_TRIGGER</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>  <span class="c1">#: An undefined trigger is used in an expression.</span>
+    <span class="n">MULTIPLE_EXT_TRIGGER</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>  <span class="c1">#: There are more than one external trigger defined.</span>
+    <span class="n">MULTIPLE_START_TRIGGER</span> <span class="o">=</span> <span class="o">-</span><span class="mi">6</span>  <span class="c1">#: There are more than one start up trigger defined.</span>
+    <span class="n">DISK_FULL_STARTS_LOG</span> <span class="o">=</span> <span class="o">-</span><span class="mi">7</span>  <span class="c1">#: A trigger on disk full starts the logging.</span>
+    <span class="n">NUM_OUT_OF_RANGE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">8</span>  <span class="c1">#: A numerical value is out of range.</span>
+    <span class="n">SCRIPT_NOT_FOUND</span> <span class="o">=</span> <span class="o">-</span><span class="mi">9</span>  <span class="c1">#: A t-script file could not be opened.</span>
+    <span class="n">SCRIPT_TOO_LARGE</span> <span class="o">=</span> <span class="o">-</span><span class="mi">10</span>  <span class="c1">#: A t-script is too large for the configuration.</span>
+    <span class="n">SCRIPT_TOO_MANY</span> <span class="o">=</span> <span class="o">-</span><span class="mi">11</span>  <span class="c1">#: Too many active t-scripts for selected device.</span>
+    <span class="n">SCRIPT_CONFLICT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">12</span>  <span class="c1">#: More than one active script is set as &#39;primary&#39;.</span>
+    <span class="n">ELEMENT_COUNT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">13</span>  <span class="c1">#: Too many or too few elements of this type.</span>
+    <span class="n">PARSER</span> <span class="o">=</span> <span class="o">-</span><span class="mi">14</span>  <span class="c1">#: A general error found during parsing.</span>
+    <span class="n">SCRIPT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">15</span>  <span class="c1">#: A general t-script error found during parsing.</span>
+    <span class="n">EXPRESSION</span> <span class="o">=</span> <span class="o">-</span><span class="mi">16</span>  <span class="c1">#: A general trigger expression found during parsing.</span>
+
+<div class="viewcode-block" id="ValidationError.from_number"><a class="viewcode-back" href="../../../reference/kvamemolibxml/enums.html#canlib.kvamemolibxml.ValidationError.from_number">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_number</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create `ValidationError` object from number.</span>
+
+<span class="sd">        If the number is not defined in the class, return the number instead.</span>
+<span class="sd">        This is used in order to be forward compatible with new codes in the dll.</span>
+
+<span class="sd">        .. versionadded:: 1.19</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">number</span></div></div>
+
+
+<div class="viewcode-block" id="ValidationWarning"><a class="viewcode-back" href="../../../reference/kvamemolibxml/enums.html#canlib.kvamemolibxml.ValidationWarning">[docs]</a><span class="k">class</span> <span class="nc">ValidationWarning</span><span class="p">(</span><span class="n">CEnum</span><span class="p">):</span>
+    <span class="n">ABORT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">100</span>  <span class="c1">#: Too many warnings, validation aborted.</span>
+    <span class="n">NO_ACTIVE_LOG</span> <span class="o">=</span> <span class="o">-</span><span class="mi">101</span>  <span class="c1">#: No active logging detected.</span>
+    <span class="n">DISK_FULL_AND_FIFO</span> <span class="o">=</span> <span class="o">-</span><span class="mi">102</span>  <span class="c1">#: A trigger on disk full used with FIFO mode.</span>
+    <span class="n">IGNORED_ELEMENT</span> <span class="o">=</span> <span class="o">-</span><span class="mi">103</span>  <span class="c1">#: This XML element was ignored.</span>
+    <span class="n">MULTIPLE_EXT_TRIGGER</span> <span class="o">=</span> <span class="o">-</span><span class="mi">104</span>  <span class="c1">#: Using more than one external trigger requires firmware version 3.7 or better.</span>
+
+<div class="viewcode-block" id="ValidationWarning.from_number"><a class="viewcode-back" href="../../../reference/kvamemolibxml/enums.html#canlib.kvamemolibxml.ValidationWarning.from_number">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">from_number</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">number</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Create `ValidationWarning` from number.</span>
+
+<span class="sd">        If the number is not defined in the class, return the number instead.</span>
+<span class="sd">        This is used in order to be forward compatible with new codes in the dll.</span>
+
+<span class="sd">        .. versionadded:: 1.19</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">number</span></div></div>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

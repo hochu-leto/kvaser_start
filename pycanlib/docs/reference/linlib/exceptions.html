@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exceptions &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Channel" href="channel.html" />
+    <link rel="prev" title="linlib" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canlib/index.html">canlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvadblib/index.html">kvadblib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">linlib</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Exceptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#linerror">LinError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lingeneralerror">LinGeneralError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linnomessageerror">LinNoMessageError</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#linnotimplementederror">LinNotImplementedError</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="channel.html">Channel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enums.html">Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="structures.html">MessageInfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">linlib</a> &raquo;</li>
+      <li>Exceptions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/linlib/exceptions.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="exceptions">
+<h1>Exceptions<a class="headerlink" href="#exceptions" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="linerror">
+<h2>LinError<a class="headerlink" href="#linerror" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.linlib.LinError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">LinError</span></span><a class="reference internal" href="../../_modules/canlib/linlib/exceptions.html#LinError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.LinError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Base class for exceptions raised by the linlib class</p>
+<p>Looks up the error text in the linlib dll and presents it together with the
+error code and the wrapper function that triggered the exception.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="lingeneralerror">
+<h2>LinGeneralError<a class="headerlink" href="#lingeneralerror" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.linlib.LinGeneralError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">LinGeneralError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">status</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/linlib/exceptions.html#LinGeneralError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.LinGeneralError" title="Permalink to this definition">¶</a></dt>
+<dd><p>A linlib error that does not (yet) have its own Exception</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not explicitly catch this error, instead catch <a class="reference internal" href="#canlib.linlib.LinError" title="canlib.linlib.LinError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinError</span></code></a>. Your
+error may at any point in the future get its own exception class, and
+so will no longer be of this type. The actual status code that raised
+any <a class="reference internal" href="#canlib.linlib.LinError" title="canlib.linlib.LinError"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LinError</span></code></a> can always be accessed through a <code class="xref py py-obj docutils literal notranslate"><span class="pre">status</span></code> attribute.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="linnomessageerror">
+<h2>LinNoMessageError<a class="headerlink" href="#linnomessageerror" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.linlib.LinNoMessageError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">LinNoMessageError</span></span><a class="reference internal" href="../../_modules/canlib/linlib/exceptions.html#LinNoMessageError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.LinNoMessageError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.linlib.LinError" title="canlib.linlib.exceptions.LinError"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinError</span></code></a></p>
+<p>No messages where availible</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.LinNoMessageError.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#canlib.linlib.LinNoMessageError.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="linnotimplementederror">
+<h2>LinNotImplementedError<a class="headerlink" href="#linnotimplementederror" title="Permalink to this heading">¶</a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="canlib.linlib.LinNotImplementedError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.linlib.</span></span><span class="sig-name descname"><span class="pre">LinNotImplementedError</span></span><a class="reference internal" href="../../_modules/canlib/linlib/exceptions.html#LinNotImplementedError"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.linlib.LinNotImplementedError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.linlib.LinError" title="canlib.linlib.exceptions.LinError"><code class="xref py py-class docutils literal notranslate"><span class="pre">LinError</span></code></a></p>
+<p>Feature/function not implemented in the device</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.linlib.LinNotImplementedError.status">
+<span class="sig-name descname"><span class="pre">status</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-26</span></em><a class="headerlink" href="#canlib.linlib.LinNotImplementedError.status" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="linlib" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="channel.html" class="btn btn-neutral float-right" title="Channel" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

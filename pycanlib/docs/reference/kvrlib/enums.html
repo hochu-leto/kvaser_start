@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enumerations &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Device Info Set" href="infoset.html" />
+    <link rel="prev" title="Discovery" href="discovery.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canlib/index.html">canlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvadblib/index.html">kvadblib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">kvrlib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="discovery.html">Discovery</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Enumerations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#accessibility">Accessibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#addresstype">AddressType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#addresstypeflag">AddressTypeFlag</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#availability">Availability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#basicserviceset">BasicServiceSet</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configmode">ConfigMode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deviceusage">DeviceUsage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#error">Error</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#networkstate">NetworkState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#regulatorydomain">RegulatoryDomain</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#remotestate">RemoteState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#servicestate">ServiceState</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#startinfo">StartInfo</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="infoset.html">Device Info Set</a></li>
+<li class="toctree-l3"><a class="reference internal" href="remotedevice.html">Remote Device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="structures.html">Structures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="service.html">Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">kvrlib</a> &raquo;</li>
+      <li>Enumerations</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/kvrlib/enums.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="enumerations">
+<h1>Enumerations<a class="headerlink" href="#enumerations" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="accessibility">
+<h2>Accessibility<a class="headerlink" href="#accessibility" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.Accessibility">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">Accessibility</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#Accessibility"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.Accessibility" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrAccessibility_xxx</p>
+<p>Remote device accessability status.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Accessibility.PRIVATE">
+<span class="sig-name descname"><span class="pre">PRIVATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvrlib.Accessibility.PRIVATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Private (invisible, password needed to connect).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Accessibility.PROTECTED">
+<span class="sig-name descname"><span class="pre">PROTECTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.Accessibility.PROTECTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Protected (visible for all, password needed to connect).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Accessibility.PUBLIC">
+<span class="sig-name descname"><span class="pre">PUBLIC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.Accessibility.PUBLIC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Public (visible for all, no password required to connect).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Accessibility.UNKNOWN">
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.Accessibility.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unknown (e.g., no reply from device).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="addresstype">
+<h2>AddressType<a class="headerlink" href="#addresstype" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.AddressType">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">AddressType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#AddressType"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.AddressType" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrAddressType_xxx</p>
+<p>Type of device address.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ports are currently not used.</p>
+</div>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.AddressType.IPV4">
+<span class="sig-name descname"><span class="pre">IPV4</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.AddressType.IPV4" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP v.4 address.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.AddressType.IPV4_PORT">
+<span class="sig-name descname"><span class="pre">IPV4_PORT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvrlib.AddressType.IPV4_PORT" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP v.4 address with tcp-port.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.AddressType.IPV6">
+<span class="sig-name descname"><span class="pre">IPV6</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.AddressType.IPV6" title="Permalink to this definition">¶</a></dt>
+<dd><p>IP v.6 address.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.AddressType.MAC">
+<span class="sig-name descname"><span class="pre">MAC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvrlib.AddressType.MAC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ethernet MAC address.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.AddressType.UNKNOWN">
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.AddressType.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unknown (e.g., no reply from device).</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="addresstypeflag">
+<h2>AddressTypeFlag<a class="headerlink" href="#addresstypeflag" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.AddressTypeFlag">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">AddressTypeFlag</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#AddressTypeFlag"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.AddressTypeFlag" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrAddressTypeFlag_xxx</p>
+<p>Flags for setting what addresses that should be returned by
+<a class="reference internal" href="discovery.html#canlib.kvrlib.get_default_discovery_addresses" title="canlib.kvrlib.get_default_discovery_addresses"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_default_discovery_addresses</span></code></a>.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.AddressTypeFlag.ALL">
+<span class="sig-name descname"><span class="pre">ALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">255</span></em><a class="headerlink" href="#canlib.kvrlib.AddressTypeFlag.ALL" title="Permalink to this definition">¶</a></dt>
+<dd><p>All defined below</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.AddressTypeFlag.BROADCAST">
+<span class="sig-name descname"><span class="pre">BROADCAST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.AddressTypeFlag.BROADCAST" title="Permalink to this definition">¶</a></dt>
+<dd><p>Broadcast addresses</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.AddressTypeFlag.STORED">
+<span class="sig-name descname"><span class="pre">STORED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.AddressTypeFlag.STORED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Previously stored addresses</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="availability">
+<h2>Availability<a class="headerlink" href="#availability" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.Availability">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">Availability</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#Availability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.Availability" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrAvailability_xxx</p>
+<p>Device avalability flags.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Availability.FOUND_BY_SCAN">
+<span class="sig-name descname"><span class="pre">FOUND_BY_SCAN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.Availability.FOUND_BY_SCAN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device was found by scan.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Availability.NONE">
+<span class="sig-name descname"><span class="pre">NONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.Availability.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Manually added.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Availability.STORED">
+<span class="sig-name descname"><span class="pre">STORED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.Availability.STORED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device was stored.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="basicserviceset">
+<h2>BasicServiceSet<a class="headerlink" href="#basicserviceset" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.BasicServiceSet">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">BasicServiceSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#BasicServiceSet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.BasicServiceSet" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrBss_xxx</p>
+<p>Basic Service Set.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.BasicServiceSet.ANY">
+<span class="sig-name descname"><span class="pre">ANY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.BasicServiceSet.ANY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Any.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.BasicServiceSet.INDEPENDENT">
+<span class="sig-name descname"><span class="pre">INDEPENDENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.BasicServiceSet.INDEPENDENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ad-hoc network.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.BasicServiceSet.INFRASTRUCTURE">
+<span class="sig-name descname"><span class="pre">INFRASTRUCTURE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.BasicServiceSet.INFRASTRUCTURE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network with AP.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="configmode">
+<h2>ConfigMode<a class="headerlink" href="#configmode" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.ConfigMode">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">ConfigMode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#ConfigMode"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.ConfigMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrConfigMode_xxx</p>
+<p>Configuration mode.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ConfigMode.ERASE">
+<span class="sig-name descname"><span class="pre">ERASE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.ConfigMode.ERASE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Erase and write.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ConfigMode.R">
+<span class="sig-name descname"><span class="pre">R</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.ConfigMode.R" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read only.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ConfigMode.RW">
+<span class="sig-name descname"><span class="pre">RW</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.ConfigMode.RW" title="Permalink to this definition">¶</a></dt>
+<dd><p>Read/write.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="deviceusage">
+<h2>DeviceUsage<a class="headerlink" href="#deviceusage" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.DeviceUsage">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">DeviceUsage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#DeviceUsage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.DeviceUsage" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrDeviceUsage_xxx</p>
+<p>Remote device usage status.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.DeviceUsage.CONFIG">
+<span class="sig-name descname"><span class="pre">CONFIG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvrlib.DeviceUsage.CONFIG" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device is being configured via USB.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.DeviceUsage.FREE">
+<span class="sig-name descname"><span class="pre">FREE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.DeviceUsage.FREE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Not in use.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.DeviceUsage.REMOTE">
+<span class="sig-name descname"><span class="pre">REMOTE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.DeviceUsage.REMOTE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connected to a PC (as a remote device).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.DeviceUsage.UNKNOWN">
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.DeviceUsage.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unknown (e.g., no reply from device).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.DeviceUsage.USB">
+<span class="sig-name descname"><span class="pre">USB</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvrlib.DeviceUsage.USB" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connected via USB cable.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="error">
+<h2>Error<a class="headerlink" href="#error" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">Error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#Error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.Error" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.BLANK">
+<span class="sig-name descname"><span class="pre">BLANK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-6</span></em><a class="headerlink" href="#canlib.kvrlib.Error.BLANK" title="Permalink to this definition">¶</a></dt>
+<dd><p>List was not set or no more results.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.BUFFER_TOO_SMALL">
+<span class="sig-name descname"><span class="pre">BUFFER_TOO_SMALL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-15</span></em><a class="headerlink" href="#canlib.kvrlib.Error.BUFFER_TOO_SMALL" title="Permalink to this definition">¶</a></dt>
+<dd><p>The buffer provided was not large enough to contain the requested data.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.CHECKSUM">
+<span class="sig-name descname"><span class="pre">CHECKSUM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-3</span></em><a class="headerlink" href="#canlib.kvrlib.Error.CHECKSUM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checksum problem.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.DUPLICATED_DEVICE">
+<span class="sig-name descname"><span class="pre">DUPLICATED_DEVICE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-13</span></em><a class="headerlink" href="#canlib.kvrlib.Error.DUPLICATED_DEVICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>There are duplicates in the device list.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.GENERIC">
+<span class="sig-name descname"><span class="pre">GENERIC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-2</span></em><a class="headerlink" href="#canlib.kvrlib.Error.GENERIC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generic error.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.NOT_IMPLEMENTED">
+<span class="sig-name descname"><span class="pre">NOT_IMPLEMENTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-9</span></em><a class="headerlink" href="#canlib.kvrlib.Error.NOT_IMPLEMENTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Function is not yet implemented.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.NOT_INITIALIZED">
+<span class="sig-name descname"><span class="pre">NOT_INITIALIZED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-1</span></em><a class="headerlink" href="#canlib.kvrlib.Error.NOT_INITIALIZED" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrlib has not been initialized.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.NO_ANSWER">
+<span class="sig-name descname"><span class="pre">NO_ANSWER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-8</span></em><a class="headerlink" href="#canlib.kvrlib.Error.NO_ANSWER" title="Permalink to this definition">¶</a></dt>
+<dd><p>No answer arrived within given timeout.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.NO_DEVICE">
+<span class="sig-name descname"><span class="pre">NO_DEVICE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-7</span></em><a class="headerlink" href="#canlib.kvrlib.Error.NO_DEVICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remote device is unreachable.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.NO_SERVICE">
+<span class="sig-name descname"><span class="pre">NO_SERVICE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-12</span></em><a class="headerlink" href="#canlib.kvrlib.Error.NO_SERVICE" title="Permalink to this definition">¶</a></dt>
+<dd><p>The helper service is not running.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.OK">
+<span class="sig-name descname"><span class="pre">OK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.Error.OK" title="Permalink to this definition">¶</a></dt>
+<dd><p>OK!</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.OUT_OF_SPACE">
+<span class="sig-name descname"><span class="pre">OUT_OF_SPACE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-11</span></em><a class="headerlink" href="#canlib.kvrlib.Error.OUT_OF_SPACE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Out of space, eg. to many open handles, to small buffer.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.PARAMETER">
+<span class="sig-name descname"><span class="pre">PARAMETER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-4</span></em><a class="headerlink" href="#canlib.kvrlib.Error.PARAMETER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Error in supplied in parameters.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.PASSWORD">
+<span class="sig-name descname"><span class="pre">PASSWORD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-5</span></em><a class="headerlink" href="#canlib.kvrlib.Error.PASSWORD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Supplied password was wrong.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.PERMISSION_DENIED">
+<span class="sig-name descname"><span class="pre">PERMISSION_DENIED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-10</span></em><a class="headerlink" href="#canlib.kvrlib.Error.PERMISSION_DENIED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Permission denied.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.Error.XML_VALIDATION">
+<span class="sig-name descname"><span class="pre">XML_VALIDATION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">-14</span></em><a class="headerlink" href="#canlib.kvrlib.Error.XML_VALIDATION" title="Permalink to this definition">¶</a></dt>
+<dd><p>XML-file validation failed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="networkstate">
+<h2>NetworkState<a class="headerlink" href="#networkstate" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">NetworkState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#NetworkState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.NetworkState" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrNetworkState_xxx</p>
+<p>States for network connection.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.AUTHENTICATING">
+<span class="sig-name descname"><span class="pre">AUTHENTICATING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.AUTHENTICATING" title="Permalink to this definition">¶</a></dt>
+<dd><p>EAPOL handshake ongoing.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.AUTHENTICATION_FAILED">
+<span class="sig-name descname"><span class="pre">AUTHENTICATION_FAILED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.AUTHENTICATION_FAILED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authentication have failed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.CONNECTED">
+<span class="sig-name descname"><span class="pre">CONNECTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network is reached.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.CONNECTING">
+<span class="sig-name descname"><span class="pre">CONNECTING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.CONNECTING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waiting for connections (ad-hoc).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.CONNECTION_DELAY">
+<span class="sig-name descname"><span class="pre">CONNECTION_DELAY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.CONNECTION_DELAY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delay during connection (ad-hoc).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.FAILED_MIC">
+<span class="sig-name descname"><span class="pre">FAILED_MIC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.FAILED_MIC" title="Permalink to this definition">¶</a></dt>
+<dd><p>MIC verification (EAPOL-key) failed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.INITIALIZING">
+<span class="sig-name descname"><span class="pre">INITIALIZING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.INITIALIZING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Started, waiting for initialization.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.INVALID">
+<span class="sig-name descname"><span class="pre">INVALID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.INVALID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network hardware has been disabled.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.NOT_CONNECTED">
+<span class="sig-name descname"><span class="pre">NOT_CONNECTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.NOT_CONNECTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>No connection (may auto-connect).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.ONLINE">
+<span class="sig-name descname"><span class="pre">ONLINE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.ONLINE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Authentication completed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.STARTUP">
+<span class="sig-name descname"><span class="pre">STARTUP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.STARTUP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configuring network hardware.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.NetworkState.UNKNOWN">
+<span class="sig-name descname"><span class="pre">UNKNOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.NetworkState.UNKNOWN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bad state, should never be reported.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="regulatorydomain">
+<h2>RegulatoryDomain<a class="headerlink" href="#regulatorydomain" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.RegulatoryDomain">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">RegulatoryDomain</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#RegulatoryDomain"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.RegulatoryDomain" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrRegulatoryDomain_xxx</p>
+<p>Regulatory domain.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RegulatoryDomain.CHINA_MII">
+<span class="sig-name descname"><span class="pre">CHINA_MII</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvrlib.RegulatoryDomain.CHINA_MII" title="Permalink to this definition">¶</a></dt>
+<dd><p>MII</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RegulatoryDomain.EUROPE_ETSI">
+<span class="sig-name descname"><span class="pre">EUROPE_ETSI</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.RegulatoryDomain.EUROPE_ETSI" title="Permalink to this definition">¶</a></dt>
+<dd><p>ETSI</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RegulatoryDomain.JAPAN_TELEC">
+<span class="sig-name descname"><span class="pre">JAPAN_TELEC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.RegulatoryDomain.JAPAN_TELEC" title="Permalink to this definition">¶</a></dt>
+<dd><p>TELEC</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RegulatoryDomain.NORTH_AMERICA_FCC">
+<span class="sig-name descname"><span class="pre">NORTH_AMERICA_FCC</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.RegulatoryDomain.NORTH_AMERICA_FCC" title="Permalink to this definition">¶</a></dt>
+<dd><p>FCC</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RegulatoryDomain.WORLD">
+<span class="sig-name descname"><span class="pre">WORLD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvrlib.RegulatoryDomain.WORLD" title="Permalink to this definition">¶</a></dt>
+<dd><p>WORLD</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="remotestate">
+<h2>RemoteState<a class="headerlink" href="#remotestate" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">RemoteState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#RemoteState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.RemoteState" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrRemoteState_xxx</p>
+<p>State of connection to device.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.AVAILABLE">
+<span class="sig-name descname"><span class="pre">AVAILABLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.AVAILABLE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tries to ping known device.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.CLOSING">
+<span class="sig-name descname"><span class="pre">CLOSING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.CLOSING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will stop communication.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.CONFIG_CHANGED">
+<span class="sig-name descname"><span class="pre">CONFIG_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">13</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.CONFIG_CHANGED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Same as UNWILLING.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.CONNECTION_DOWN">
+<span class="sig-name descname"><span class="pre">CONNECTION_DOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.CONNECTION_DOWN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will try and restore connection.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.CONNECTION_UP">
+<span class="sig-name descname"><span class="pre">CONNECTION_UP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.CONNECTION_UP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device connected, heartbeat up.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.DISCOVERED">
+<span class="sig-name descname"><span class="pre">DISCOVERED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.DISCOVERED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Currently not used.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.INSTALLING">
+<span class="sig-name descname"><span class="pre">INSTALLING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.INSTALLING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Driver installation is in progress.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.REDISCOVER">
+<span class="sig-name descname"><span class="pre">REDISCOVER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.REDISCOVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Trying to talk to device.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.REDISCOVER_PENDING">
+<span class="sig-name descname"><span class="pre">REDISCOVER_PENDING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.REDISCOVER_PENDING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Will do rediscover in a moment.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.REMOVE_ME">
+<span class="sig-name descname"><span class="pre">REMOVE_ME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.REMOVE_ME" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device removed, it will be stopped.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.STANDBY">
+<span class="sig-name descname"><span class="pre">STANDBY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.STANDBY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Known device, but unused.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.STARTED">
+<span class="sig-name descname"><span class="pre">STARTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.STARTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Currently not used.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.STARTING">
+<span class="sig-name descname"><span class="pre">STARTING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.STARTING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes for new device.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.STOPPING">
+<span class="sig-name descname"><span class="pre">STOPPING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">14</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.STOPPING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Tries to stop device.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.UNWILLING">
+<span class="sig-name descname"><span class="pre">UNWILLING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.UNWILLING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device turned down connection req.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.RemoteState.VOID">
+<span class="sig-name descname"><span class="pre">VOID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.RemoteState.VOID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Marked as not in list.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="servicestate">
+<h2>ServiceState<a class="headerlink" href="#servicestate" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">ServiceState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#ServiceState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.ServiceState" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrServiceState_xxx</p>
+<p>Current service state.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.AVAILABLE">
+<span class="sig-name descname"><span class="pre">AVAILABLE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.AVAILABLE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device available</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.CLOSING">
+<span class="sig-name descname"><span class="pre">CLOSING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.CLOSING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Closing device</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.CONFIG_CHANGED">
+<span class="sig-name descname"><span class="pre">CONFIG_CHANGED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">13</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.CONFIG_CHANGED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Configuration has changed</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.CONNECTION_DOWN">
+<span class="sig-name descname"><span class="pre">CONNECTION_DOWN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.CONNECTION_DOWN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connection is currently down</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.CONNECTION_UP">
+<span class="sig-name descname"><span class="pre">CONNECTION_UP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.CONNECTION_UP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connection is corrently up. The device should be showing up in Kvaser  Hardware and be ready to be used from CANlib.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.DISCOVERED">
+<span class="sig-name descname"><span class="pre">DISCOVERED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.DISCOVERED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device discovered</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.INSTALLING">
+<span class="sig-name descname"><span class="pre">INSTALLING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.INSTALLING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device is currently being installed</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.REDISCOVER">
+<span class="sig-name descname"><span class="pre">REDISCOVER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.REDISCOVER" title="Permalink to this definition">¶</a></dt>
+<dd><p>We’ve lost the device - rediscover it</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.REDISCOVER_PENDING">
+<span class="sig-name descname"><span class="pre">REDISCOVER_PENDING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.REDISCOVER_PENDING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Rediscover is pending</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.REMOVE_ME">
+<span class="sig-name descname"><span class="pre">REMOVE_ME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.REMOVE_ME" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removing the device</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.STANDBY">
+<span class="sig-name descname"><span class="pre">STANDBY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.STANDBY" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standby, the service is not taking any actions against this device</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.STARTED">
+<span class="sig-name descname"><span class="pre">STARTED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.STARTED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device is started</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.STARTING">
+<span class="sig-name descname"><span class="pre">STARTING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.STARTING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Device is starting, other devices may inhibit this device from being started at the moment (e.g. by installing).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.STOPPING">
+<span class="sig-name descname"><span class="pre">STOPPING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">14</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.STOPPING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Stopping devic</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.UNWILLING">
+<span class="sig-name descname"><span class="pre">UNWILLING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.UNWILLING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Unwilling, see sub state for reason</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.ServiceState.VOID">
+<span class="sig-name descname"><span class="pre">VOID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.ServiceState.VOID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Void</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="startinfo">
+<h2>StartInfo<a class="headerlink" href="#startinfo" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvrlib.StartInfo">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvrlib.</span></span><span class="sig-name descname"><span class="pre">StartInfo</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvrlib/enums.html#StartInfo"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvrlib.StartInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>kvrStartInfo_xxx</p>
+<p>Current start information.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.StartInfo.ERR_CONFIGURING">
+<span class="sig-name descname"><span class="pre">ERR_CONFIGURING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#canlib.kvrlib.StartInfo.ERR_CONFIGURING" title="Permalink to this definition">¶</a></dt>
+<dd><p>I’m being configured so won’t start</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.StartInfo.ERR_ENCRYPTION_PWD">
+<span class="sig-name descname"><span class="pre">ERR_ENCRYPTION_PWD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#canlib.kvrlib.StartInfo.ERR_ENCRYPTION_PWD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrong encryption password.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.StartInfo.ERR_IN_USE">
+<span class="sig-name descname"><span class="pre">ERR_IN_USE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvrlib.StartInfo.ERR_IN_USE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Already connected to someone else</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.StartInfo.ERR_NOTME">
+<span class="sig-name descname"><span class="pre">ERR_NOTME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvrlib.StartInfo.ERR_NOTME" title="Permalink to this definition">¶</a></dt>
+<dd><p>This start is not for me</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.StartInfo.ERR_PARAM">
+<span class="sig-name descname"><span class="pre">ERR_PARAM</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#canlib.kvrlib.StartInfo.ERR_PARAM" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid parameters in QRV (non matching versions)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.StartInfo.ERR_PWD">
+<span class="sig-name descname"><span class="pre">ERR_PWD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvrlib.StartInfo.ERR_PWD" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrong connection pwd</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.StartInfo.NONE">
+<span class="sig-name descname"><span class="pre">NONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvrlib.StartInfo.NONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>No information available</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvrlib.StartInfo.START_OK">
+<span class="sig-name descname"><span class="pre">START_OK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvrlib.StartInfo.START_OK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Started OK</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="discovery.html" class="btn btn-neutral float-left" title="Discovery" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="infoset.html" class="btn btn-neutral float-right" title="Device Info Set" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

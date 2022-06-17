@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dbc &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Enumerations" href="enums.html" />
+    <link rel="prev" title="Attribute Definitions" href="attributedef.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canlib/index.html">canlib</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">kvadblib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attribute.html">Attribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="attributedef.html">Attribute Definitions</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">dbc</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Dbc</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-last-parse-error">get_last_parse_error()</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="enums.html">Enumerations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="framebox.html">Frame Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="message.html">Message</a></li>
+<li class="toctree-l3"><a class="reference internal" href="node.html">Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="signal.html">Signals</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">kvadblib</a> &raquo;</li>
+      <li>dbc</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/kvadblib/dbc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="dbc">
+<h1>dbc<a class="headerlink" href="#dbc" title="Permalink to this heading">¶</a></h1>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvadblib.dbc.DATABASE_FLAG_J1939">
+<span class="sig-prename descclassname"><span class="pre">dbc.</span></span><span class="sig-name descname"><span class="pre">DATABASE_FLAG_J1939</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvadblib.dbc.DATABASE_FLAG_J1939" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<div class="section" id="id1">
+<h2>Dbc<a class="headerlink" href="#id1" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">Dbc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Holds a dbc database.</p>
+<p>There are three ways to create a database:</p>
+<ol class="arabic simple">
+<li><p>To load data from an existing database file, only set filename to
+the database filename.</p></li>
+<li><p>To add an empty database, set only name.</p></li>
+<li><p>To load data from an existing database file and give it a new name, set
+name to the new name and filename to the existing database filename.</p></li>
+</ol>
+<p>Either a name or a filename must be given.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str, optional</em>) – The existing database file is read.</p></li>
+<li><p><strong>name</strong> (<em>str, optional</em>) – The database name will be set.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><a class="reference internal" href="exceptions.html#canlib.kvadblib.KvdDbFileParse" title="canlib.kvadblib.KvdDbFileParse"><strong>KvdDbFileParse</strong></a> – If the database file can’t be parsed.</p>
+</dd>
+</dl>
+<p>When parsing a database file fails, <a class="reference internal" href="#canlib.kvadblib.get_last_parse_error" title="canlib.kvadblib.get_last_parse_error"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_last_parse_error</span></code></a> can be called:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">kvadblib</span><span class="o">.</span><span class="n">Dbc</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">&quot;database.dbc&quot;</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">kvadblib</span><span class="o">.</span><span class="n">KvdDbFileParse</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kvadblib</span><span class="o">.</span><span class="n">get_last_parse_error</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.10: </span><a class="reference internal" href="#canlib.kvadblib.Dbc" title="canlib.kvadblib.Dbc"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Dbc</span></code></a> now raises specific errors depending on the situation.</p>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.attribute_definitions">
+<span class="sig-name descname"><span class="pre">attribute_definitions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.attribute_definitions"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.attribute_definitions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a generator over all database attribute definitions.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.attributes">
+<span class="sig-name descname"><span class="pre">attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.attributes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.attributes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a generator over all database attributes.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.close">
+<span class="sig-name descname"><span class="pre">close</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.close"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close an open database handle.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.delete_attribute">
+<span class="sig-name descname"><span class="pre">delete_attribute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.delete_attribute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.delete_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete attribute from database.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.delete_attribute_definition">
+<span class="sig-name descname"><span class="pre">delete_attribute_definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.delete_attribute_definition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.delete_attribute_definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete attribute definition from database.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.7.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.delete_message">
+<span class="sig-name descname"><span class="pre">delete_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.delete_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.delete_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete message from database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>message</strong> (<a class="reference internal" href="message.html#canlib.kvadblib.Message" title="canlib.kvadblib.Message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Message</span></code></a>) – message to be deleted</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.delete_node">
+<span class="sig-name descname"><span class="pre">delete_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.delete_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.delete_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete node from database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>node</strong> (<a class="reference internal" href="node.html#canlib.kvadblib.Node" title="canlib.kvadblib.Node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node</span></code></a>) – node to be deleted</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.flags">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">flags</span></span><a class="headerlink" href="#canlib.kvadblib.Dbc.flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get the database flags.</p>
+<p>E.g. DATABASE_FLAG_J1939</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.get_attribute_definition_by_name">
+<span class="sig-name descname"><span class="pre">get_attribute_definition_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.get_attribute_definition_by_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.get_attribute_definition_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find attribute definition using name.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – name of attribute definition</p>
+</dd>
+</dl>
+<p>Returns an attribute definition object depending on type, e.g. if the
+type is AttributeType.INTEGER, an <code class="xref py py-obj docutils literal notranslate"><span class="pre">IntegerAttributeDefinition</span></code> is
+returned.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.get_attribute_value">
+<span class="sig-name descname"><span class="pre">get_attribute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.get_attribute_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.get_attribute_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return attribute value</p>
+<p>If the attribute is not set on the database, we return the attribute
+definition default value.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.get_message">
+<span class="sig-name descname"><span class="pre">get_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.get_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.get_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find message by id or name</p>
+<p>If both id and name is given, both most match.</p>
+<p>Note that bit 31 of the id indicates if the message has an extended id
+or not.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – message id to look for</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – message name to look for</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="message.html#canlib.kvadblib.Message" title="canlib.kvadblib.Message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Message</span></code></a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#canlib.kvadblib.KvdNoMessage" title="canlib.kvadblib.KvdNoMessage"><strong>KvdNoMessage</strong></a> – If no match was found, or if none of <code class="xref py py-obj docutils literal notranslate"><span class="pre">id</span></code> and
+    <a class="reference internal" href="#canlib.kvadblib.Dbc.name" title="canlib.kvadblib.Dbc.name"><code class="xref py py-obj docutils literal notranslate"><span class="pre">name</span></code></a> were given.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.get_message_by_id">
+<span class="sig-name descname"><span class="pre">get_message_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.get_message_by_id"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.get_message_by_id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find message by id.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>int</em>) – message id to look for</p></li>
+<li><p><strong>flags</strong> (<em>int</em>) – message flags, e.g. <code class="xref py py-obj docutils literal notranslate"><span class="pre">kvadblib.MessageFlag.EXT</span></code>
+(Note that <code class="xref py py-obj docutils literal notranslate"><span class="pre">kvadblib.MessageFlag.EXT</span></code> != <code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.MessageFlag.EXT</span></code>)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="message.html#canlib.kvadblib.Message" title="canlib.kvadblib.Message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Message</span></code></a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#canlib.kvadblib.KvdNoMessage" title="canlib.kvadblib.KvdNoMessage"><strong>KvdNoMessage</strong></a> – If no match was found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.get_message_by_name">
+<span class="sig-name descname"><span class="pre">get_message_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.get_message_by_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.get_message_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find message by name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – message name to look for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="message.html#canlib.kvadblib.Message" title="canlib.kvadblib.Message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Message</span></code></a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#canlib.kvadblib.KvdNoMessage" title="canlib.kvadblib.KvdNoMessage"><strong>KvdNoMessage</strong></a> – If no match was found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.get_message_by_pgn">
+<span class="sig-name descname"><span class="pre">get_message_by_pgn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">can_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.get_message_by_pgn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.get_message_by_pgn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find message using the PGN part of the given CAN id.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="xref py py-obj docutils literal notranslate"><span class="pre">can_id</span></code> must have the <a class="reference internal" href="enums.html#canlib.kvadblib.MessageFlag.EXT" title="canlib.kvadblib.MessageFlag.EXT"><code class="xref py py-obj docutils literal notranslate"><span class="pre">MessageFlag.EXT</span></code></a> flag bit set (bit 31, 0x80000000)</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dbc</span> <span class="o">=</span> <span class="n">kvadblib</span><span class="o">.</span><span class="n">Dbc</span><span class="p">(</span><span class="s2">&quot;My_j1939_database.dbc&quot;</span><span class="p">)</span>
+<span class="n">can_id</span> <span class="o">=</span> <span class="mh">0xff4200</span>
+<span class="n">can_id</span> <span class="o">|=</span> <span class="n">kvadblib</span><span class="o">.</span><span class="n">MessageFlag</span><span class="o">.</span><span class="n">EXT</span>
+<span class="n">dbc</span><span class="o">.</span><span class="n">get_message_by_pgn</span><span class="p">(</span><span class="n">can_id</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>can_id</strong> (<em>int</em>) – CAN id containing PGN to look for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="message.html#canlib.kvadblib.Message" title="canlib.kvadblib.Message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Message</span></code></a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#canlib.kvadblib.KvdNoMessage" title="canlib.kvadblib.KvdNoMessage"><strong>KvdNoMessage</strong></a> – If no match was found.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.18.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.get_node_by_name">
+<span class="sig-name descname"><span class="pre">get_node_by_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.get_node_by_name"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.get_node_by_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Find node by name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – node name to look for</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="node.html#canlib.kvadblib.Node" title="canlib.kvadblib.Node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node</span></code></a></p>
+</dd>
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><p><a class="reference internal" href="exceptions.html#canlib.kvadblib.KvdNoNode" title="canlib.kvadblib.KvdNoNode"><strong>KvdNoNode</strong></a> – If no match was found.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.interpret">
+<span class="sig-name descname"><span class="pre">interpret</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frame</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j1939</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.interpret"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.interpret" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interprets a given <a class="reference internal" href="../frame.html#canlib.Frame" title="canlib.Frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.Frame</span></code></a> object, returning a <a class="reference internal" href="framebox.html#canlib.kvadblib.BoundMessage" title="canlib.kvadblib.BoundMessage"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BoundMessage</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.messages">
+<span class="sig-name descname"><span class="pre">messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">show_all</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.messages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.messages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a generator of all database messages.</p>
+<p>If you would like to omit the special message
+‘VECTOR__INDEPENDENT_SIG_MSG’, which is used to collect removed signals
+under, set show_all to False or use the Dbc iterator directly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">kvadblib</span><span class="o">.</span><span class="n">Dbc</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;mydb.dbc&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">db</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>show_all</strong> (<code class="xref py py-obj docutils literal notranslate"><span class="pre">bool</span></code>) – If true, all messages, including any special
+message such as ‘VECTOR__INDEPENDENT_SIG_MSG’ will be returned</p>
+</dd>
+</dl>
+<div class="versionchanged">
+<p><span class="versionmodified changed">Changed in version 1.8: </span>Added argument show_all.</p>
+</div>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.name">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">name</span></span><a class="headerlink" href="#canlib.kvadblib.Dbc.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>The current database name (read-only)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.new_attribute_definition">
+<span class="sig-name descname"><span class="pre">new_attribute_definition</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">owner</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">definition</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.new_attribute_definition"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.new_attribute_definition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new attribute definition in the database.</p>
+<p>The owner specify where the attribute is applicable,
+e.g. <a class="reference internal" href="enums.html#canlib.kvadblib.AttributeOwner.MESSAGE" title="canlib.kvadblib.AttributeOwner.MESSAGE"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AttributeOwner.MESSAGE</span></code></a> specifies that this attribute is
+only applicable on messages (<a class="reference internal" href="message.html#canlib.kvadblib.Message" title="canlib.kvadblib.Message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Message</span></code></a>).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – a unique name.</p></li>
+<li><p><strong>owner</strong> (<a class="reference internal" href="enums.html#canlib.kvadblib.AttributeOwner" title="canlib.kvadblib.AttributeOwner"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AttributeOwner</span></code></a>) – the owner type</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="attributedef.html#canlib.kvadblib.AttributeDefinition" title="canlib.kvadblib.AttributeDefinition"><code class="xref py py-obj docutils literal notranslate"><span class="pre">AttributeDefinition</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.new_message">
+<span class="sig-name descname"><span class="pre">new_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dlc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.new_message"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.new_message" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new message in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – name of message</p></li>
+<li><p><strong>id</strong> (<em>int</em>) – message id</p></li>
+<li><p><strong>flags</strong> (<em>int, optional</em>) – message flags, e.g. <code class="xref py py-obj docutils literal notranslate"><span class="pre">kvadblib.MessageFlag.EXT</span></code></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="message.html#canlib.kvadblib.Message" title="canlib.kvadblib.message.Message"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Message</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.new_node">
+<span class="sig-name descname"><span class="pre">new_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">comment</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.new_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.new_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a new node in the database.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – name of message</p></li>
+<li><p><strong>comment</strong> (<em>str, optional</em>) – message comment</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><a class="reference internal" href="node.html#canlib.kvadblib.Node" title="canlib.kvadblib.Node"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Node</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.node_in_signal">
+<span class="sig-name descname"><span class="pre">node_in_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">node</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.node_in_signal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.node_in_signal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if signal has been added to node.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><em>True</em> – signals contains node
+False: otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.nodes">
+<span class="sig-name descname"><span class="pre">nodes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.nodes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a generator containing all database nodes.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.protocol">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">protocol</span></span><a class="headerlink" href="#canlib.kvadblib.Dbc.protocol" title="Permalink to this definition">¶</a></dt>
+<dd><p>The database protocol</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="enums.html#canlib.kvadblib.ProtocolType" title="canlib.kvadblib.ProtocolType"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ProtocolType</span></code></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.set_attribute_value">
+<span class="sig-name descname"><span class="pre">set_attribute_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.set_attribute_value"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.set_attribute_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set value of attribute <em>name</em> on database.</p>
+<p>If no attribute called <em>name</em> is set on database, attach a database
+attribute from the database attribute definition first.</p>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.6.</span></p>
+</div>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvadblib.Dbc.write_file">
+<span class="sig-name descname"><span class="pre">write_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/dbc.html#Dbc.write_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.Dbc.write_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write a database to file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – file to write database to</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="get-last-parse-error">
+<h2>get_last_parse_error()<a class="headerlink" href="#get-last-parse-error" title="Permalink to this heading">¶</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="canlib.kvadblib.get_last_parse_error">
+<span class="sig-prename descclassname"><span class="pre">canlib.kvadblib.</span></span><span class="sig-name descname"><span class="pre">get_last_parse_error</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvadblib/wrapper.html#get_last_parse_error"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvadblib.get_last_parse_error" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can be used to get the specific reason why <a class="reference internal" href="exceptions.html#canlib.kvadblib.KvdDbFileParse" title="canlib.kvadblib.KvdDbFileParse"><code class="xref py py-obj docutils literal notranslate"><span class="pre">KvdDbFileParse</span></code></a> was raised.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">str</span></code> – Error message from the parser.</p>
+</dd>
+</dl>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 1.10.</span></p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="attributedef.html" class="btn btn-neutral float-left" title="Attribute Definitions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="enums.html" class="btn btn-neutral float-right" title="Enumerations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

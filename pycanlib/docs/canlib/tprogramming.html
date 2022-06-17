@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>t Programming &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="I/O Pin Handling" href="iopinhandling.html" />
+    <link rel="prev" title="Using Threads" href="usingthreads.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Using canlib (CANlib)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="initialization.html">Initialization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devicesandchannels.html">Devices and Channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openchannel.html">Open Channel</a></li>
+<li class="toctree-l2"><a class="reference internal" href="canframes.html">CAN Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sendandreceive.html">Send and Receive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="buserrors.html">Bus Errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="timemeasurement.html">Time Measurement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="usingthreads.html">Using Threads</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">t Programming</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#load-and-unload-t-program">Load and Unload t Program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#start-and-stop-a-t-program">Start and Stop a t Program</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#send-event">Send Event</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="iopinhandling.html">I/O Pin Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">Using canlib (CANlib)</a> &raquo;</li>
+      <li>t Programming</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/canlib/tprogramming.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="t-programming">
+<h1>t Programming<a class="headerlink" href="#t-programming" title="Permalink to this heading">¶</a></h1>
+<p>The Kvaser t programming language is event oriented and modeled after C. It can
+be used to customize the behavior of the Kvaser Memorator v2 and other Kvaser t
+capable devices.</p>
+<p>A t program is invoked via hooks, which are entry points that are executed at
+the occurrence of certain events. These events can be, for example, the arrival
+of specific CAN messages, timer expiration, or external input.</p>
+<p>Here we will describe how to interact with t programs on a Kvaser device
+(i.e. loading, starting, stopping) For a complete reference to the t language,
+see the <a class="reference external" href="https://www.kvaser.com/download/?utm_source=software&amp;utm_ean=7330130980327&amp;utm_status=latest">Kvaser t Programming Language</a>
+available from <a class="reference external" href="https://www.kvaser.com/downloads">https://www.kvaser.com/downloads</a>.</p>
+<div class="section" id="load-and-unload-t-program">
+<h2>Load and Unload t Program<a class="headerlink" href="#load-and-unload-t-program" title="Permalink to this heading">¶</a></h2>
+<p>The first step is to compile your t program into a .txe file, see the <a class="reference external" href="https://www.kvaser.com/download/?utm_source=software&amp;utm_ean=7330130980327&amp;utm_status=latest">Kvaser t
+Programming Language</a>. A
+compiled .txe file may be examined using <a class="reference internal" href="../reference/canlib/txe.html#canlib.canlib.Txe" title="canlib.canlib.Txe"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Txe</span></code></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">t</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">Txe</span><span class="p">(</span><span class="s2">&quot;HelloWorld.txe&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">t</span><span class="o">.</span><span class="n">description</span>
+<span class="go">&#39;This is my hello world program.&#39;</span>
+</pre></div>
+</div>
+<p>Before starting a t program you need to load it into an available “slot”. Some
+Kvaser devices have multiple slots, and are therefore capable of running
+multiple programs simultaneously.</p>
+<p>To load a t program located on the host PC, use
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.scriptLoadFile" title="canlib.canlib.Channel.scriptLoadFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.scriptLoadFile()</span></code></a>. The <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel" title="canlib.canlib.Channel"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.Channel</span></code></a> used determines the default channel
+for the loaded t program. If your channel was opened to a device’s second
+channel, the default channel number will be set to 1 (the numbering of channel
+on the card starts from 0). You can read this value using
+<code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.channel_data.chan_no_on_card</span></code></p>
+<p>To load a t program located on the device, use
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.scriptLoadFileOnDevice" title="canlib.canlib.Channel.scriptLoadFileOnDevice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.scriptLoadFileOnDevice()</span></code></a>. To copy arbitrary files to and from the
+the device, use <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.fileCopyToDevice" title="canlib.canlib.Channel.fileCopyToDevice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.fileCopyToDevice()</span></code></a> and
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.fileCopyFromDevice" title="canlib.canlib.Channel.fileCopyFromDevice"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.fileCopyFromDevice()</span></code></a> respectively.</p>
+<p>To unload a stopped script, use  <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.scriptUnload" title="canlib.canlib.Channel.scriptUnload"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.scriptUnload()</span></code></a>.</p>
+<p>You may use <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.fileGetCount" title="canlib.canlib.Channel.fileGetCount"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.fileGetCount()</span></code></a>, and <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.fileGetName" title="canlib.canlib.Channel.fileGetName"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.fileGetName()</span></code></a> to examine
+files located on the Kvaser device, and <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.fileDelete" title="canlib.canlib.Channel.fileDelete"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.fileDelete()</span></code></a> to delete a
+specific file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not all Kvaser devices support storing t programs and other files locally on
+the device (i.e. USBcan Pro 2xHS v2). Please refer to your device’s User
+Guide for more information. All User Guides may be downloaded from
+<a class="reference external" href="https://www.kvaser.com/download/#?categories=documentation">www.kvaser.com/downloads</a>.</p>
+</div>
+</div>
+<div class="section" id="start-and-stop-a-t-program">
+<h2>Start and Stop a t Program<a class="headerlink" href="#start-and-stop-a-t-program" title="Permalink to this heading">¶</a></h2>
+<p>To start a previously loaded t program, use <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.scriptStart" title="canlib.canlib.Channel.scriptStart"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.scriptStart()</span></code></a>. You may
+stop a running script using <a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.scriptStop" title="canlib.canlib.Channel.scriptStop"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.scriptStop()</span></code></a>. To examine the status of a
+slot (i.e. if the slot is free or has a program loaded or running), use
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.scriptStatus" title="canlib.canlib.Channel.scriptStatus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.scriptStatus()</span></code></a>.</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h2>
+<p>The following code fragment shows how to load the compiled t program “HelloWorld.txe” from the PC, and then start and stop the t program:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">canlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">scriptLoadFile</span><span class="p">(</span><span class="n">slot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">filePathOnPC</span><span class="o">=</span><span class="s2">&quot;C:/dev/HelloWorld.txe&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">scriptStatus</span><span class="p">(</span><span class="n">slot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">&lt;ScriptStatus.LOADED: 1&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">scriptStart</span><span class="p">(</span><span class="n">slot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">scriptStatus</span><span class="p">(</span><span class="n">slot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">&lt;ScriptStatus.RUNNING|LOADED: 3&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">scriptStop</span><span class="p">(</span><span class="n">slot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment-variables">
+<h2>Environment Variables<a class="headerlink" href="#environment-variables" title="Permalink to this heading">¶</a></h2>
+<p>To communicate between the PC and your t program, you can use t Environment
+Variables (Envvar). When a t program has been loaded, the Envvar defined in the
+t program can be accessed via <code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.envvar</span></code>, however the t program must be
+running in order to be able to set the value of an Envvar.</p>
+<p>There are three types of Envvar in t; <code class="xref py py-obj docutils literal notranslate"><span class="pre">int</span></code>, <code class="xref py py-obj docutils literal notranslate"><span class="pre">float</span></code>, and <code class="xref py py-obj docutils literal notranslate"><span class="pre">char*</span></code>. The first
+two are accessed as the corresponding Python type, and the last is accessed
+using <a class="reference internal" href="../reference/canlib/envvar.html#canlib.canlib.envvar.DataEnvVar" title="canlib.canlib.envvar.DataEnvVar"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.envvar.DataEnvVar</span></code></a> which behaves as an array of bytes.</p>
+<p>If we have a t program, <code class="docutils literal notranslate"><span class="pre">envvar.txe</span></code>, that set up three Envvar as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">envvar</span>
+<span class="p">{</span>
+  <span class="nb">int</span>   <span class="n">IntVal</span><span class="p">;</span>
+  <span class="nb">float</span> <span class="n">FloatVal</span><span class="p">;</span>
+  <span class="n">char</span>  <span class="n">DataVal</span><span class="p">[</span><span class="mi">512</span><span class="p">];</span>
+<span class="p">}</span>
+
+<span class="n">on</span> <span class="n">start</span> <span class="p">{</span>
+  <span class="n">envvarSetValue</span><span class="p">(</span><span class="n">IntVal</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+  <span class="n">envvarSetValue</span><span class="p">(</span><span class="n">FloatVal</span><span class="p">,</span> <span class="mf">15.0</span><span class="p">);</span>
+  <span class="n">envvarSetValue</span><span class="p">(</span><span class="n">DataVal</span><span class="p">,</span> <span class="s2">&quot;Fear not this night</span><span class="se">\n</span><span class="s2">You will not go astray&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following example starts the t program <code class="xref py py-obj docutils literal notranslate"><span class="pre">envvar.txe</span></code> and acesses it’s Envvar.</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">canlib</span> <span class="kn">import</span> <span class="n">canlib</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span> <span class="o">=</span> <span class="n">canlib</span><span class="o">.</span><span class="n">openChannel</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">scriptLoadFile</span><span class="p">(</span><span class="n">slot</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">filePathOnPC</span><span class="o">=</span><span class="s2">&quot;envvar.txe&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">scriptStart</span><span class="p">(</span><span class="n">slot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">envvar</span><span class="o">.</span><span class="n">IntVal</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">envvar</span><span class="o">.</span><span class="n">IntVal</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">envvar</span><span class="o">.</span><span class="n">IntVal</span>
+<span class="go">3</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">envvar</span><span class="o">.</span><span class="n">FloatVal</span>
+<span class="go">15.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">envvar</span><span class="o">.</span><span class="n">DataVal</span><span class="p">[</span><span class="mi">9</span><span class="p">:</span><span class="mi">20</span><span class="p">]</span>
+<span class="go">b&#39;this night\n&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">scriptStop</span><span class="p">(</span><span class="n">slot</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Note that setting of the Envvars has also been done in the t program. For
+examples on how to use an Envvar in your t program, see the <a class="reference external" href="https://www.kvaser.com/download/?utm_source=software&amp;utm_ean=7330130980327&amp;utm_status=latest">Kvaser t
+Programming Language</a>.</p>
+</div>
+<div class="section" id="send-event">
+<h2>Send Event<a class="headerlink" href="#send-event" title="Permalink to this heading">¶</a></h2>
+<p>You may trigger the “on key” hook in your t program by sending a
+<code class="docutils literal notranslate"><span class="pre">kvEVENT_TYPE_KEY</span></code> to a running t program using
+<a class="reference internal" href="../reference/canlib/channel.html#canlib.canlib.Channel.scriptSendEvent" title="canlib.canlib.Channel.scriptSendEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Channel.scriptSendEvent()</span></code></a>. The following will trigger an <code class="docutils literal notranslate"><span class="pre">on</span> <span class="pre">key</span> <span class="pre">'a'</span>
+<span class="pre">{...}</span></code> hook:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ch</span><span class="o">.</span><span class="n">scriptSendEvent</span><span class="p">(</span><span class="n">eventNo</span><span class="o">=</span><span class="nb">ord</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="usingthreads.html" class="btn btn-neutral float-left" title="Using Threads" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="iopinhandling.html" class="btn btn-neutral float-right" title="I/O Pin Handling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

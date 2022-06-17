@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Log files" href="log.html" />
+    <link rel="prev" title="Enumerations" href="enums.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canlib/index.html">canlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvadblib/index.html">kvadblib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvlclib/index.html">kvlclib</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">kvmlib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enums.html">Enumerations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Events</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#messageevent">MessageEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#logevent">LogEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rtcevent">RTCEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#triggerevent">TriggerEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#versionevent">VersionEvent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memologeventex">memoLogEventEx</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="log.html">Log files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kme.html">kme files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="kmf.html">kmf files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="memorator.html">Memorator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">kvmlib</a> &raquo;</li>
+      <li>Events</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/kvmlib/events.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="events">
+<h1>Events<a class="headerlink" href="#events" title="Permalink to this heading">¶</a></h1>
+<div class="section" id="messageevent">
+<h2>MessageEvent<a class="headerlink" href="#messageevent" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvmlib.MessageEvent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvmlib.</span></span><span class="sig-name descname"><span class="pre">MessageEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dlc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flags</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvmlib/events.html#MessageEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvmlib.MessageEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvmlib.LogEvent" title="canlib.kvmlib.events.LogEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogEvent</span></code></a></p>
+<p>A CAN message recorded by a Memorator</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvmlib.MessageEvent.asframe">
+<span class="sig-name descname"><span class="pre">asframe</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvmlib/events.html#MessageEvent.asframe"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvmlib.MessageEvent.asframe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert this event to a <a class="reference internal" href="../frame.html#canlib.Frame" title="canlib.Frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.Frame</span></code></a></p>
+<p>Creates a new <a class="reference internal" href="../frame.html#canlib.Frame" title="canlib.Frame"><code class="xref py py-obj docutils literal notranslate"><span class="pre">canlib.Frame</span></code></a> object with the same contents as this event.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="logevent">
+<h2>LogEvent<a class="headerlink" href="#logevent" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvmlib.LogEvent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvmlib.</span></span><span class="sig-name descname"><span class="pre">LogEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvmlib/events.html#LogEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvmlib.LogEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>The base class for events recorded by a Memorator.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="rtcevent">
+<h2>RTCEvent<a class="headerlink" href="#rtcevent" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvmlib.RTCEvent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvmlib.</span></span><span class="sig-name descname"><span class="pre">RTCEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">calendartime</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvmlib/events.html#RTCEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvmlib.RTCEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvmlib.LogEvent" title="canlib.kvmlib.events.LogEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogEvent</span></code></a></p>
+<p>An real-time clock message recorded by a Memorator</p>
+</dd></dl>
+
+</div>
+<div class="section" id="triggerevent">
+<h2>TriggerEvent<a class="headerlink" href="#triggerevent" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvmlib.TriggerEvent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvmlib.</span></span><span class="sig-name descname"><span class="pre">TriggerEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timestamp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pretrigger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">posttrigger</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trigno</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvmlib/events.html#TriggerEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvmlib.TriggerEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvmlib.LogEvent" title="canlib.kvmlib.events.LogEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogEvent</span></code></a></p>
+<p>A trigger message recorded by a Memorator</p>
+</dd></dl>
+
+</div>
+<div class="section" id="versionevent">
+<h2>VersionEvent<a class="headerlink" href="#versionevent" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvmlib.VersionEvent">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvmlib.</span></span><span class="sig-name descname"><span class="pre">VersionEvent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lioMajor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lioMinor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwMajor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwMinor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fwBuild</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">serialNumber</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eanHi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eanLo</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvmlib/events.html#VersionEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvmlib.VersionEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#canlib.kvmlib.LogEvent" title="canlib.kvmlib.events.LogEvent"><code class="xref py py-class docutils literal notranslate"><span class="pre">LogEvent</span></code></a></p>
+<p>A version message recorded by a Memorator</p>
+</dd></dl>
+
+</div>
+<div class="section" id="memologeventex">
+<h2>memoLogEventEx<a class="headerlink" href="#memologeventex" title="Permalink to this heading">¶</a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvmlib.memoLogEventEx">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvmlib.</span></span><span class="sig-name descname"><span class="pre">memoLogEventEx</span></span><a class="reference internal" href="../../_modules/canlib/kvmlib/events.html#memoLogEventEx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvmlib.memoLogEventEx" title="Permalink to this definition">¶</a></dt>
+<dd><p>Low level c type class holding a log event.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvmlib.memoLogEventEx.MEMOLOG_TYPE_CLOCK">
+<span class="sig-name descname"><span class="pre">MEMOLOG_TYPE_CLOCK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvmlib.memoLogEventEx.MEMOLOG_TYPE_CLOCK" title="Permalink to this definition">¶</a></dt>
+<dd><p>The event type used in kvmLogRtcClockEx</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvmlib.memoLogEventEx.MEMOLOG_TYPE_INVALID">
+<span class="sig-name descname"><span class="pre">MEMOLOG_TYPE_INVALID</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">0</span></em><a class="headerlink" href="#canlib.kvmlib.memoLogEventEx.MEMOLOG_TYPE_INVALID" title="Permalink to this definition">¶</a></dt>
+<dd><p>Invalid MEMOLOG event type</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvmlib.memoLogEventEx.MEMOLOG_TYPE_MSG">
+<span class="sig-name descname"><span class="pre">MEMOLOG_TYPE_MSG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvmlib.memoLogEventEx.MEMOLOG_TYPE_MSG" title="Permalink to this definition">¶</a></dt>
+<dd><p>The event type used in kvmLogMsgEx</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvmlib.memoLogEventEx.MEMOLOG_TYPE_TRIGGER">
+<span class="sig-name descname"><span class="pre">MEMOLOG_TYPE_TRIGGER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvmlib.memoLogEventEx.MEMOLOG_TYPE_TRIGGER" title="Permalink to this definition">¶</a></dt>
+<dd><p>The event type used in kvmLogTriggerEx</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvmlib.memoLogEventEx.MEMOLOG_TYPE_VERSION">
+<span class="sig-name descname"><span class="pre">MEMOLOG_TYPE_VERSION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvmlib.memoLogEventEx.MEMOLOG_TYPE_VERSION" title="Permalink to this definition">¶</a></dt>
+<dd><p>The event type used in kvmLogVersionEx</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="canlib.kvmlib.memoLogEventEx.createMemoEvent">
+<span class="sig-name descname"><span class="pre">createMemoEvent</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvmlib/events.html#memoLogEventEx.createMemoEvent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvmlib.memoLogEventEx.createMemoEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert event to <a class="reference internal" href="#canlib.kvmlib.LogEvent" title="canlib.kvmlib.LogEvent"><code class="xref py py-obj docutils literal notranslate"><span class="pre">LogEvent</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvmlib.memoLogEventEx.event">
+<span class="sig-name descname"><span class="pre">event</span></span><a class="headerlink" href="#canlib.kvmlib.memoLogEventEx.event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Structure/Union member</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="enums.html" class="btn btn-neutral float-left" title="Enumerations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="log.html" class="btn btn-neutral float-right" title="Log files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

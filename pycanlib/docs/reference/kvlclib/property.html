@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Property &mdash; canlib 1.21.463 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Reader Formats" href="readerformat.html" />
+    <link rel="prev" title="Enumerations" href="enums.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> canlib
+          </a>
+              <div class="version">
+                1.21.463
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../welcome.html">Welcome</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib.html">Supported Libraries and Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../tutorials/index.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../canlib/index.html">Using canlib (CANlib)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/index.html">Examples</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../exceptions.html">Base Exceptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ean.html">EAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../device.html">Device</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../frame.html">Frames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../versionnumber.html">Version Numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../canlib/index.html">canlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvadblib/index.html">kvadblib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvamemolibxml/index.html">kvamemolibxml</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">kvlclib</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="exceptions.html">Exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="converter.html">Converter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="enums.html">Enumerations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="readerformat.html">Reader Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="writerformat.html">Writer Formats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="wrapper.html">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../kvmlib/index.html">kvmlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../kvrlib/index.html">kvrlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linlib/index.html">linlib</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../j1939/index.html">j1939</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Relnotes.html">Release Notes</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">canlib</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">Reference</a> &raquo;</li>
+          <li><a href="index.html">kvlclib</a> &raquo;</li>
+      <li>Property</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/reference/kvlclib/property.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="property">
+<h1>Property<a class="headerlink" href="#property" title="Permalink to this heading">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">canlib.kvlclib.</span></span><span class="sig-name descname"><span class="pre">Property</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/canlib/kvlclib/properties.html#Property"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#canlib.kvlclib.Property" title="Permalink to this definition">¶</a></dt>
+<dd><p>An enumeration.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.ATTACHMENTS">
+<span class="sig-name descname"><span class="pre">ATTACHMENTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1003</span></em><a class="headerlink" href="#canlib.kvlclib.Property.ATTACHMENTS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Can attach files to converted data.</p>
+<p>It is possible to use <a class="reference internal" href="converter.html#canlib.kvlclib.Converter.attachFile" title="canlib.kvlclib.Converter.attachFile"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Converter.attachFile()</span></code></a> to add a file. Used only
+with <a class="reference internal" href="writerformat.html#canlib.kvlclib.WriterFormat.isPropertySupported" title="canlib.kvlclib.WriterFormat.isPropertySupported"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WriterFormat.isPropertySupported()</span></code></a> and
+<a class="reference internal" href="readerformat.html#canlib.kvlclib.ReaderFormat.isPropertySupported" title="canlib.kvlclib.ReaderFormat.isPropertySupported"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReaderFormat.isPropertySupported()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.CALENDAR_TIME_STAMPS">
+<span class="sig-name descname"><span class="pre">CALENDAR_TIME_STAMPS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">7</span></em><a class="headerlink" href="#canlib.kvlclib.Property.CALENDAR_TIME_STAMPS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write calendar time stamps.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.CHANNEL_MASK">
+<span class="sig-name descname"><span class="pre">CHANNEL_MASK</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#canlib.kvlclib.Property.CHANNEL_MASK" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bitmask of the channels that should be used during conversion.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.COMPRESSION_LEVEL">
+<span class="sig-name descname"><span class="pre">COMPRESSION_LEVEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">32</span></em><a class="headerlink" href="#canlib.kvlclib.Property.COMPRESSION_LEVEL" title="Permalink to this definition">¶</a></dt>
+<dd><p>ZLIB compression level for writers that use ZLIB for compression. [-1, 9].</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.CREATION_DATE">
+<span class="sig-name descname"><span class="pre">CREATION_DATE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">27</span></em><a class="headerlink" href="#canlib.kvlclib.Property.CREATION_DATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>File creation date/time as seconds in standard UNIX format. Used in file headers if not zero.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.CROP_PRETRIGGER">
+<span class="sig-name descname"><span class="pre">CROP_PRETRIGGER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">22</span></em><a class="headerlink" href="#canlib.kvlclib.Property.CROP_PRETRIGGER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Crop pre-triggers.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.DATA_IN_HEX">
+<span class="sig-name descname"><span class="pre">DATA_IN_HEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">12</span></em><a class="headerlink" href="#canlib.kvlclib.Property.DATA_IN_HEX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write data in hexadecimal format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.DECIMAL_CHAR">
+<span class="sig-name descname"><span class="pre">DECIMAL_CHAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">10</span></em><a class="headerlink" href="#canlib.kvlclib.Property.DECIMAL_CHAR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use token as decimal separator.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.ENUM_VALUES">
+<span class="sig-name descname"><span class="pre">ENUM_VALUES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">23</span></em><a class="headerlink" href="#canlib.kvlclib.Property.ENUM_VALUES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Replace integer values in signals with strings from database.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.FILL_BLANKS">
+<span class="sig-name descname"><span class="pre">FILL_BLANKS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">15</span></em><a class="headerlink" href="#canlib.kvlclib.Property.FILL_BLANKS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Propagate values down to next row in csv-files.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.FIRST_TRIGGER">
+<span class="sig-name descname"><span class="pre">FIRST_TRIGGER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#canlib.kvlclib.Property.FIRST_TRIGGER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use first trigger as time reference.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.FULLY_QUALIFIED_NAMES">
+<span class="sig-name descname"><span class="pre">FULLY_QUALIFIED_NAMES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">30</span></em><a class="headerlink" href="#canlib.kvlclib.Property.FULLY_QUALIFIED_NAMES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write fully qualified signal names</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.HLP_J1939">
+<span class="sig-name descname"><span class="pre">HLP_J1939</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">6</span></em><a class="headerlink" href="#canlib.kvlclib.Property.HLP_J1939" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpret events as J1939.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.ID_IN_HEX">
+<span class="sig-name descname"><span class="pre">ID_IN_HEX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">11</span></em><a class="headerlink" href="#canlib.kvlclib.Property.ID_IN_HEX" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write id in hexadecimal format.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.ISO8601_DECIMALS">
+<span class="sig-name descname"><span class="pre">ISO8601_DECIMALS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">17</span></em><a class="headerlink" href="#canlib.kvlclib.Property.ISO8601_DECIMALS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of time decimals (0-9) to print in the calendar timestamps using ISO8601.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.LIMIT_DATA_BYTES">
+<span class="sig-name descname"><span class="pre">LIMIT_DATA_BYTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">26</span></em><a class="headerlink" href="#canlib.kvlclib.Property.LIMIT_DATA_BYTES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of data bytes that a converter will write.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.MERGE_LINES">
+<span class="sig-name descname"><span class="pre">MERGE_LINES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">18</span></em><a class="headerlink" href="#canlib.kvlclib.Property.MERGE_LINES" title="Permalink to this definition">¶</a></dt>
+<dd><p>Merge two lines if their signal values are equal.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.NAME_MANGLING">
+<span class="sig-name descname"><span class="pre">NAME_MANGLING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">14</span></em><a class="headerlink" href="#canlib.kvlclib.Property.NAME_MANGLING" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make signal names safe for use in Matlab.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.NUMBER_OF_DATA_DECIMALS">
+<span class="sig-name descname"><span class="pre">NUMBER_OF_DATA_DECIMALS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">31</span></em><a class="headerlink" href="#canlib.kvlclib.Property.NUMBER_OF_DATA_DECIMALS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of data decimals (0-50)</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.NUMBER_OF_TIME_DECIMALS">
+<span class="sig-name descname"><span class="pre">NUMBER_OF_TIME_DECIMALS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">13</span></em><a class="headerlink" href="#canlib.kvlclib.Property.NUMBER_OF_TIME_DECIMALS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of time decimals (0-9).</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.OFFSET">
+<span class="sig-name descname"><span class="pre">OFFSET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#canlib.kvlclib.Property.OFFSET" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time reference offset.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.OVERWRITE">
+<span class="sig-name descname"><span class="pre">OVERWRITE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">28</span></em><a class="headerlink" href="#canlib.kvlclib.Property.OVERWRITE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Overwrite existing output files</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.RESAMPLE_COLUMN">
+<span class="sig-name descname"><span class="pre">RESAMPLE_COLUMN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">19</span></em><a class="headerlink" href="#canlib.kvlclib.Property.RESAMPLE_COLUMN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only print a line when the given column has been accessed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.SAMPLE_AND_HOLD_TIMESTEP">
+<span class="sig-name descname"><span class="pre">SAMPLE_AND_HOLD_TIMESTEP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">33</span></em><a class="headerlink" href="#canlib.kvlclib.Property.SAMPLE_AND_HOLD_TIMESTEP" title="Permalink to this definition">¶</a></dt>
+<dd><p>Time step in microseconds.</p>
+<p>Used for format where time is implicit and defined by start time and the
+selected time step in microseconds. Signal values are interpolated with sample
+and hold. Used with e.g. DIAdem and RPCIII.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.SEPARATOR_CHAR">
+<span class="sig-name descname"><span class="pre">SEPARATOR_CHAR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">9</span></em><a class="headerlink" href="#canlib.kvlclib.Property.SEPARATOR_CHAR" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use token as separator.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.SHOW_COUNTER">
+<span class="sig-name descname"><span class="pre">SHOW_COUNTER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">21</span></em><a class="headerlink" href="#canlib.kvlclib.Property.SHOW_COUNTER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a counter to the output.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.SHOW_SIGNAL_SELECT">
+<span class="sig-name descname"><span class="pre">SHOW_SIGNAL_SELECT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1002</span></em><a class="headerlink" href="#canlib.kvlclib.Property.SHOW_SIGNAL_SELECT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Format requires a database.</p>
+<p>Used only with <a class="reference internal" href="writerformat.html#canlib.kvlclib.WriterFormat.isPropertySupported" title="canlib.kvlclib.WriterFormat.isPropertySupported"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WriterFormat.isPropertySupported()</span></code></a> and
+<a class="reference internal" href="readerformat.html#canlib.kvlclib.ReaderFormat.isPropertySupported" title="canlib.kvlclib.ReaderFormat.isPropertySupported"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReaderFormat.isPropertySupported()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.SHOW_UNITS">
+<span class="sig-name descname"><span class="pre">SHOW_UNITS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">16</span></em><a class="headerlink" href="#canlib.kvlclib.Property.SHOW_UNITS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Show units on their own row.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.SIGNAL_BASED">
+<span class="sig-name descname"><span class="pre">SIGNAL_BASED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1001</span></em><a class="headerlink" href="#canlib.kvlclib.Property.SIGNAL_BASED" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes signals and not data frames.</p>
+<p>Used only with <a class="reference internal" href="writerformat.html#canlib.kvlclib.WriterFormat.isPropertySupported" title="canlib.kvlclib.WriterFormat.isPropertySupported"><code class="xref py py-obj docutils literal notranslate"><span class="pre">WriterFormat.isPropertySupported()</span></code></a> and
+<a class="reference internal" href="readerformat.html#canlib.kvlclib.ReaderFormat.isPropertySupported" title="canlib.kvlclib.ReaderFormat.isPropertySupported"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ReaderFormat.isPropertySupported()</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.SIZE_LIMIT">
+<span class="sig-name descname"><span class="pre">SIZE_LIMIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">24</span></em><a class="headerlink" href="#canlib.kvlclib.Property.SIZE_LIMIT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum file size in megabytes before starting a new output file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.START_OF_MEASUREMENT">
+<span class="sig-name descname"><span class="pre">START_OF_MEASUREMENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#canlib.kvlclib.Property.START_OF_MEASUREMENT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use start of measurement as time reference.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.TIMEZONE">
+<span class="sig-name descname"><span class="pre">TIMEZONE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">29</span></em><a class="headerlink" href="#canlib.kvlclib.Property.TIMEZONE" title="Permalink to this definition">¶</a></dt>
+<dd><p>Timezone for absolute timestamps</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.TIME_LIMIT">
+<span class="sig-name descname"><span class="pre">TIME_LIMIT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">25</span></em><a class="headerlink" href="#canlib.kvlclib.Property.TIME_LIMIT" title="Permalink to this definition">¶</a></dt>
+<dd><p>Maximum delta time in seconds between first and last event before starting a new output file.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.USE_OFFSET">
+<span class="sig-name descname"><span class="pre">USE_OFFSET</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#canlib.kvlclib.Property.USE_OFFSET" title="Permalink to this definition">¶</a></dt>
+<dd><p>Use offset as time reference.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.VERSION">
+<span class="sig-name descname"><span class="pre">VERSION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">20</span></em><a class="headerlink" href="#canlib.kvlclib.Property.VERSION" title="Permalink to this definition">¶</a></dt>
+<dd><p>File format version.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="canlib.kvlclib.Property.WRITE_HEADER">
+<span class="sig-name descname"><span class="pre">WRITE_HEADER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8</span></em><a class="headerlink" href="#canlib.kvlclib.Property.WRITE_HEADER" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write informational header.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="enums.html" class="btn btn-neutral float-left" title="Enumerations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="readerformat.html" class="btn btn-neutral float-right" title="Reader Formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022 Kvaser AB.
+      <span class="lastupdated">Last updated on Sun, 29 May 2022.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
