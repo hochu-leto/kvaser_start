@@ -1,4 +1,6 @@
-from canlib import canlib, Frame
+from pprint import pprint
+
+from canlib import canlib, connected_devices
 
 
 def setUpChannel(channel=0,
@@ -20,13 +22,16 @@ def tearDownChannel(ch):
     ch.close()
 
 
-ch0 = setUpChannel(channel=1)
+ch0 = setUpChannel(channel=0)
+pprint(dir(ch0))
 # frame = Frame(
 #     id_=100,
 #     data=[1, 2, 3, 4],
 #     flags=canlib.MessageFlag.EXT
 # )
 # ch1.write(frame)
+
+# timer сделай таймер
 if ch0:
     while True:
         try:
@@ -36,8 +41,12 @@ if ch0:
                 print(hex(i), end=' ')
             print()
         except canlib.canNoMsg:
-            print('No CAN')
-            tearDownChannel(ch0)
+            pass
+            # timer += 1
         except canlib.canError as ex:
             print(ex)
             tearDownChannel(ch0)
+            break
+else:
+    for dev in connected_devices():
+        print(dev.probe_info())
