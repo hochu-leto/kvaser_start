@@ -32,6 +32,7 @@ pprint(dir(ch0))
 # ch1.write(frame)
 
 # timer сделай таймер
+
 if ch0:
     while True:
         try:
